@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyCollocationsView.iml" filepath="$PROJECT_DIR$/.idea/modules/MyCollocationsView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyCollocationsView.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyCollocationsView.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/collocation_view_fragment/MyCollocationsView.app.collocation_view_fragment.iml" filepath="$PROJECT_DIR$/.idea/modules/app/collocation_view_fragment/MyCollocationsView.app.collocation_view_fragment.iml" />
+    </modules>
+  </component>
+</project>
