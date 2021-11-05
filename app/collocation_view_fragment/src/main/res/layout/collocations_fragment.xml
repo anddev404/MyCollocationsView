@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".CollocationsFragment">
 
-    <TextView
-        android:id="@+id/fragment_text"
+    <ListView
+        android:id="@+id/collocations_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello? I'm fragment" />
+        tools:listitem="@layout/row_collocation" />
 
 </FrameLayout>
