@@ -1,6 +1,7 @@
 package com.example.collocation_view_fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 
 
 class CollocationsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CollocationsFragment()
-    }
-
-    private lateinit var viewModel: CollocationsViewModel
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("FRAGMENT", "create view");
+
         return inflater.inflate(R.layout.collocations_fragment, container, false)
     }
 
@@ -31,8 +28,6 @@ class CollocationsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CollocationsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
