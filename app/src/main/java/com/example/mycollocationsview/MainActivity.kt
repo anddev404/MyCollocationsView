@@ -1,11 +1,12 @@
 package com.example.mycollocationsview
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.collocation_view_fragment.Collocation
 import com.example.collocation_view_fragment.CollocationsFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +26,29 @@ class MainActivity : AppCompatActivity() {
         if (fragment2 != null && fragment2.isInLayout()) {
             fragment2.setCollocations(Collocation.getListOfCollocation())
         }
-
+        fragment.setOnCollocationFragmentListener(this)
     }
+
+    override fun click(type: Int, fragment: CollocationsFragment, extraObject: Any?) {
+
+        if (type == CollocationsFragment.SELECTED_ITEM) {
+            var item = extraObject as Collocation
+            Toast.makeText(this, "=== " + item.collocation + " ===", Toast.LENGTH_LONG).show();
+
+        }
+        if (type == CollocationsFragment.SELECTED_HIDE_TRANSLATION) {
+            Toast.makeText(this, "=== " + "hide translation" + " === ", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+//
+//    fragment1.setOnSubmitListener(this);
+//
+//    @Override
+//    public void setOnSubmitListener(String arg)
+//    {
+//        text.setText(arg);
+//    }
+
 }
