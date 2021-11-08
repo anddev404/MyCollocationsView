@@ -14,15 +14,20 @@
 
     <fragment
         android:id="@+id/colocationsFragment"
+        class="com.example.collocation_view_fragment.CollocationsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        class="com.example.collocation_view_fragment.CollocationsFragment">
-    </fragment>
+        android:layout_weight="2"></fragment>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!  2222222222222222222222" />
+        android:text="TEXTTTTT" />
 
+    <fragment
+        android:id="@+id/colocationsFragment2"
+        class="com.example.collocation_view_fragment.CollocationsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8"></fragment>
 </LinearLayout>

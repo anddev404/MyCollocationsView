@@ -22,15 +22,14 @@ class CollocationsFragment : Fragment() {
         var view = inflater.inflate(R.layout.collocations_fragment, container, false)
 
         list = view.findViewById<View>(R.id.collocations_list_view) as ListView
-        list.adapter =
-            AdapterCollocationsListView(requireContext(), Collocation.getListOfCollocation())
+
 
         return view
     }
 
-    fun setText(txt: String) {
-//        val view = requireView().findViewById<View>(R.id.fragment_text) as TextView
-//        view.text = txt
+    fun setCollocations(collocations: List<Collocation>) {
+        list.adapter =
+            AdapterCollocationsListView(requireContext(), collocations)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
