@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
         //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
         //TODO dodać ukrywanie i opcje
-        //TODO przetestować zmiane we fragmencie tzn gdy sicagam nowe dane czy sie wyswietlaja i zmieniaja
 
         button = findViewById(R.id.changeCollocationButton) as Button
         button.setOnClickListener(this)
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
             .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
 
         if (fragment1 != null && fragment1.isInLayout()) {
-            fragment1.setCollocations(dogCollocations)
+            fragment1.setCollocations(dogCollocations, true, false, false)
         }
         fragment1.setOnCollocationFragmentListener(this)
 
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
             .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment
 
         if (fragment2 != null && fragment2.isInLayout()) {
-            fragment2.setCollocations(catCollocations)
+            fragment2.setCollocations(catCollocations, false, false, false)
         }
         fragment2.setOnCollocationFragmentListener(this)
 
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     override fun onClick(v: View?) {
         if (fragment1 != null && fragment1.isInLayout()) {
             var catCollocations = Collocation.getListOfCollocationCat()
-            fragment1.setCollocations(catCollocations)
+            fragment1.setCollocations(catCollocations, false, false, false)
         }
     }
 }

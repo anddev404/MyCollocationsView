@@ -16,6 +16,10 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
 
     lateinit var list: ListView
     lateinit var collocationsList: List<Collocation>
+    var hideUnknown = false
+    var hideTranslations = false
+    var hideSentences = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +33,25 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
         return view
     }
 
-    fun setCollocations(collocations: List<Collocation>) {
+    fun setCollocations(
+        collocations: List<Collocation>,
+        hideUnknown: Boolean,
+        hideTranslations: Boolean,
+        hideSentences: Boolean
+    ) {
         collocationsList = collocations
-        list.adapter =
-            AdapterCollocationsListView(requireContext(), collocationsList)
+        this.hideUnknown = hideUnknown
+        this.hideTranslations = hideTranslations
+        this.hideSentences = hideSentences
+
+        if (hideUnknown) {
+            list.adapter =
+                AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
+        } else {
+            list.adapter =
+                AdapterCollocationsListView(requireContext(), collocationsList)
+        }
+
         list.setOnItemClickListener(this)
     }
 
@@ -53,7 +72,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
 
     companion object {
         val HIDE_UNKNOWN = 1
-        val HIDE_TRANSLATION = 2
+        val HIDE_TRANSLATIONS = 2
         val HIDE_SENTENCES = 3
     }
 
@@ -76,6 +95,15 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
         list.invalidateViews()
     }
 
+    fun getOnlyKnown(list: List<Collocation>): List<Collocation> {
+        var newList = ArrayList<Collocation>()
+        for (i in list) {
+            if (i.isChecked) {
+                newList.add(i)
+            }
+        }
+        return newList
+    }
     //endregion
 
 }

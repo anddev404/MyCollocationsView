@@ -29,6 +29,10 @@ class Collocation(
                         getStringDog(),
                         object : TypeToken<List<Collocation?>?>() {}.type
                     )
+                collocations.get(1).isChecked = true
+                collocations.get(3).isChecked = true
+                collocations.get(5).isChecked = true
+                collocations.get(10).isChecked = true
 
             } catch (e: Exception) {
                 return ArrayList<Collocation>()
@@ -45,6 +49,8 @@ class Collocation(
                         getStringCat(),
                         object : TypeToken<List<Collocation?>?>() {}.type
                     )
+                collocations.get(0).isChecked = true
+                collocations.get(1).isChecked = true
 
             } catch (e: Exception) {
                 return ArrayList<Collocation>()
