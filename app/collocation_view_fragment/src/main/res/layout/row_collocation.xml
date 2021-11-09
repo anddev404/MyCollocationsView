@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:text="collocation"
         android:textSize="22sp"
+        android:textColor="@color/text_color_black"
         app:layout_constraintLeft_toRightOf="@id/number_collocation"
         app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation" />
 
@@ -96,6 +97,7 @@
         android:paddingRight="10dp"
         android:text="example 1"
         android:textSize="18sp"
+        android:textColor="@color/text_color_black"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation" />
@@ -130,6 +132,7 @@
         android:paddingRight="10dp"
         android:text="example 2"
         android:textSize="18sp"
+        android:textColor="@color/text_color_black"
         app:layout_constraintLeft_toRightOf="@id/number_example2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1" />
@@ -164,6 +167,7 @@
         android:paddingRight="10dp"
         android:text="example 3"
         android:textSize="18sp"
+        android:textColor="@color/text_color_black"
         app:layout_constraintLeft_toRightOf="@id/number_example3"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2" />

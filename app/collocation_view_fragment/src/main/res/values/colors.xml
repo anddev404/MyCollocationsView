@@ -4,4 +4,7 @@
     <color name="collocations_rest_normal">#D1D1D1</color>
     <color name="collocations_head_chosed">#7FBF82</color>
     <color name="collocations_rest_chosed">#C0DFC1</color>
+
+    <color name="text_color_black">#272727</color>
+
 </resources>
