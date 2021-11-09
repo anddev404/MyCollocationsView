@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/collocations_head_normal"
+        app:layout_constraintBottom_toTopOf="@id/textView_example_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </View>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/collocations_rest_normal"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView_example_1">
+
+    </View>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_1"
         android:layout_width="wrap_content"
@@ -27,7 +49,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:text="25"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
         app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation"></TextView>
 
@@ -36,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="collocation"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintLeft_toRightOf="@id/number_collocation"
         app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation" />
 
@@ -45,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="translated collocation"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/number_collocation"
         app:layout_constraintTop_toBottomOf="@id/textView_collocation" />
 
@@ -63,7 +85,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="7dp"
         android:text="1."
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
         app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation"></TextView>
 
@@ -73,7 +95,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:text="example 1"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation" />
@@ -84,7 +106,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:text="translated example 1"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_1" />
@@ -96,7 +118,7 @@
         android:paddingTop="5dp"
         android:paddingRight="7dp"
         android:text="2."
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1"></TextView>
 
@@ -107,7 +129,7 @@
         android:paddingTop="5dp"
         android:paddingRight="10dp"
         android:text="example 2"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1" />
@@ -118,7 +140,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:text="translated example 2"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_2" />
@@ -130,7 +152,7 @@
         android:paddingTop="5dp"
         android:paddingRight="7dp"
         android:text="3."
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2"></TextView>
 
@@ -141,7 +163,7 @@
         android:paddingTop="5dp"
         android:paddingRight="10dp"
         android:text="example 3"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example3"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2" />
@@ -152,7 +174,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:text="translated example 3"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_3" />
@@ -166,6 +188,7 @@
     </View>
 
     <View
+        android:id="@+id/bottom_line"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#FF000000"

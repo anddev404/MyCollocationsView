@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="collocations_head_normal">#BAB9BC</color>
+    <color name="collocations_rest_normal">#D1D1D1</color>
+    <color name="collocations_head_chosed">#7FBF82</color>
+    <color name="collocations_rest_chosed">#C0DFC1</color>
+</resources>
