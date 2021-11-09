@@ -1,54 +1,66 @@
 package com.example.mycollocationsview
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.collocation_view_fragment.Collocation
 import com.example.collocation_view_fragment.CollocationsFragment
 
-class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener {
+class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener,
+    View.OnClickListener {
+
+    lateinit var fragment1: CollocationsFragment
+    lateinit var fragment2: CollocationsFragment
+    lateinit var button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//todo opcje, parametry opcji przyslane do fragmenta , listener - odbieranie z paarametrem obiektu fragmenta,typ operacji np click lub zmiana opcjiu, ukrywanie tlumaczenia
-        //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
-        var ttt = Collocation.getListOfCollocation()
-        val fragment: CollocationsFragment = supportFragmentManager
-            .findFragmentById(R.id.colocationsFragment) as CollocationsFragment //lubgetSupportFragmentManager
 
-        if (fragment != null && fragment.isInLayout()) {
-            fragment.setCollocations(Collocation.getListOfCollocation())
+        //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
+        //TODO dodać ukrywanie i opcje
+        //TODO przetestować zmiane we fragmencie tzn gdy sicagam nowe dane czy sie wyswietlaja i zmieniaja
+
+        button = findViewById(R.id.changeCollocationButton) as Button
+        button.setOnClickListener(this)
+
+        var dogCollocations = Collocation.getListOfCollocationDog()
+        fragment1 = supportFragmentManager
+            .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
+
+        if (fragment1 != null && fragment1.isInLayout()) {
+            fragment1.setCollocations(dogCollocations)
         }
-        var ttt2 = Collocation.getListOfCollocation()
-        val fragment2: CollocationsFragment = supportFragmentManager
-            .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment //lubgetSupportFragmentManager
+        fragment1.setOnCollocationFragmentListener(this)
+
+
+        var catCollocations = Collocation.getListOfCollocationCat()
+        fragment2 = supportFragmentManager
+            .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment
 
         if (fragment2 != null && fragment2.isInLayout()) {
-            fragment2.setCollocations(Collocation.getListOfCollocation())
+            fragment2.setCollocations(catCollocations)
         }
-        fragment.setOnCollocationFragmentListener(this)
+        fragment2.setOnCollocationFragmentListener(this)
+
     }
 
-    override fun click(type: Int, fragment: CollocationsFragment, extraObject: Any?) {
-
-        if (type == CollocationsFragment.SELECTED_ITEM) {
-            var item = extraObject as Collocation
-            Toast.makeText(this, "=== " + item.collocation + " ===", Toast.LENGTH_LONG).show();
-
-        }
-        if (type == CollocationsFragment.SELECTED_HIDE_TRANSLATION) {
-            Toast.makeText(this, "=== " + "hide translation" + " === ", Toast.LENGTH_LONG).show();
-
-        }
+    override fun click(fragment: CollocationsFragment, collocation: Collocation) {
+        // Toast.makeText(this, "=== " + collocation.collocation + " ===", Toast.LENGTH_LONG).show();
+        collocation.isChecked = !collocation.isChecked
+        fragment.refreshList()
     }
 
-//
-//    fragment1.setOnSubmitListener(this);
-//
-//    @Override
-//    public void setOnSubmitListener(String arg)
-//    {
-//        text.setText(arg);
-//    }
+    override fun option(type: Int, fragment: CollocationsFragment) {
+        Toast.makeText(this, "=== " + "changed options" + " === ", Toast.LENGTH_LONG).show();
+    }
 
+    override fun onClick(v: View?) {
+        if (fragment1 != null && fragment1.isInLayout()) {
+            var catCollocations = Collocation.getListOfCollocationCat()
+            fragment1.setCollocations(catCollocations)
+        }
+    }
 }

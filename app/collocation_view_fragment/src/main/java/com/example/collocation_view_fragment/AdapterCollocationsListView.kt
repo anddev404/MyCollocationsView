@@ -36,6 +36,9 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         lateinit var example1TextView: TextView
         lateinit var example2TextView: TextView
         lateinit var example3TextView: TextView
+
+        lateinit var head_view: View
+        lateinit var rest_view: View
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -53,10 +56,22 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         holder.example3TextView =
             rootView.findViewById<View>(R.id.textView_example_3) as TextView
 
+        holder.head_view =
+            rootView.findViewById<View>(R.id.head_colored_view) as View
+        holder.rest_view =
+            rootView.findViewById<View>(R.id.rest_colored_view) as View
+
+        if (list.get(position).isChecked) {
+            holder.head_view.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+            holder.rest_view.setBackgroundColor(rootView.resources.getColor(R.color.collocations_rest_chosed))
+
+        }
+
+
         holder.collocationTextView.text = list.get(position).collocation
 
 
-        holder.numberOfCollocationTextView.text = "" + (position + 1)+"."
+        holder.numberOfCollocationTextView.text = "" + (position + 1) + "."
         try {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -97,4 +112,5 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
         return rootView
     }
+
 }
