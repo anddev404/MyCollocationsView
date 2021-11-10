@@ -71,17 +71,7 @@
         app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
         app:layout_constraintRight_toLeftOf="@id/show_only_headlines_image_view"
         app:layout_constraintTop_toTopOf="parent"></CheckBox>
-    <CheckBox
-        android:id="@+id/hide_translationdds_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
-        app:layout_constraintRight_toLeftOf="@id/hide_translations_image_view"
-        app:layout_constraintTop_toTopOf="parent"></CheckBox>
+
     <ListView
         android:id="@+id/collocations_list_view"
         android:layout_width="match_parent"
