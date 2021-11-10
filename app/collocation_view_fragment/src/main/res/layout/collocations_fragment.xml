@@ -1,18 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CollocationsFragment">
 
+    <View
+        android:id="@+id/fragment_top_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_text_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </View>
+
+    <TextView
+        android:id="@+id/fragment_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:paddingLeft="20dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="2dp"
+        android:text="Hello"
+        android:textColor="@color/text_color_black"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <CheckBox
+        android:id="@+id/show_only_known_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:button="@drawable/custom_checkbox_known"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></CheckBox>
+
+    <CheckBox
+        android:id="@+id/show_only_headlines_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:button="@drawable/custom_checkbox_sentences"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintRight_toLeftOf="@id/show_only_known_image_view"
+        app:layout_constraintTop_toTopOf="parent"></CheckBox>
+
+    <CheckBox
+        android:id="@+id/hide_translations_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:button="@drawable/custom_checkbox_translation"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintRight_toLeftOf="@id/show_only_headlines_image_view"
+        app:layout_constraintTop_toTopOf="parent"></CheckBox>
+    <CheckBox
+        android:id="@+id/hide_translationdds_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintRight_toLeftOf="@id/hide_translations_image_view"
+        app:layout_constraintTop_toTopOf="parent"></CheckBox>
     <ListView
         android:id="@+id/collocations_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:dividerHeight="0dp"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/fragment_top_background"
         tools:listitem="@layout/row_collocation" />
     />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

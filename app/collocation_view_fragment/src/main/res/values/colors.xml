@@ -7,4 +7,7 @@
 
     <color name="text_color_black">#272727</color>
 
+    <color name="collocations_top">#51B2FF</color>
+    <color name="check_box_green">#2E6130</color>
+
 </resources>

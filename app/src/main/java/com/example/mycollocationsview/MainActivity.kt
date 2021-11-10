@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.hide()
+
         //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
         //TODO dodać ukrywanie i opcje
 
