@@ -5,21 +5,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.Toast
-import androidx.core.view.get
+import android.widget.*
 import androidx.fragment.app.Fragment
 
 
-class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
+class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
+    CompoundButton.OnCheckedChangeListener {
 
     lateinit var list: ListView
     lateinit var collocationsList: List<Collocation>
     var hideUnknown = false
-    var hideTranslations = false
     var hideSentences = false
+    var hideTranslations = false
 
+    lateinit var hideUnknownCheckBox: CheckBox
+    lateinit var hideSentencesCheckBox: CheckBox
+    lateinit var hideTranslationsCheckBox: CheckBox
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +30,14 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
 
         var view = inflater.inflate(R.layout.collocations_fragment, container, false)
         list = view.findViewById<View>(R.id.collocations_list_view) as ListView
+
+        hideUnknownCheckBox = view.findViewById(R.id.show_only_known_check_box) as CheckBox
+        hideTranslationsCheckBox = view.findViewById(R.id.hide_translations_check_box) as CheckBox
+        hideSentencesCheckBox = view.findViewById(R.id.show_only_headlines_check_box) as CheckBox
+
+        hideUnknownCheckBox.setOnCheckedChangeListener(this)
+        hideTranslationsCheckBox.setOnCheckedChangeListener(this)
+        hideSentencesCheckBox.setOnCheckedChangeListener(this)
 
         return view
     }
@@ -103,6 +112,18 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener {
             }
         }
         return newList
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        if (buttonView == hideUnknownCheckBox) {
+            Log.d("CHECKBOX", "hide unknown " + isChecked);
+        }
+        if (buttonView == hideTranslationsCheckBox) {
+            Log.d("CHECKBOX", "hide translation " + isChecked);
+        }
+        if (buttonView == hideSentencesCheckBox) {
+            Log.d("CHECKBOX", "hide sentence " + isChecked);
+        }
     }
     //endregion
 
