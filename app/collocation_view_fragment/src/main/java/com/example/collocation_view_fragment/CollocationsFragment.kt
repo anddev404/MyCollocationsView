@@ -53,15 +53,21 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         this.hideTranslations = hideTranslations
         this.hideSentences = hideSentences
 
+        setHideUnknown()
+
+        list.setOnItemClickListener(this)
+    }
+
+    fun setHideUnknown() {
         if (hideUnknown) {
+            hideUnknownCheckBox.isChecked = true
             list.adapter =
                 AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
         } else {
+            hideUnknownCheckBox.isChecked = false
             list.adapter =
                 AdapterCollocationsListView(requireContext(), collocationsList)
         }
-
-        list.setOnItemClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -116,7 +122,8 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         if (buttonView == hideUnknownCheckBox) {
-            Log.d("CHECKBOX", "hide unknown " + isChecked);
+            hideUnknown = isChecked
+            setHideUnknown()
         }
         if (buttonView == hideTranslationsCheckBox) {
             Log.d("CHECKBOX", "hide translation " + isChecked);
