@@ -15,10 +15,12 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
     BaseAdapter() {
 
     var inflater: LayoutInflater
+    var isHideTranslation = false
 
     init {
         inflater = (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
         Log.d("MY_DEBUG_ADAPTER", "adapter");
+        Log.d("ADAPTER", "init");
     }
 
     override fun getCount(): Int {
@@ -46,6 +48,7 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
         lateinit var head_view: View
         lateinit var rest_view: View
+
         init {
             Log.d("MY_DEBUG", "holder");
         }
@@ -53,6 +56,7 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val rootView = inflater.inflate(R.layout.row_collocation, null)
+        Log.d("ADAPTER", "getView");
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
 
@@ -91,48 +95,63 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
 
         holder.numberOfCollocationTextView.text = "" + (position + 1) + "."
-        try {
+        if (isHideTranslation) {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                holder.example1TextView.text =
-                    Html.fromHtml(list.get(position).examples.get(0), Html.FROM_HTML_MODE_COMPACT)
-            } else {
-                holder.example1TextView.text = list.get(position).examples.get(0)
+        } else {
+
+
+            try {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    holder.example1TextView.text =
+                        Html.fromHtml(
+                            list.get(position).examples.get(0),
+                            Html.FROM_HTML_MODE_COMPACT
+                        )
+                } else {
+                    holder.example1TextView.text = list.get(position).examples.get(0)
+                }
+
+
+            } catch (e: Exception) {
+                holder.example1TextView.text = ""
+
             }
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    holder.example2TextView.text =
+                        Html.fromHtml(
+                            list.get(position).examples.get(1),
+                            Html.FROM_HTML_MODE_COMPACT
+                        )
+                } else {
+                    holder.example2TextView.text = list.get(position).examples.get(1)
+                }
+            } catch (e: Exception) {
+                holder.example2TextView.text = ""
 
-
-        } catch (e: Exception) {
-            holder.example1TextView.text = ""
-
-        }
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                holder.example2TextView.text =
-                    Html.fromHtml(list.get(position).examples.get(1), Html.FROM_HTML_MODE_COMPACT)
-            } else {
-                holder.example2TextView.text = list.get(position).examples.get(1)
             }
-        } catch (e: Exception) {
-            holder.example2TextView.text = ""
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    holder.example3TextView.text =
+                        Html.fromHtml(
+                            list.get(position).examples.get(2),
+                            Html.FROM_HTML_MODE_COMPACT
+                        )
+                } else {
+                    holder.example3TextView.text = list.get(position).examples.get(2)
+                }
+            } catch (e: Exception) {
+                holder.example3TextView.text = ""
 
-        }
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                holder.example3TextView.text =
-                    Html.fromHtml(list.get(position).examples.get(2), Html.FROM_HTML_MODE_COMPACT)
-            } else {
-                holder.example3TextView.text = list.get(position).examples.get(2)
             }
-        } catch (e: Exception) {
-            holder.example3TextView.text = ""
-
         }
-
 
         return rootView
     }
 
-    open fun hideTranslations() {
+    fun hideTranslations() {
+        isHideTranslation = true
 //        Log.d("MARCIN", "hideeeee");
 //        if (this::holder.isInitialized) {
 //            if (holder != null) {
