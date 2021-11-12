@@ -27,7 +27,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     //endregion
 
-    //region fargment
+    //region fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,29 +79,8 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     //endregion
 
-    //region listener
-    private var mListener: OnCollocationFragmentListener? = null
+    //region input >
 
-    companion object {
-        val HIDE_UNKNOWN = 1
-        val HIDE_TRANSLATIONS = 2
-        val HIDE_SENTENCES = 3
-    }
-
-
-    fun setOnCollocationFragmentListener(onCollocationFragmentListener: OnCollocationFragmentListener) {
-        mListener = onCollocationFragmentListener;
-
-    }
-
-    interface OnCollocationFragmentListener {
-        fun click(fragment: CollocationsFragment, collocation: Collocation)
-        fun option(type: Int, fragment: CollocationsFragment)
-    }
-
-    //endregion
-
-    //region input
     fun setCollocations(
         collocations: List<Collocation>,
         hideUnknown: Boolean,
@@ -125,6 +104,32 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideSentencesCheckBox.setOnCheckedChangeListener(this)
         list.setOnItemClickListener(this)
     }
+
+    //endregion
+
+    //region < listener
+    private var mListener: OnCollocationFragmentListener? = null
+
+    companion object {
+        val HIDE_UNKNOWN = 1
+        val HIDE_TRANSLATIONS = 2
+        val HIDE_SENTENCES = 3
+    }
+
+
+    fun setOnCollocationFragmentListener(onCollocationFragmentListener: OnCollocationFragmentListener) {
+        mListener = onCollocationFragmentListener;
+
+    }
+
+    interface OnCollocationFragmentListener {
+        fun click(fragment: CollocationsFragment, collocation: Collocation)
+        fun option(type: Int, fragment: CollocationsFragment)
+    }
+
+    //endregion
+
+    //region list view input >
 
     fun setHideUnknown() {
         if (hideUnknown) {

@@ -14,14 +14,20 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class AdapterCollocationsListView(var context: Context, var list: List<Collocation>) :
     BaseAdapter() {
 
+    //region variables
+
     var inflater: LayoutInflater
     var isHideTranslation = false
+
+    //endregion
 
     init {
         inflater = (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
         Log.d("MY_DEBUG_ADAPTER", "adapter");
         Log.d("ADAPTER", "init");
     }
+
+    //region adapter
 
     override fun getCount(): Int {
         return list.size
@@ -33,25 +39,6 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
-    }
-
-    class Holder() {
-        lateinit var collocationTextView: TextView
-        lateinit var numberOfCollocationTextView: TextView
-        lateinit var example1TextView: TextView
-        lateinit var example2TextView: TextView
-        lateinit var example3TextView: TextView
-
-        lateinit var translatedExample1TextView: TextView
-        lateinit var translatedExample2TextView: TextView
-        lateinit var translatedExample3TextView: TextView
-
-        lateinit var head_view: View
-        lateinit var rest_view: View
-
-        init {
-            Log.d("MY_DEBUG", "holder");
-        }
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -150,6 +137,29 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         return rootView
     }
 
+    class Holder() {
+        lateinit var collocationTextView: TextView
+        lateinit var numberOfCollocationTextView: TextView
+        lateinit var example1TextView: TextView
+        lateinit var example2TextView: TextView
+        lateinit var example3TextView: TextView
+
+        lateinit var translatedExample1TextView: TextView
+        lateinit var translatedExample2TextView: TextView
+        lateinit var translatedExample3TextView: TextView
+
+        lateinit var head_view: View
+        lateinit var rest_view: View
+
+        init {
+            Log.d("MY_DEBUG", "holder");
+        }
+    }
+
+    //endregion
+
+    //region methods
+
     fun hideTranslations() {
         isHideTranslation = true
 //        Log.d("MARCIN", "hideeeee");
@@ -186,6 +196,8 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 //
 //        }
 //
+    //endregion
+
 
     }
 }
