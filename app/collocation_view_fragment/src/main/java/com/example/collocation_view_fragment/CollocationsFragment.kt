@@ -27,7 +27,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         savedInstanceState: Bundle?
     ): View? {
         Log.d("FRAGMENT", "create view");
-
+        Log.d("MY_DEBUG", "fragment");
         var view = inflater.inflate(R.layout.collocations_fragment, container, false)
         list = view.findViewById<View>(R.id.collocations_list_view) as ListView
 
@@ -48,26 +48,22 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideTranslations: Boolean,
         hideSentences: Boolean
     ) {
+        Log.d("MY_DEBUG", "fragment- set...");
         collocationsList = collocations
         this.hideUnknown = hideUnknown
         this.hideTranslations = hideTranslations
         this.hideSentences = hideSentences
 
-        setHideUnknown()
-
+        hideUnknownCheckBox.setOnCheckedChangeListener(null)
+        hideTranslationsCheckBox.setOnCheckedChangeListener(null)
+        hideSentencesCheckBox.setOnCheckedChangeListener(null)
+          setHideUnknown()
+//        setHideSentences()
+//        setHideTranslations()
+        hideUnknownCheckBox.setOnCheckedChangeListener(this)
+        hideTranslationsCheckBox.setOnCheckedChangeListener(this)
+        hideSentencesCheckBox.setOnCheckedChangeListener(this)
         list.setOnItemClickListener(this)
-    }
-
-    fun setHideUnknown() {
-        if (hideUnknown) {
-            hideUnknownCheckBox.isChecked = true
-            list.adapter =
-                AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
-        } else {
-            hideUnknownCheckBox.isChecked = false
-            list.adapter =
-                AdapterCollocationsListView(requireContext(), collocationsList)
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -121,17 +117,65 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        Log.d("MY_DEBUG_ADAPTER", "on Checked");
         if (buttonView == hideUnknownCheckBox) {
             hideUnknown = isChecked
             setHideUnknown()
         }
-        if (buttonView == hideTranslationsCheckBox) {
-            Log.d("CHECKBOX", "hide translation " + isChecked);
-        }
         if (buttonView == hideSentencesCheckBox) {
-            Log.d("CHECKBOX", "hide sentence " + isChecked);
+            hideSentences = isChecked
+            setHideSentences()
+        }
+        if (buttonView == hideTranslationsCheckBox) {
+            hideTranslations = isChecked
+            setHideTranslations()
+        }
+
+    }
+
+    fun setHideUnknown() {
+        if (hideUnknown) {
+            hideUnknownCheckBox.setOnCheckedChangeListener(null)
+            hideUnknownCheckBox.isChecked = true
+            hideUnknownCheckBox.setOnCheckedChangeListener(this)
+            list.adapter =
+                AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
+        } else {
+            hideUnknownCheckBox.setOnCheckedChangeListener(null)
+            hideUnknownCheckBox.isChecked = false
+            hideUnknownCheckBox.setOnCheckedChangeListener(this)
+            list.adapter =
+                AdapterCollocationsListView(requireContext(), collocationsList)
         }
     }
+
+    fun setHideSentences() {
+        if (hideSentences) {
+            hideSentencesCheckBox.isChecked = true
+            Log.d("MARCIN", "hide sentences");
+
+        } else {
+            hideSentencesCheckBox.isChecked = false
+            Log.d("MARCIN", "not hide sentences");
+        }
+    }
+
+    fun setHideTranslations() {
+        if (hideTranslations) {
+            hideTranslationsCheckBox.isChecked = true
+            Log.d("MARCIN", "hide translation");
+            var lll = list.adapter as AdapterCollocationsListView
+            lll?.hideTranslations()
+        } else {
+            hideTranslationsCheckBox.isChecked = false
+            Log.d("MARCIN", "not hide translation");
+
+            var lll = list.adapter as AdapterCollocationsListView
+            lll?.showTranslations()
+        }
+    }
+
+
     //endregion
 
 }

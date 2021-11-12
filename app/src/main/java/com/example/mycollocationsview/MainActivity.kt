@@ -1,6 +1,7 @@
 package com.example.mycollocationsview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.d("MY_DEBUG", "main activty");
         supportActionBar?.hide()
 
         //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
@@ -32,19 +33,19 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
             .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
 
         if (fragment1 != null && fragment1.isInLayout()) {
-            fragment1.setCollocations(dogCollocations, true, false, false)
+            fragment1.setCollocations(dogCollocations, true, true, false)
         }
         fragment1.setOnCollocationFragmentListener(this)
 
 
-        var catCollocations = Collocation.getListOfCollocationCat()
-        fragment2 = supportFragmentManager
-            .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment
-
-        if (fragment2 != null && fragment2.isInLayout()) {
-            fragment2.setCollocations(catCollocations, false, false, false)
-        }
-        fragment2.setOnCollocationFragmentListener(this)
+//        var catCollocations = Collocation.getListOfCollocationCat()
+//        fragment2 = supportFragmentManager
+//            .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment
+//
+//        if (fragment2 != null && fragment2.isInLayout()) {
+//            fragment2.setCollocations(catCollocations, false, false, false)
+//        }
+//        fragment2.setOnCollocationFragmentListener(this)
 
     }
 

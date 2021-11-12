@@ -3,11 +3,13 @@ package com.example.collocation_view_fragment
 import android.content.Context
 import android.os.Build
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class AdapterCollocationsListView(var context: Context, var list: List<Collocation>) :
     BaseAdapter() {
@@ -16,6 +18,7 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
 
     init {
         inflater = (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+        Log.d("MY_DEBUG_ADAPTER", "adapter");
     }
 
     override fun getCount(): Int {
@@ -37,12 +40,20 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         lateinit var example2TextView: TextView
         lateinit var example3TextView: TextView
 
+        lateinit var translatedExample1TextView: TextView
+        lateinit var translatedExample2TextView: TextView
+        lateinit var translatedExample3TextView: TextView
+
         lateinit var head_view: View
         lateinit var rest_view: View
+        init {
+            Log.d("MY_DEBUG", "holder");
+        }
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val rootView = inflater.inflate(R.layout.row_collocation, null)
+        Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
 
         holder.numberOfCollocationTextView =
@@ -55,6 +66,14 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
             rootView.findViewById<View>(R.id.textView_example_2) as TextView
         holder.example3TextView =
             rootView.findViewById<View>(R.id.textView_example_3) as TextView
+
+        holder.translatedExample1TextView =
+            rootView.findViewById<View>(R.id.textView_translated_example_1) as TextView
+        holder.translatedExample2TextView =
+            rootView.findViewById<View>(R.id.textView_translated_example_2) as TextView
+        holder.translatedExample3TextView =
+            rootView.findViewById<View>(R.id.textView_translated_example_3) as TextView
+
 
         holder.head_view =
             rootView.findViewById<View>(R.id.head_colored_view) as View
@@ -113,4 +132,41 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         return rootView
     }
 
+    open fun hideTranslations() {
+//        Log.d("MARCIN", "hideeeee");
+//        if (this::holder.isInitialized) {
+//            if (holder != null) {
+//                Log.d("MARCIN", "hideaaa");
+//                try {
+//                    holder.translatedExample1TextView.visibility = View.INVISIBLE
+//                    holder.translatedExample2TextView.visibility = View.INVISIBLE
+//                    holder.translatedExample3TextView.visibility = View.INVISIBLE
+//                } catch (e: java.lang.Exception) {
+//                    Log.d("MYERROR", "error 1");
+//
+//                }
+//            }
+//        }
+    }
+
+    open fun showTranslations() {
+//        Log.d("MARCIN", "hideeeeebbb");
+//        try {
+//            if (this::holder.isInitialized) {
+//                if (holder != null) {
+//                    Log.d("MARCIN", "hidebb");
+//
+//                    holder.translatedExample1TextView.visibility = View.VISIBLE
+//                    holder.translatedExample2TextView.visibility = View.VISIBLE
+//                    holder.translatedExample3TextView.visibility = View.VISIBLE
+//
+//                }
+//            }
+//        } catch (e: java.lang.Exception) {
+//            Log.d("MYERROR", "error 2");
+//
+//        }
+//
+
+    }
 }
