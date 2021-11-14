@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
     override fun click(fragment: CollocationsFragment, collocation: Collocation) {
         // Toast.makeText(this, "=== " + collocation.collocation + " ===", Toast.LENGTH_LONG).show();
-        collocation.isChecked = !collocation.isChecked
+      //  collocation.isChecked = !collocation.isChecked
         fragment.refreshList()
     }
 

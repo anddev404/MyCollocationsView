@@ -1,13 +1,19 @@
 package com.example.collocation_view_fragment
 
+import android.os.Handler
+import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Collocation(
     var id: Int,
     var collocation: String,
     var isChecked: Boolean,
-    var examples: List<String>
+    var examples: List<String>,
+    var translations: List<String>
 ) {
 
     companion object {
@@ -34,10 +40,20 @@ class Collocation(
                 collocations.get(5).isChecked = true
                 collocations.get(10).isChecked = true
 
+                setExampleTranslations(collocations)
             } catch (e: Exception) {
                 return ArrayList<Collocation>()
             }
             return collocations
+        }
+
+        fun setExampleTranslations(list: List<Collocation>) {
+            for (i in list) {
+                i.translations = ArrayList<String>()
+                for (s in i.examples) {
+                    (i.translations as ArrayList<String>).add("Translation is downloading")
+                }
+            }
         }
 
         fun getListOfCollocationCat(): List<Collocation> {
@@ -56,6 +72,44 @@ class Collocation(
                 return ArrayList<Collocation>()
             }
             return collocations
+        }
+    }
+
+    fun fakeCollocationDownload(collcation: Collocation) {
+        GlobalScope.launch {
+            delay(3000)
+
+            Handler(Looper.getMainLooper()).postDelayed(//do xdizła dla watku UI
+                {
+                    if (collcation.translations.get(0) != null) {
+                        collcation.translations.get(0).plus("+ downloaded 1")
+                    }
+
+                },
+                0
+            )
+            delay(2000)
+
+            Handler(Looper.getMainLooper()).postDelayed(//do xdizła dla watku UI
+                {
+                    if (collcation.translations.get(1) != null) {
+                        collcation.translations.get(1).plus("+ downloaded 2")
+                    }
+
+                },
+                0
+            )
+            delay(1000)
+
+            Handler(Looper.getMainLooper()).postDelayed(//do xdizła dla watku UI
+                {
+                    if (collcation.translations.get(2) != null) {
+                        collcation.translations.get(2).plus("+ downloaded 3")
+                    }
+
+                },
+                0
+            )
         }
     }
 }

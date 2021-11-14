@@ -49,6 +49,17 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         return view
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        mListener?.click(this, list.getItemAtPosition(position) as Collocation)
+
+    }
+
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         Log.d("MY_DEBUG_ADAPTER", "on Checked");
         if (buttonView == hideUnknownCheckBox) {
@@ -65,18 +76,6 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         }
 
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-    }
-
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        mListener?.click(this, list.getItemAtPosition(position) as Collocation)
-
-    }
-
     //endregion
 
     //region input >
@@ -96,9 +95,11 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideUnknownCheckBox.setOnCheckedChangeListener(null)
         hideTranslationsCheckBox.setOnCheckedChangeListener(null)
         hideSentencesCheckBox.setOnCheckedChangeListener(null)
+
         setHideUnknown()
-//        setHideSentences()
-//        setHideTranslations()
+        setHideSentences()
+        setHideTranslations()
+
         hideUnknownCheckBox.setOnCheckedChangeListener(this)
         hideTranslationsCheckBox.setOnCheckedChangeListener(this)
         hideSentencesCheckBox.setOnCheckedChangeListener(this)
@@ -136,46 +137,78 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideUnknownCheckBox.setOnCheckedChangeListener(null)
             hideUnknownCheckBox.isChecked = true
             hideUnknownCheckBox.setOnCheckedChangeListener(this)
+
             list.adapter =
                 AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.isHideTranslation = hideTranslations
+            adapter.isHideSentences = hideSentences
+
+            refreshList()
+
         } else {
             hideUnknownCheckBox.setOnCheckedChangeListener(null)
             hideUnknownCheckBox.isChecked = false
             hideUnknownCheckBox.setOnCheckedChangeListener(this)
+
             list.adapter =
                 AdapterCollocationsListView(requireContext(), collocationsList)
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.isHideTranslation = hideTranslations
+            adapter.isHideSentences = hideSentences
+
+            refreshList()
         }
     }
 
     fun setHideSentences() {
         if (hideSentences) {
-            // hideSentencesCheckBox.isChecked = true
-            Log.d("MARCIN", "hide sentences");
+
+            hideSentencesCheckBox.setOnCheckedChangeListener(null)
+            hideSentencesCheckBox.isChecked = true
+            hideSentencesCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.hideSentences()
+            refreshList()
 
 
         } else {
+
+            hideSentencesCheckBox.setOnCheckedChangeListener(null)
             hideSentencesCheckBox.isChecked = false
-            Log.d("MARCIN", "not hide sentences");
+            hideSentencesCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.showSentences()
+            refreshList()
         }
+
     }
 
     fun setHideTranslations() {
+        if (hideTranslations) {
 
-        var lll = list.adapter as AdapterCollocationsListView
-        lll?.hideTranslations()
-        refreshList()
-//        if (hideTranslations) {
-//            hideTranslationsCheckBox.isChecked = true
-//            Log.d("MARCIN", "hide translation");
-//            var lll = list.adapter as AdapterCollocationsListView
-//            lll?.hideTranslations()
-//        } else {
-//            hideTranslationsCheckBox.isChecked = false
-//            Log.d("MARCIN", "not hide translation");
-//
-//            var lll = list.adapter as AdapterCollocationsListView
-//            lll?.showTranslations()
-//        }
+            hideTranslationsCheckBox.setOnCheckedChangeListener(null)
+            hideTranslationsCheckBox.isChecked = true
+            hideTranslationsCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.hideTranslations()
+            refreshList()
+
+
+        } else {
+
+            hideTranslationsCheckBox.setOnCheckedChangeListener(null)
+            hideTranslationsCheckBox.isChecked = false
+            hideTranslationsCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.showTranslations()
+            refreshList()
+        }
+
     }
 
     //endregion
