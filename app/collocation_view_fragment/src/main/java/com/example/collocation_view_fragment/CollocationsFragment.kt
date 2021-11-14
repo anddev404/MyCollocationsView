@@ -15,7 +15,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //region variables
 
     lateinit var list: ListView
-    lateinit var collocationsList: List<Collocation>
+    lateinit var collocationsList: ArrayList<Collocation>
 
     var hideUnknown = false
     var hideSentences = false
@@ -81,7 +81,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //region input >
 
     fun setCollocations(
-        collocations: List<Collocation>,
+        collocations: ArrayList<Collocation>,
         hideUnknown: Boolean,
         hideTranslations: Boolean,
         hideSentences: Boolean
@@ -229,7 +229,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         list.invalidateViews()
     }
 
-    fun getOnlyKnown(list: List<Collocation>): List<Collocation> {
+    fun getOnlyKnown(list: ArrayList<Collocation>): ArrayList<Collocation> {
         var newList = ArrayList<Collocation>()
         for (i in list) {
             if (i.isChecked) {
