@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class AdapterCollocationsListView(var context: Context, var list: List<Collocation>) :
+class AdapterCollocationsListView(var context: Context, var list: ArrayList<Collocation>) :
     BaseAdapter() {
 
     //region variables
