@@ -75,11 +75,12 @@
     <ListView
         android:id="@+id/collocations_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:dividerHeight="0dp"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         app:layout_constraintTop_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/row_collocation" />
     />
 
