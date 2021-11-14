@@ -15,6 +15,13 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     lateinit var fragment1: CollocationsFragment
     lateinit var fragment2: CollocationsFragment
     lateinit var button: Button
+    var str1 = "jeden"
+    var str2 = "dwa"
+    var wasdfas = ""
+    fun changeString(string: String) {
+        str2 = string
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +41,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
         if (fragment1 != null && fragment1.isInLayout()) {
             fragment1.setCollocations(dogCollocations, true, true, false)
+            fragment1.setCollocations(dogCollocations, false, false, false)
         }
         fragment1.setOnCollocationFragmentListener(this)
 
@@ -63,6 +71,15 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         if (fragment1 != null && fragment1.isInLayout()) {
             var catCollocations = Collocation.getListOfCollocationCat()
             fragment1.setCollocations(catCollocations, false, false, false)
+//            var catCollocations = Collocation.getListOfCollocationCat()
+//            fragment1.setCollocations(catCollocations, false, false, false)
+            var e = fragment1.collocationsList.get(0)
+            e.collocation = "nowa nazwa"
+            e.translations.set(0,"tłumaczenie")
+            // e.translations.set(0, e.translations.get(0).plus(" + downloaded"))
+            //TODO nie mozna zastopic elentu tylko trzba dodac
+            fragment1.refreshList()
+            //  fragment1.updateCollocation(e)
         }
     }
 }

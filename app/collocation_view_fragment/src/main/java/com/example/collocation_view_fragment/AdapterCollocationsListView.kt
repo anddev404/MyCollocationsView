@@ -234,4 +234,14 @@ class AdapterCollocationsListView(var context: Context, var list: List<Collocati
         isHideTranslation = false
 
     }
+
+    fun updateList(collocation: Collocation) {
+
+        // list.get(0).collocation = "CHANGE !~!!!"
+        //   list.get(0).translations.set(1, "zamiana działą")
+        // list.get(0).translations = arrayListOf("jeden","dwa", "trzy")//to tez działa
+        //  list.set(0, collocation)//nie działą
+
+        var test = 0
+    }
 }
