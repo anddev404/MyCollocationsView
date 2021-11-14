@@ -80,6 +80,4 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
             //  fragment1.updateCollocation(e)
         }
     }
-    //test
-    //test 2
 }
