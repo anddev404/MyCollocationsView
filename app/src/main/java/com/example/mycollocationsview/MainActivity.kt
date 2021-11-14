@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         Log.d("MY_DEBUG", "main activty");
         supportActionBar?.hide()
 
+
         //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
         //TODO dodać ukrywanie i opcje
 
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
             .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
 
         if (fragment1 != null && fragment1.isInLayout()) {
-            fragment1.setCollocations(dogCollocations, true, true, false)
             fragment1.setCollocations(dogCollocations, false, false, false)
         }
         fragment1.setOnCollocationFragmentListener(this)
@@ -59,18 +59,16 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
     override fun click(fragment: CollocationsFragment, collocation: Collocation) {
         // Toast.makeText(this, "=== " + collocation.collocation + " ===", Toast.LENGTH_LONG).show();
-      //  collocation.isChecked = !collocation.isChecked
+        //  collocation.isChecked = !collocation.isChecked
         fragment.refreshList()
     }
 
     override fun option(type: Int, fragment: CollocationsFragment) {
-        Toast.makeText(this, "=== " + "changed options" + " === ", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "===  changed options   === ", Toast.LENGTH_LONG).show()
     }
 
     override fun onClick(v: View?) {
         if (fragment1 != null && fragment1.isInLayout()) {
-            var catCollocations = Collocation.getListOfCollocationCat()
-            fragment1.setCollocations(catCollocations, false, false, false)
 //            var catCollocations = Collocation.getListOfCollocationCat()
 //            fragment1.setCollocations(catCollocations, false, false, false)
             var e = fragment1.collocationsList.get(0)
