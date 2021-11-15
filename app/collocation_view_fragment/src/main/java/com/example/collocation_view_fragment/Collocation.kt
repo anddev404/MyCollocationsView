@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class Collocation(
     var id: Int,
     var collocation: String,
+    var translatedCollocation: String,
     var isChecked: Boolean,
     var examples: ArrayList<String>,
     var translations: ArrayList<String>

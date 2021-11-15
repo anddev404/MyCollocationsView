@@ -15,13 +15,6 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     lateinit var fragment1: CollocationsFragment
     lateinit var fragment2: CollocationsFragment
     lateinit var button: Button
-    var str1 = "jeden"
-    var str2 = "dwa"
-    var wasdfas = ""
-    fun changeString(string: String) {
-        str2 = string
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +22,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         Log.d("MY_DEBUG", "main activty");
         supportActionBar?.hide()
 
-
-        //TODO w przyszłosci zaimplementopwac pobnieranie z limitem i pobiuerac i wyswietlac limit
-        //TODO dodać ukrywanie i opcje
+        //TODO w przyszłosci zaimplementować pobieranie z limitem i pobierac i wyswietlac limit
 
         button = findViewById(R.id.changeCollocationButton) as Button
         button.setOnClickListener(this)
@@ -58,8 +49,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     }
 
     override fun click(fragment: CollocationsFragment, collocation: Collocation) {
-        // Toast.makeText(this, "=== " + collocation.collocation + " ===", Toast.LENGTH_LONG).show();
-        //  collocation.isChecked = !collocation.isChecked
+        collocation.isChecked = !collocation.isChecked
         fragment.refreshList()
     }
 
@@ -69,15 +59,12 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
     override fun onClick(v: View?) {
         if (fragment1 != null && fragment1.isInLayout()) {
-//            var catCollocations = Collocation.getListOfCollocationCat()
-//            fragment1.setCollocations(catCollocations, false, false, false)
-            var e = fragment1.collocationsList.get(0)
-            e.collocation = "nowa nazwa"
-            e.translations.set(0,"tłumaczenie")
-            // e.translations.set(0, e.translations.get(0).plus(" + downloaded"))
-            //TODO nie mozna zastopic elentu tylko trzba dodac
-            fragment1.refreshList()
-            //  fragment1.updateCollocation(e)
+
+            var list = fragment1.getActualCollocationsList()
+            //here changing of list e.g. downloading translations
+          //  list.get(0).
+            fragment1.updateCollocationList(list)
+
         }
     }
 }

@@ -212,9 +212,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         }
     }
 
-//endregion
-
-//region methods
+    //endregion
+// region input >
 
     fun hideSentences() {
         isHideSentences = true
@@ -234,14 +233,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         isHideTranslation = false
 
     }
+    //endregion
+//region methods
 
-    fun updateList(collocation: Collocation) {
 
-        // list.get(0).collocation = "CHANGE !~!!!"
-        //   list.get(0).translations.set(1, "zamiana działą")
-        // list.get(0).translations = arrayListOf("jeden","dwa", "trzy")//to tez działa
-        //  list.set(0, collocation)//nie działą
-
-        var test = 0
-    }
 }

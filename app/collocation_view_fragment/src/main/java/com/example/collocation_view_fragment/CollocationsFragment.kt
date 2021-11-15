@@ -106,16 +106,18 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         list.setOnItemClickListener(this)
     }
 
-    fun updateCollocation(collocation: Collocation) {
-
-        var a = list.adapter as AdapterCollocationsListView
-        a.updateList(collocation)
-        // collocationsList.set(index, collocation)
-//        list.adapter.lis
-         refreshList()
-        Log.d("MARCIN_UPDATE", "update collocation");
-
+    fun updateCollocationList(list: ArrayList<Collocation>) {
+        collocationsList = list
+        refreshList()
     }
+    //endregion
+
+    //region < output
+
+    fun getActualCollocationsList(): ArrayList<Collocation> {
+        return collocationsList
+    }
+
     //endregion
 
     //region < listener
