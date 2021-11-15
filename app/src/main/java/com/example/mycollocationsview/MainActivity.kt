@@ -22,6 +22,28 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         Log.d("MY_DEBUG", "main activty");
         supportActionBar?.hide()
 
+        testFragments()
+
+    }
+
+    override fun onClick(v: View?) {
+        onClickFragment()
+    }
+    //region fargments test
+
+
+    override fun click(fragment: CollocationsFragment, collocation: Collocation) {
+        collocation.isChecked = !collocation.isChecked
+        fragment.refreshList()
+    }
+
+    override fun option(type: Int, fragment: CollocationsFragment) {
+        Toast.makeText(this, "===  changed options   === ", Toast.LENGTH_LONG).show()
+    }
+
+
+    fun testFragments() {
+
         //TODO w przyszłosci zaimplementować pobieranie z limitem i pobierac i wyswietlac limit
 
         button = findViewById(R.id.changeCollocationButton) as Button
@@ -45,26 +67,17 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 //            fragment2.setCollocations(catCollocations, false, false, false)
 //        }
 //        fragment2.setOnCollocationFragmentListener(this)
-
     }
 
-    override fun click(fragment: CollocationsFragment, collocation: Collocation) {
-        collocation.isChecked = !collocation.isChecked
-        fragment.refreshList()
-    }
-
-    override fun option(type: Int, fragment: CollocationsFragment) {
-        Toast.makeText(this, "===  changed options   === ", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onClick(v: View?) {
+    fun onClickFragment() {
         if (fragment1 != null && fragment1.isInLayout()) {
 
             var list = fragment1.getActualCollocationsList()
             //here changing of list e.g. downloading translations
-          //  list.get(0).
+            //  list.get(0).
             fragment1.updateCollocationList(list)
 
         }
     }
+    //endregion
 }
