@@ -24,10 +24,4 @@
     </Button>
 
 
-    <fragment
-        android:id="@+id/colocationsFragment2"
-        class="com.example.collocation_view_fragment.CollocationsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"></fragment>
 </LinearLayout>
