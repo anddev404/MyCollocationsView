@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     View.OnClickListener {
 
     lateinit var fragment1: CollocationsFragment
-    lateinit var fragment2: CollocationsFragment
     lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,15 +57,6 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         }
         fragment1.setOnCollocationFragmentListener(this)
 
-
-//        var catCollocations = Collocation.getListOfCollocationCat()
-//        fragment2 = supportFragmentManager
-//            .findFragmentById(R.id.colocationsFragment2) as CollocationsFragment
-//
-//        if (fragment2 != null && fragment2.isInLayout()) {
-//            fragment2.setCollocations(catCollocations, false, false, false)
-//        }
-//        fragment2.setOnCollocationFragmentListener(this)
     }
 
     fun onClickFragment() {
