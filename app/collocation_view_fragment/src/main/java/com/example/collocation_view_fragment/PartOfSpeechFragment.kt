@@ -312,20 +312,23 @@ class PartOfSpeechFragment : Fragment() {
     fun resetViews(partOfSpeech: Int) {//to na poczatku dac zeby listener wywopłac zeby zwrocil jak mam filtrowac
         deleteColorForAll()
         relation = 0
-
         if (partOfSpeech == PART_OF_SPEECH_UNKNOWN) {
+            relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
             changeColor(allTextView)
             this.partOfSpeech = PART_OF_SPEECH_UNKNOWN
         }
         if (partOfSpeech == PART_OF_SPEECH_NOUN) {
+            relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
             changeColor(nounTextView)
             this.partOfSpeech = PART_OF_SPEECH_NOUN
         }
         if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
+            relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
             changeColor(adjectiveTextView)
             this.partOfSpeech = PART_OF_SPEECH_ADJECTIVE
         }
         if (partOfSpeech == PART_OF_SPEECH_VERB) {
+            relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
             changeColor(verbTextView)
             this.partOfSpeech = PART_OF_SPEECH_VERB
         }
