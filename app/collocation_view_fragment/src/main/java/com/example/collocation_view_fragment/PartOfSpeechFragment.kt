@@ -23,7 +23,8 @@ fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
 class PartOfSpeechFragment : Fragment() {
 
     var relation = 0
-    var partOfSpeech = PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
+    var partOfSpeech =
+        PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
 
     private lateinit var leftTextView: TextView
     private lateinit var centreTextView: TextView
@@ -259,15 +260,21 @@ class PartOfSpeechFragment : Fragment() {
 
     fun getActualRelation(): String {
         if (partOfSpeech == PART_OF_SPEECH_VERB) {
-            return relationListVerb().get(relation)
+            return "${(relation + 1)}/${relationListVerb().size}  " + relationListVerb().get(
+                relation
+            )
         }
         if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
-            return relationListAdjective().get(relation)
+            return "${(relation + 1)}/${relationListAdjective().size}  " + relationListAdjective().get(
+                relation
+            )
         }
         if (partOfSpeech == PART_OF_SPEECH_NOUN) {
-            return relationListNoun().get(relation)
+            return "${(relation + 1)}/${relationListNoun().size}  " + relationListNoun().get(
+                relation
+            )
         }
-        return relationListAll().get(relation)//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
+        return "${(relation + 1)}/${relationListAll().size}  " + relationListAll().get(relation)//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
     }
 
     //region < listener
