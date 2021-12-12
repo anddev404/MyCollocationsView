@@ -61,6 +61,7 @@ class PartOfSpeechFragment : Fragment() {
                 changeColor(verbTextView)
                 partOfSpeech = PART_OF_SPEECH_VERB
                 relation = 0//TODO tu zmienaic dla czesci mowy
+                relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
 
@@ -73,6 +74,7 @@ class PartOfSpeechFragment : Fragment() {
                 changeColor(nounTextView)
                 partOfSpeech = PART_OF_SPEECH_NOUN
                 relation = 0//TODO tu zmienaic dla czesci mowy
+                relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
             }
@@ -84,6 +86,7 @@ class PartOfSpeechFragment : Fragment() {
                 changeColor(adjectiveTextView)
                 partOfSpeech = PART_OF_SPEECH_ADJECTIVE
                 relation = 0//TODO tu zmienaic dla czesci mowy
+                relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
             }
@@ -94,6 +97,7 @@ class PartOfSpeechFragment : Fragment() {
                 deleteColorForAll()
                 changeColor(allTextView)
                 partOfSpeech = PART_OF_SPEECH_UNKNOWN
+                relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
                 relation = 0//TODO tu zmienaic dla czesci mowy
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
