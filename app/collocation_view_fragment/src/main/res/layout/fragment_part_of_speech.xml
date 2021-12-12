@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PartOfSpeechFragment">
+
+    <LinearLayout
+        android:id="@+id/top_linear_layout_part_of_speech"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewCzasownik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Verb" />
+
+        <TextView
+            android:id="@+id/textViewPrzymiotnik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Adjective" />
+
+        <TextView
+            android:id="@+id/textViewRzeczownik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Noun" />
+
+        <TextView
+            android:id="@+id/textViewAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="all" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_linear_layout_relation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewRelationLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Left" />
+
+        <TextView
+            android:id="@+id/textViewRelation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="V:nn:N" />
+
+        <TextView
+            android:id="@+id/textViewRelationRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Right" />
+
+    </LinearLayout>
+
+</LinearLayout>

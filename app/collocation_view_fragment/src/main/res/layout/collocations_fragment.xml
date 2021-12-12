@@ -72,98 +72,7 @@
         app:layout_constraintRight_toLeftOf="@id/show_only_headlines_check_box"
         app:layout_constraintTop_toTopOf="parent"></CheckBox>
 
-    <LinearLayout
-        android:id="@+id/top_linear_layout_part_of_speech"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_top_background">
 
-        <TextView
-            android:id="@+id/textViewCzasownik"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="Verb"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-        <TextView
-            android:id="@+id/textViewPrzymiotnik"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="Adjective"
-            app:layout_constraintLeft_toRightOf="@id/textViewCzasownik"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-        <TextView
-            android:id="@+id/textViewRzeczownik"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="Noun"
-            app:layout_constraintLeft_toRightOf="@id/textViewPrzymiotnik"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-        <TextView
-            android:id="@+id/textViewAll"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="all"
-            app:layout_constraintLeft_toRightOf="@id/textViewRzeczownik"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/top_linear_layout_relation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/top_linear_layout_part_of_speech">
-
-        <TextView
-            android:id="@+id/textViewRelationLeft"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="Left"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-        <TextView
-            android:id="@+id/textViewRelation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="V:nn:N"
-            app:layout_constraintLeft_toRightOf="@id/textViewCzasownik"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-        <TextView
-            android:id="@+id/textViewRelationRight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:lines="3"
-            android:text="Right"
-            app:layout_constraintLeft_toRightOf="@id/textViewPrzymiotnik"
-            app:layout_constraintTop_toBottomOf="@id/fragment_top_background" />
-
-    </LinearLayout>
 
 
     <ListView
@@ -174,7 +83,7 @@
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         app:layout_constraintBottom_toBottomOf="@id/bottom_barrier"
-        app:layout_constraintTop_toBottomOf="@id/top_linear_layout_relation"
+        app:layout_constraintTop_toBottomOf="@id/fragment_top_background"
         tools:listitem="@layout/row_collocation" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -184,28 +93,41 @@
         app:barrierDirection="top"
         app:layout_constraintTop_toBottomOf="@id/collocations_list_view" />
 
-    <TextView
-        android:id="@+id/textViewLeft"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:lines="3"
-        android:text="Left"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/textViewRight"
-        app:layout_constraintTop_toBottomOf="@id/bottom_barrier" />
+        app:layout_constraintTop_toBottomOf="@id/bottom_barrier">
 
-    <TextView
-        android:id="@+id/textViewRight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:lines="3"
-        android:text="Right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textViewLeft"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottom_barrier" />
+        <TextView
+            android:id="@+id/textViewLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Left" />
+
+        <TextView
+            android:id="@+id/textViewCenter"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="actual word" />
+
+        <TextView
+            android:id="@+id/textViewRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="3"
+            android:text="Right" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

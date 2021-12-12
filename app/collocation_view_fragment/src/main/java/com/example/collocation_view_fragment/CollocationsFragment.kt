@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import org.w3c.dom.Text
 
 
 class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
@@ -25,6 +26,9 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     lateinit var hideSentencesCheckBox: CheckBox
     lateinit var hideTranslationsCheckBox: CheckBox
 
+    lateinit var leftTextView: TextView
+    lateinit var centerTextView: TextView
+    lateinit var rightTextView: TextView
     //endregion
 
     //region fragment
@@ -46,6 +50,23 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideTranslationsCheckBox.setOnCheckedChangeListener(this)
         hideSentencesCheckBox.setOnCheckedChangeListener(this)
 
+        leftTextView = view.findViewById(R.id.textViewLeft) as TextView
+        leftTextView.setOnClickListener {
+            mListener?.left(
+            )
+        }
+
+        rightTextView = view.findViewById(R.id.textViewRight) as TextView
+        rightTextView.setOnClickListener {
+            mListener?.right(
+            )
+        }
+        centerTextView = view.findViewById(R.id.textViewCenter) as TextView
+        centerTextView.setOnClickListener {
+            //TODO wyswietlanie listy słow i z tej listy wybór
+            Toast.makeText(view.context, "wyświetlanie listy", Toast.LENGTH_LONG).show();
+        }
+
         return view
     }
 
@@ -56,7 +77,11 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        mListener?.click(this, list.getItemAtPosition(position) as Collocation)
+        var c = list.getItemAtPosition(position) as Collocation
+        c.isChecked = !c.isChecked
+        refreshList()
+
+        mListener?.clickItem(this, c)
 
     }
 
@@ -82,15 +107,20 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     fun setCollocations(
         collocations: ArrayList<Collocation>,
-        hideUnknown: Boolean,
-        hideTranslations: Boolean,
-        hideSentences: Boolean
+//        hideUnknown: Boolean,
+//        hideTranslations: Boolean,
+//        hideSentences: Boolean,
+        leftWord: String, centreWord: String, rightWord: String
     ) {
         Log.d("MY_DEBUG", "fragment- set...");
         collocationsList = collocations
         this.hideUnknown = hideUnknown
         this.hideTranslations = hideTranslations
         this.hideSentences = hideSentences
+
+        leftTextView.text = leftWord
+        centerTextView.text = centreWord
+        rightTextView.text = rightWord
 
         hideUnknownCheckBox.setOnCheckedChangeListener(null)
         hideTranslationsCheckBox.setOnCheckedChangeListener(null)
@@ -136,8 +166,12 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     }
 
     interface OnCollocationFragmentListener {
-        fun click(fragment: CollocationsFragment, collocation: Collocation)
-        fun option(type: Int, fragment: CollocationsFragment)
+        fun clickItem(fragment: CollocationsFragment, collocation: Collocation)
+
+        //        fun option(type: Int, fragment: CollocationsFragment)
+        fun left()
+        fun right()
+
     }
 
     //endregion

@@ -8,11 +8,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.collocation_view_fragment.Collocation
 import com.example.collocation_view_fragment.CollocationsFragment
+import com.example.collocation_view_fragment.PartOfSpeechFragment
 
 class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener,
-    View.OnClickListener {
+    View.OnClickListener, PartOfSpeechFragment.OnPartOfSpeechFragmentListener {
+
 
     lateinit var fragment1: CollocationsFragment
+    lateinit var fragmentPartOfSpeech: PartOfSpeechFragment
+
     lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,21 +27,48 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
         testFragments()
 
+
     }
 
-    override fun onClick(v: View?) {
-        onClickFragment()
-    }
+
     //region fargments test
 
 
-    override fun click(fragment: CollocationsFragment, collocation: Collocation) {
-        collocation.isChecked = !collocation.isChecked
-        fragment.refreshList()
+    override fun clickItem(fragment: CollocationsFragment, collocation: Collocation) {
+        //TODO only update database ,already changed isChecked
     }
 
-    override fun option(type: Int, fragment: CollocationsFragment) {
-        Toast.makeText(this, "===  changed options   === ", Toast.LENGTH_LONG).show()
+
+    override fun left() {
+        var dogCollocations =
+            Collocation.getListOfCollocationCat(PartOfSpeechFragment.RELATION_1_V_obj_N)
+
+        if (fragment1 != null && fragment1.isInLayout()) {
+            fragment1.setCollocations(
+                dogCollocations,
+                "cat",
+                "1/3\ncat",
+                "dog"
+            )
+        }
+        fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
+
+    }
+
+    override fun right() {
+        var dogCollocations =
+            Collocation.getListOfCollocationDog(PartOfSpeechFragment.RELATION_1_V_obj_N)
+
+        if (fragment1 != null && fragment1.isInLayout()) {
+            fragment1.setCollocations(
+                dogCollocations,
+                "cat",
+                "3/3\ndog",
+                "dog"
+            )
+        }
+        fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
+
     }
 
 
@@ -48,26 +79,56 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         button = findViewById(R.id.changeCollocationButton) as Button
         button.setOnClickListener(this)
 
-        var dogCollocations = Collocation.getListOfCollocationDog()
+        fragmentPartOfSpeech = supportFragmentManager
+            .findFragmentById(R.id.partOfSpeechFragment) as PartOfSpeechFragment
+        fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
+
+
         fragment1 = supportFragmentManager
             .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
+        if (fragmentPartOfSpeech != null && fragmentPartOfSpeech.isInLayout()) {
+            fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
+            var dogCollocations =
+                Collocation.getListOfCollocationDog(PartOfSpeechFragment.RELATION_1_V_obj_N)
 
-        if (fragment1 != null && fragment1.isInLayout()) {
-            fragment1.setCollocations(dogCollocations, false, false, false)
+            fragment1.setCollocations(
+                dogCollocations,
+                "cat",
+                "2/3\ndog",
+                "dog2"
+            )
         }
         fragment1.setOnCollocationFragmentListener(this)
 
+
     }
 
-    fun onClickFragment() {
+
+    override fun relation(relation: String) {
+        var dogCollocations = Collocation.getListOfCollocationDog(relation)
+
         if (fragment1 != null && fragment1.isInLayout()) {
-
-            var list = fragment1.getActualCollocationsList()
-            //here changing of list e.g. downloading translations
-            //  list.get(0).
-            fragment1.updateCollocationList(list)
-
+            fragment1.setCollocations(
+                dogCollocations,
+                "cat",
+                "2/3\ndog",
+                "dog"
+            )
         }
     }
-    //endregion
+//endregion
+
+    //    fun onClickFragment() {
+//        if (fragment1 != null && fragment1.isInLayout()) {
+//
+//            var list = fragment1.getActualCollocationsList()
+//
+//            fragment1.updateCollocationList(list)
+//            Toast.makeText(this, "CLICKKKK", Toast.LENGTH_LONG).show();
+//
+//        }
+//    }
+    override fun onClick(v: View?) {
+//        onClickFragment()
+    }
 }
