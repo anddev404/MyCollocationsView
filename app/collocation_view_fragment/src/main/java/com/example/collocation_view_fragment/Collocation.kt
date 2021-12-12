@@ -41,6 +41,7 @@ class Collocation(
                     )
 
                 collocations.get(1).isChecked = true
+                collocations.get(1).translatedCollocation = "marcin's translation"
                 collocations.get(3).isChecked = true
                 collocations.get(5).isChecked = true
                 collocations.get(10).isChecked = true

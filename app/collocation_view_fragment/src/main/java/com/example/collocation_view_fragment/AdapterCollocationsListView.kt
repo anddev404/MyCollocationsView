@@ -53,6 +53,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             rootView.findViewById<View>(R.id.number_collocation) as TextView
         holder.collocationTextView =
             rootView.findViewById<View>(R.id.textView_collocation) as TextView
+        holder.translatedCollocationTextView =
+            rootView.findViewById<View>(R.id.textView_translated_collocation) as TextView
 
         holder.example1TextView =
             rootView.findViewById<View>(R.id.textView_example_1) as TextView
@@ -89,6 +91,7 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
 
         holder.collocationTextView.text = list.get(position).collocation
+        holder.translatedCollocationTextView.text = list.get(position).translatedCollocation
 
 
         holder.numberOfCollocationTextView.text = "" + (position + 1) + "."
@@ -191,7 +194,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
     class Holder() {
         lateinit var collocationTextView: TextView
+        lateinit var translatedCollocationTextView: TextView
+
         lateinit var numberOfCollocationTextView: TextView
+
         lateinit var example1TextView: TextView
         lateinit var example2TextView: TextView
         lateinit var example3TextView: TextView
