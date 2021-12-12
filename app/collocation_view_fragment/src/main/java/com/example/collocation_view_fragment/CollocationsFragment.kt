@@ -9,7 +9,27 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import org.w3c.dom.Text
 
+   /**
+        * @param
+        * @return
+        * @sample
+    *
+    *    fragment1 = supportFragmentManager
+   .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
+   if (fragmentPartOfSpeech != null && fragmentPartOfSpeech.isInLayout()) {
+   fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
+   var dogCollocations =
+   Collocation.getListOfCollocationDog(PartOfSpeechFragment.RELATION_1_V_obj_N)
 
+   fragment1.setCollocations(
+   dogCollocations,
+   "cat",
+   "2/3\ndog",
+   "dog2"
+   )
+   }
+   fragment1.setOnCollocationFragmentListener(this)
+        */
 class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     CompoundButton.OnCheckedChangeListener {
 

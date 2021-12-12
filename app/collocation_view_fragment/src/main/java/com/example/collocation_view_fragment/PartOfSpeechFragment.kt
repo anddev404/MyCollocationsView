@@ -15,6 +15,10 @@ import android.widget.TextView
  * A simple [Fragment] subclass.
  * Use the [PartOfSpeechFragment.newInstance] factory method to
  * create an instance of this fragment.
+ *
+ *        fragmentPartOfSpeech = supportFragmentManager
+.findFragmentById(R.id.partOfSpeechFragment) as PartOfSpeechFragment
+fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
  */
 class PartOfSpeechFragment : Fragment() {
 
