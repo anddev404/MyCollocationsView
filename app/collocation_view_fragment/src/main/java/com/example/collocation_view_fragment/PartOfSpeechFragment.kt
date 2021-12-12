@@ -23,6 +23,7 @@ fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
 class PartOfSpeechFragment : Fragment() {
 
     var relation = 0
+    var relationInfo = ""
     var partOfSpeech =
         PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
 
@@ -260,21 +261,25 @@ class PartOfSpeechFragment : Fragment() {
 
     fun getActualRelation(): String {
         if (partOfSpeech == PART_OF_SPEECH_VERB) {
-            return "${(relation + 1)}/${relationListVerb().size}  " + relationListVerb().get(
+            relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
+            return relationListVerb().get(
                 relation
             )
         }
         if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
-            return "${(relation + 1)}/${relationListAdjective().size}  " + relationListAdjective().get(
+            relationInfo = "${(relation + 1)}/${relationListAdjective().size}  "
+            return relationListAdjective().get(
                 relation
             )
         }
         if (partOfSpeech == PART_OF_SPEECH_NOUN) {
-            return "${(relation + 1)}/${relationListNoun().size}  " + relationListNoun().get(
+            relationInfo = "${(relation + 1)}/${relationListNoun().size}  "
+            return relationListNoun().get(
                 relation
             )
         }
-        return "${(relation + 1)}/${relationListAll().size}  " + relationListAll().get(relation)//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
+        relationInfo = "${(relation + 1)}/${relationListAll().size}  "
+        return relationListAll().get(relation)//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
     }
 
     //region < listener
@@ -331,7 +336,7 @@ class PartOfSpeechFragment : Fragment() {
     }
 
     fun showRelationOnTextView() {
-        centreTextView.setText(getActualRelation())
+        centreTextView.setText(relationInfo + getActualRelation())
     }
 
 //endregion
