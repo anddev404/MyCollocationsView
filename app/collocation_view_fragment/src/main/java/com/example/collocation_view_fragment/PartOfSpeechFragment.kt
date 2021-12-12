@@ -112,6 +112,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListVerb().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
                 } else if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
                     if (relation < 0) {
                         relation = relationListAdjective().size - 1
@@ -119,6 +120,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAdjective().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
                 } else if (partOfSpeech == PART_OF_SPEECH_NOUN) {
                     if (relation < 0) {
                         relation = relationListNoun().size - 1
@@ -126,6 +128,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListNoun().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
                 } else {
                     if (relation < 0) {
                         relation = relationListAll().size - 1
@@ -133,6 +136,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAll().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
                 }
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
@@ -151,6 +155,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListVerb().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
                 } else if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
                     if (relation < 0) {
                         relation = relationListAdjective().size - 1
@@ -158,6 +163,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAdjective().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
                 } else if (partOfSpeech == PART_OF_SPEECH_NOUN) {
                     if (relation < 0) {
                         relation = relationListNoun().size - 1
@@ -165,6 +171,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListNoun().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
                 } else {
                     if (relation < 0) {
                         relation = relationListAll().size - 1
@@ -172,6 +179,7 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAll().size) {
                         relation = 0
                     }
+                    relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
                 }
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
