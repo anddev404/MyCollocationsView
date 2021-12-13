@@ -82,6 +82,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             rootView.findViewById<View>(R.id.head_colored_view) as View
         holder.rest_view =
             rootView.findViewById<View>(R.id.rest_colored_view) as View
+        holder.blank_view =
+            rootView.findViewById<View>(R.id.blank_view) as View
 
         if (list.get(position).isChecked) {
             holder.head_view.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
@@ -149,21 +151,48 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
 
         try {
-            holder.translatedExample1TextView.text = list.get(position).translations.get(0)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.translatedExample1TextView.text =
+                    Html.fromHtml(
+                        list.get(position).translations.get(0),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.translatedExample1TextView.text = list.get(position).translations.get(0)
+            }
 
         } catch (e: Exception) {
             holder.translatedExample1TextView.text = ""
-        }
 
+        }
         try {
-            holder.translatedExample2TextView.text = list.get(position).translations.get(1)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.translatedExample2TextView.text =
+                    Html.fromHtml(
+                        list.get(position).translations.get(1),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.translatedExample2TextView.text = list.get(position).translations.get(1)
+            }
 
         } catch (e: Exception) {
             holder.translatedExample2TextView.text = ""
-        }
 
+        }
         try {
-            holder.translatedExample3TextView.text = list.get(position).translations.get(2)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.translatedExample3TextView.text =
+                    Html.fromHtml(
+                        list.get(position).translations.get(2),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.translatedExample3TextView.text = list.get(position).translations.get(2)
+            }
 
         } catch (e: Exception) {
             holder.translatedExample3TextView.text = ""
@@ -181,6 +210,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.translatedExample1TextView.visibility = View.GONE
             holder.translatedExample2TextView.visibility = View.GONE
             holder.translatedExample3TextView.visibility = View.GONE
+
+            holder.blank_view.visibility = View.GONE
 
         } else if (isHideTranslation) {
             holder.translatedExample1TextView.visibility = View.GONE
@@ -212,6 +243,7 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
         lateinit var head_view: View
         lateinit var rest_view: View
+        lateinit var blank_view: View
 
         init {
             Log.d("MY_DEBUG", "holder");
