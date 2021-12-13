@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyCollocationsView.iml" filepath="$PROJECT_DIR$/.idea/modules/MyCollocationsView.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyCollocationsView.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyCollocationsView.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/collocation_view_fragment/MyCollocationsView.app.collocation_view_fragment.iml" filepath="$PROJECT_DIR$/.idea/modules/app/collocation_view_fragment/MyCollocationsView.app.collocation_view_fragment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mylibrary/MyCollocationsView.app.mylibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mylibrary/MyCollocationsView.app.mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mylibrary/MyCollocationsView.app.word_list_view.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mylibrary/MyCollocationsView.app.word_list_view.iml" />
     </modules>
   </component>
 </project>
