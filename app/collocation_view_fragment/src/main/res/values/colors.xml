@@ -5,7 +5,8 @@
     <color name="collocations_head_chosed">#7FBF82</color>
     <color name="collocations_rest_chosed">#C0DFC1</color>
 
-    <color name="text_color_black">#272727</color>
+    <color name="text_color_black">#131313</color>
+    <color name="text_color_almost_black">#303030</color>
 
     <color name="collocations_top">#51B2FF</color>
     <color name="check_box_green">#2E6130</color>
