@@ -1,3 +1,4 @@
 rootProject.name = "MyCollocationsView"
 include ':app'
 include ':app:collocation_view_fragment'
+include ':app:mylibrary'
