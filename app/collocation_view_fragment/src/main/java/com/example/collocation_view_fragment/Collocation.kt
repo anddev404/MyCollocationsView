@@ -39,6 +39,10 @@ class Collocation(
                         getStringDog(),
                         object : TypeToken<List<Collocation?>?>() {}.type
                     )
+                collocations.get(0).translatedCollocation = "tłumaczenie"
+                collocations.get(1).translatedCollocation = "tłumaczenie"
+                collocations.get(2).translatedCollocation = "tłumaczenie"
+                collocations.get(3).translatedCollocation = "tłumaczenie"
 
                 collocations.get(1).isChecked = true
                 collocations.get(1).translatedCollocation = "marcin's translation"
@@ -88,7 +92,7 @@ class Collocation(
             for (i in list) {
                 i.translations = ArrayList<String>()
                 for (s in i.examples) {
-                    (i.translations as ArrayList<String>).add("Translation is downloading")
+                    (i.translations as ArrayList<String>).add("Translation is <b>downloading</b>")
                 }
             }
         }
