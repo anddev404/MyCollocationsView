@@ -116,6 +116,10 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
     }
 
+    override fun centre() {
+Toast.makeText(this, "click centre button", Toast.LENGTH_LONG).show();
+    }
+
 
     fun testFragments() {
 

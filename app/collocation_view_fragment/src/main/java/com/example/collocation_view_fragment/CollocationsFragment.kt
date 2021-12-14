@@ -9,27 +9,27 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import org.w3c.dom.Text
 
-   /**
-        * @param
-        * @return
-        * @sample
-    *
-    *    fragment1 = supportFragmentManager
-   .findFragmentById(R.id.colocationsFragment) as CollocationsFragment
-   if (fragmentPartOfSpeech != null && fragmentPartOfSpeech.isInLayout()) {
-   fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
-   var dogCollocations =
-   Collocation.getListOfCollocationDog(PartOfSpeechFragment.RELATION_1_V_obj_N)
+/**
+ * @param
+ * @return
+ * @sample
+ *
+ *    fragment1 = supportFragmentManager
+.findFragmentById(R.id.colocationsFragment) as CollocationsFragment
+if (fragmentPartOfSpeech != null && fragmentPartOfSpeech.isInLayout()) {
+fragmentPartOfSpeech.resetViews(PartOfSpeechFragment.PART_OF_SPEECH_UNKNOWN)
+var dogCollocations =
+Collocation.getListOfCollocationDog(PartOfSpeechFragment.RELATION_1_V_obj_N)
 
-   fragment1.setCollocations(
-   dogCollocations,
-   "cat",
-   "2/3\ndog",
-   "dog2"
-   )
-   }
-   fragment1.setOnCollocationFragmentListener(this)
-        */
+fragment1.setCollocations(
+dogCollocations,
+"cat",
+"2/3\ndog",
+"dog2"
+)
+}
+fragment1.setOnCollocationFragmentListener(this)
+ */
 class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     CompoundButton.OnCheckedChangeListener {
 
@@ -72,19 +72,17 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
         leftTextView = view.findViewById(R.id.textViewLeft) as TextView
         leftTextView.setOnClickListener {
-            mListener?.left(
-            )
+            mListener?.left()
         }
 
         rightTextView = view.findViewById(R.id.textViewRight) as TextView
         rightTextView.setOnClickListener {
-            mListener?.right(
-            )
+            mListener?.right()
         }
         centerTextView = view.findViewById(R.id.textViewCenter) as TextView
         centerTextView.setOnClickListener {
-            //TODO wyswietlanie listy słow i z tej listy wybór
-            Toast.makeText(view.context, "wyświetlanie listy", Toast.LENGTH_LONG).show();
+            // Toast.makeText(view.context, "wyświetlanie listy", Toast.LENGTH_LONG).show();
+            mListener?.centre()
         }
 
         return view
@@ -191,6 +189,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         //        fun option(type: Int, fragment: CollocationsFragment)
         fun left()
         fun right()
+        fun centre()
 
     }
 
