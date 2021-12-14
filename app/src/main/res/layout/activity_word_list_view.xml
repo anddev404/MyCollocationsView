@@ -26,7 +26,6 @@
         <com.anddev404.words_list_view.SearchWordView
             android:id="@+id/custom_word_search_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:text="Hello from xml"></com.anddev404.words_list_view.SearchWordView>
+            android:layout_height="match_parent"></com.anddev404.words_list_view.SearchWordView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
+import android.os.Build
+import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -43,16 +45,45 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
 
+        holder.nr =
+            rootView.findViewById<View>(R.id.nr_list_view_row) as TextView
         holder.word =
             rootView.findViewById<View>(R.id.word_list_view_row) as TextView
+        holder.translation =
+            rootView.findViewById<View>(R.id.translation_list_view_row) as TextView
+        holder.prouncination =
+            rootView.findViewById<View>(R.id.prouncination_list_view_row) as TextView
 
-        holder.word.text = list.get(position).word
+        if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
+
+        try {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.word.text =
+                    Html.fromHtml(
+                        list.get(position).word,
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.word.text = list.get(position).word
+            }
+
+
+        } catch (e: Exception) {
+            holder.word.text = list.get(position).word
+
+        }
+        holder.translation.text = list.get(position).translation
+        holder.prouncination.text = list.get(position).prouncination
 
         return rootView
     }
 
     class Holder() {
+        lateinit var nr: TextView
         lateinit var word: TextView
+        lateinit var translation: TextView
+        lateinit var prouncination: TextView
 
         init {
             Log.d("MY_DEBUG", "holder");

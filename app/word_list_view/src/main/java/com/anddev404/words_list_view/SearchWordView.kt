@@ -4,18 +4,91 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
-    private lateinit var text: TextView
-    private lateinit var list: ListView
-    private var words: ArrayList<Word>? = null
+
+    private var text: TextView
+    private var list: ListView
+    private var searchButton: ImageButton
+    private var resetButton: ImageButton
+    private var editTextSearch: EditText
+
+    private var originalWords: ArrayList<Word>? = null
+    private var showedWords: ArrayList<Word>? = null
+
+    fun searchResult(searchWord: String): ArrayList<Word> {
+
+        var result = arrayListOf<Word>()
+        result.add(Word(-1, Word.ID_MINUS_ONE, "", ""))
+        result.add(Word(0, searchWord, "", ""))
+        result.add(Word(-2, Word.ID_MINUS_TWO, "", ""))
+
+        originalWords.let {
+            for (w in originalWords!!) {
+                if (w.word.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        result.add(Word(-3, Word.ID_MINUS_THREE, "", ""))
+
+        originalWords.let {
+            for (w in originalWords!!) {
+                if (w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        return result
+    }
 
     init {
         inflate(context, R.layout.search_word_view, this)
+
+        editTextSearch = findViewById(R.id.custom_view_editText)
+
+        searchButton =
+            findViewById(R.id.custom_view_button_search)
+        resetButton =
+            findViewById(R.id.custom_view_button_reset)
+
+        list = findViewById<View>(R.id.custom_view_list_view) as ListView
+
+        searchButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                var searchWord = editTextSearch.text.toString()
+                Log.d("MARCIN", "search: $searchWord");
+                if (searchWord.length > 1) {
+                    showedWords = searchResult(searchWord)
+
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                } else {
+                    Toast.makeText(context, "tekst jest za krótki", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        })
+
+        resetButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                editTextSearch.text.clear()
+                Log.d("MARCIN", "reset button");
+                showedWords = originalWords
+                showedWords.let {
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+
+                }
+
+
+            }
+        })
+
         text = findViewById(R.id.custom_view_text_view)
 
 
@@ -27,7 +100,6 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             ta.recycle();
         }
 
-        list = findViewById<View>(R.id.custom_view_list_view) as ListView
         list.setOnItemClickListener(object : AdapterView.OnItemClickListener {
             override fun onItemClick(
                 parent: AdapterView<*>?,
@@ -35,16 +107,28 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                 position: Int,
                 id: Long
             ) {
-                Log.d("MARCIN", "Click $id, $position ${words?.get(position)?.word}");
-                mListener?.wordSearch("Dane wysłane: ${words?.get(position)?.word} $id, $position ");
-                //TODO zmienic na tylko słowo
+
+                if (showedWords?.get(position)?.id != null) {
+
+                    var i = showedWords?.get(position)?.id
+
+                    if (i!! >= 0) {
+                        mListener?.wordSearch("Dane wysłane: ${showedWords?.get(position)?.word} $id, $position ");
+                        Log.d("MARCIN", "Click $id, $position ${showedWords?.get(position)?.word}");
+
+                    }
+
+
+                }
+
             }
 
         })
     }
 
     fun setWords(words: ArrayList<Word>) {
-        this.words = words
+        this.originalWords = words
+        showedWords = originalWords
         list.adapter =
             AdapterWordsListView(context, words)
     }
@@ -62,7 +146,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         fun wordSearch(word: String)
     }
 
-    //////////////////////////////
+//////////////////////////////
 
 
 }

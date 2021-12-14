@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,7 +23,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <EditText
                 android:id="@+id/custom_view_editText"
@@ -30,14 +33,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="wpisz coś"
                 android:inputType="textPersonName"
-                android:maxLines="2"
-                android:text="Name" />
+                android:maxLines="2" />
 
             <ImageButton
-                android:id="@+id/custom_view_button"
+                android:id="@+id/custom_view_button_reset"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+            <ImageButton
+                android:id="@+id/custom_view_button_search"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_search_category_default" />
         </LinearLayout>
 
