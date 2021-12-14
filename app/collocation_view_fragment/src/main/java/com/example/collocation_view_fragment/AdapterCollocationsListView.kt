@@ -62,6 +62,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             rootView.findViewById<View>(R.id.textView_example_2) as TextView
         holder.example3TextView =
             rootView.findViewById<View>(R.id.textView_example_3) as TextView
+        holder.example4TextView =
+            rootView.findViewById<View>(R.id.textView_example_4) as TextView
+        holder.example5TextView =
+            rootView.findViewById<View>(R.id.textView_example_5) as TextView
 
         holder.number1TextView =
             rootView.findViewById<View>(R.id.number_example1) as TextView
@@ -69,6 +73,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             rootView.findViewById<View>(R.id.number_example2) as TextView
         holder.number3TextView =
             rootView.findViewById<View>(R.id.number_example3) as TextView
+        holder.number4TextView =
+            rootView.findViewById<View>(R.id.number_example4) as TextView
+        holder.number5TextView =
+            rootView.findViewById<View>(R.id.number_example5) as TextView
 
         holder.translatedExample1TextView =
             rootView.findViewById<View>(R.id.textView_translated_example_1) as TextView
@@ -76,7 +84,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             rootView.findViewById<View>(R.id.textView_translated_example_2) as TextView
         holder.translatedExample3TextView =
             rootView.findViewById<View>(R.id.textView_translated_example_3) as TextView
-
+        holder.translatedExample4TextView =
+            rootView.findViewById<View>(R.id.textView_translated_example_4) as TextView
+        holder.translatedExample5TextView =
+            rootView.findViewById<View>(R.id.textView_translated_example_5) as TextView
 
         holder.head_view =
             rootView.findViewById<View>(R.id.head_colored_view) as View
@@ -146,7 +157,34 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.example3TextView.text = ""
 
         }
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.example4TextView.text =
+                    Html.fromHtml(
+                        list.get(position).examples.get(3),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.example4TextView.text = list.get(position).examples.get(3)
+            }
+        } catch (e: Exception) {
+            holder.example4TextView.text = ""
 
+        }
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.example5TextView.text =
+                    Html.fromHtml(
+                        list.get(position).examples.get(4),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.example5TextView.text = list.get(position).examples.get(4)
+            }
+        } catch (e: Exception) {
+            holder.example5TextView.text = ""
+
+        }
 ////////////////////////////// translations
 
 
@@ -198,18 +236,59 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.translatedExample3TextView.text = ""
 
         }
+
+        try {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.translatedExample4TextView.text =
+                    Html.fromHtml(
+                        list.get(position).translations.get(3),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.translatedExample4TextView.text = list.get(position).translations.get(3)
+            }
+
+        } catch (e: Exception) {
+            holder.translatedExample4TextView.text = ""
+
+        }
+        try {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.translatedExample5TextView.text =
+                    Html.fromHtml(
+                        list.get(position).translations.get(4),
+                        Html.FROM_HTML_MODE_COMPACT
+                    )
+            } else {
+                holder.translatedExample5TextView.text = list.get(position).translations.get(4)
+            }
+
+        } catch (e: Exception) {
+            holder.translatedExample5TextView.text = ""
+
+        }
+
+
         if (isHideSentences) {
             holder.example1TextView.visibility = View.GONE
             holder.example2TextView.visibility = View.GONE
             holder.example3TextView.visibility = View.GONE
+            holder.example4TextView.visibility = View.GONE
+            holder.example5TextView.visibility = View.GONE
 
             holder.number1TextView.visibility = View.GONE
             holder.number2TextView.visibility = View.GONE
             holder.number3TextView.visibility = View.GONE
+            holder.number4TextView.visibility = View.GONE
+            holder.number5TextView.visibility = View.GONE
 
             holder.translatedExample1TextView.visibility = View.GONE
             holder.translatedExample2TextView.visibility = View.GONE
             holder.translatedExample3TextView.visibility = View.GONE
+            holder.translatedExample4TextView.visibility = View.GONE
+            holder.translatedExample5TextView.visibility = View.GONE
 
             holder.blank_view.visibility = View.GONE
 
@@ -217,6 +296,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.translatedExample1TextView.visibility = View.GONE
             holder.translatedExample2TextView.visibility = View.GONE
             holder.translatedExample3TextView.visibility = View.GONE
+            holder.translatedExample4TextView.visibility = View.GONE
+            holder.translatedExample5TextView.visibility = View.GONE
         }
 
 
@@ -232,14 +313,20 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         lateinit var example1TextView: TextView
         lateinit var example2TextView: TextView
         lateinit var example3TextView: TextView
+        lateinit var example4TextView: TextView
+        lateinit var example5TextView: TextView
 
         lateinit var number1TextView: TextView
         lateinit var number2TextView: TextView
         lateinit var number3TextView: TextView
+        lateinit var number4TextView: TextView
+        lateinit var number5TextView: TextView
 
         lateinit var translatedExample1TextView: TextView
         lateinit var translatedExample2TextView: TextView
         lateinit var translatedExample3TextView: TextView
+        lateinit var translatedExample4TextView: TextView
+        lateinit var translatedExample5TextView: TextView
 
         lateinit var head_view: View
         lateinit var rest_view: View
