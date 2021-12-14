@@ -82,6 +82,12 @@
 
     </View>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_almost_black"
+        app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation"></View>
+
     <TextView
         android:id="@+id/number_example1"
         android:layout_width="wrap_content"
@@ -116,11 +122,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_1" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_almost_black"
+        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1"></View>
+
     <TextView
         android:id="@+id/number_example2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="7dp"
         android:text="2."
         android:textSize="18sp"
@@ -131,7 +143,7 @@
         android:id="@+id/textView_example_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="10dp"
         android:text="example 2"
         android:textColor="@color/text_color_black"
@@ -145,6 +157,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
+        android:paddingBottom="2dp"
         android:text="translated example 2"
         android:textColor="@color/text_color_almost_black"
         android:textSize="16sp"
@@ -152,11 +165,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_2" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_almost_black"
+        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2"></View>
+
     <TextView
         android:id="@+id/number_example3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="7dp"
         android:text="3."
         android:textSize="18sp"
@@ -167,7 +186,7 @@
         android:id="@+id/textView_example_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="10dp"
         android:text="example 3"
         android:textColor="@color/text_color_black"
@@ -181,6 +200,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
+        android:paddingBottom="2dp"
         android:text="translated example 3"
         android:textColor="@color/text_color_almost_black"
         android:textSize="16sp"
@@ -188,11 +208,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_3" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_almost_black"
+        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_3"></View>
+
     <TextView
         android:id="@+id/number_example4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="7dp"
         android:text="4."
         android:textSize="18sp"
@@ -203,7 +229,7 @@
         android:id="@+id/textView_example_4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="10dp"
         android:text="example 4"
         android:textColor="@color/text_color_black"
@@ -217,6 +243,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
+        android:paddingBottom="2dp"
         android:text="translated example 4"
         android:textColor="@color/text_color_almost_black"
         android:textSize="16sp"
@@ -224,11 +251,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_example_4" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_almost_black"
+        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_4"></View>
+
     <TextView
         android:id="@+id/number_example5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="7dp"
         android:text="5."
         android:textSize="18sp"
@@ -239,7 +272,7 @@
         android:id="@+id/textView_example_5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
         android:paddingRight="10dp"
         android:text="example 5"
         android:textColor="@color/text_color_black"
