@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.anddev404.words_list_view.AdapterWordsListView
 import com.anddev404.words_list_view.SearchWordView
@@ -19,7 +20,12 @@ class WordListViewActivity : AppCompatActivity() {
 
         list = findViewById<View>(R.id.custom_word_search_view) as SearchWordView
         list.setWords(Word.getList())
+        list.setOnSearchWordViewListener(object : SearchWordView.OnSearchWordViewListener {
+            override fun wordSearch(word: String) {
 
+                Toast.makeText(applicationContext, "Wybrano: $word", Toast.LENGTH_LONG).show();
+            }
+        })
 
     }
 }
