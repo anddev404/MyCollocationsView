@@ -11,7 +11,7 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
-        android:weightSum="10">
+        android:weightSum="13">
 
         <TextView
             android:id="@+id/nr_list_view_row"
@@ -44,7 +44,7 @@
             android:id="@+id/translation_list_view_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:paddingRight="10dp"
             android:text="dom" />
 
