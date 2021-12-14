@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 
 class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
@@ -53,8 +54,11 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             rootView.findViewById<View>(R.id.translation_list_view_row) as TextView
         holder.prouncination =
             rootView.findViewById<View>(R.id.prouncination_list_view_row) as TextView
+        holder.layout =
+            rootView.findViewById<View>(R.id.layout_list_view) as LinearLayout
 
         if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
+        if (list.get(position).id < 0) holder.layout.setBackgroundColor(context.resources.getColor(R.color.dark))
 
         try {
 
@@ -84,6 +88,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         lateinit var word: TextView
         lateinit var translation: TextView
         lateinit var prouncination: TextView
+        lateinit var layout: LinearLayout
 
         init {
             Log.d("MY_DEBUG", "holder");
