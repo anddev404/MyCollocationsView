@@ -39,7 +39,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     lateinit var collocationsList: ArrayList<Collocation>
 
     var hideUnknown = false
-    var hideSentences = false
+    var hideSentences = true
     var hideTranslations = false
 
     lateinit var hideUnknownCheckBox: CheckBox
