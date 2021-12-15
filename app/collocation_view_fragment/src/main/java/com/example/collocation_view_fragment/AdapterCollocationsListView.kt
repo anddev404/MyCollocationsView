@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -48,6 +49,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         Log.d("ADAPTER", "getView");
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
+        var hide = isHideSentences
+
+        holder.hide_show_sentences =
+            rootView.findViewById<View>(R.id.hide_show_choosed_sentences) as ImageView
 
         holder.numberOfCollocationTextView =
             rootView.findViewById<View>(R.id.number_collocation) as TextView
@@ -108,6 +113,59 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
 
         holder.numberOfCollocationTextView.text = "" + (position + 1) + "."
+
+
+        holder.hide_show_sentences.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                Log.d("MARCIN", "CLICK rozwiniecie");
+
+                hide = !hide
+                if (hide) {
+                    holder.example1TextView.visibility = View.GONE
+                    holder.example2TextView.visibility = View.GONE
+                    holder.example3TextView.visibility = View.GONE
+                    holder.example4TextView.visibility = View.GONE
+                    holder.example5TextView.visibility = View.GONE
+
+                    holder.number1TextView.visibility = View.GONE
+                    holder.number2TextView.visibility = View.GONE
+                    holder.number3TextView.visibility = View.GONE
+                    holder.number4TextView.visibility = View.GONE
+                    holder.number5TextView.visibility = View.GONE
+
+                    holder.translatedExample1TextView.visibility = View.GONE
+                    holder.translatedExample2TextView.visibility = View.GONE
+                    holder.translatedExample3TextView.visibility = View.GONE
+                    holder.translatedExample4TextView.visibility = View.GONE
+                    holder.translatedExample5TextView.visibility = View.GONE
+
+                    holder.blank_view.visibility = View.GONE
+                } else {
+                    holder.example1TextView.visibility = View.VISIBLE
+                    holder.example2TextView.visibility = View.VISIBLE
+                    holder.example3TextView.visibility = View.VISIBLE
+                    holder.example4TextView.visibility = View.VISIBLE
+                    holder.example5TextView.visibility = View.VISIBLE
+
+                    holder.number1TextView.visibility = View.VISIBLE
+                    holder.number2TextView.visibility = View.VISIBLE
+                    holder.number3TextView.visibility = View.VISIBLE
+                    holder.number4TextView.visibility = View.VISIBLE
+                    holder.number5TextView.visibility = View.VISIBLE
+
+                    holder.translatedExample1TextView.visibility = View.VISIBLE
+                    holder.translatedExample2TextView.visibility = View.VISIBLE
+                    holder.translatedExample3TextView.visibility = View.VISIBLE
+                    holder.translatedExample4TextView.visibility = View.VISIBLE
+                    holder.translatedExample5TextView.visibility = View.VISIBLE
+
+                    holder.blank_view.visibility = View.VISIBLE
+                }
+
+
+            }
+
+        })
 
 ////////////
 
@@ -271,7 +329,7 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         }
 
 
-        if (isHideSentences) {
+        if (hide) {
             holder.example1TextView.visibility = View.GONE
             holder.example2TextView.visibility = View.GONE
             holder.example3TextView.visibility = View.GONE
@@ -331,6 +389,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         lateinit var head_view: View
         lateinit var rest_view: View
         lateinit var blank_view: View
+
+        lateinit var hide_show_sentences: ImageView
 
         init {
             Log.d("MY_DEBUG", "holder");

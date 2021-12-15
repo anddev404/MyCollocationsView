@@ -1,6 +1,7 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -62,7 +63,6 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                 Log.d("MARCIN", "search: $searchWord");
                 if (searchWord.length > 1) {
                     showedWords = searchResult(searchWord)
-
                     list.adapter =
                         AdapterWordsListView(context, showedWords!!)
                 } else {

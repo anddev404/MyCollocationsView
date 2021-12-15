@@ -18,6 +18,20 @@
 
     </View>
 
+    <ImageView
+        android:id="@+id/hide_show_choosed_sentences"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintBottom_toBottomOf="@id/head_colored_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/head_colored_view"
+        app:srcCompat="@drawable/custom_checkbox_sentences" />
+
     <View
         android:id="@+id/rest_colored_view"
         android:layout_width="0dp"
