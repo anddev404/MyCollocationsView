@@ -97,8 +97,8 @@ class PartOfSpeechFragment : Fragment() {
                 deleteColorForAll()
                 changeColor(allTextView)
                 partOfSpeech = PART_OF_SPEECH_UNKNOWN
-                relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
                 relation = 0//TODO tu zmienaic dla czesci mowy
+                relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
                 showRelationOnTextView()
                 mListener?.relation(getActualRelation())
             }
