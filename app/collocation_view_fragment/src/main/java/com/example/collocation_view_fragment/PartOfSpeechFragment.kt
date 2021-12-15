@@ -228,8 +228,8 @@ class PartOfSpeechFragment : Fragment() {
             var list = arrayListOf<String>()
             list.add(RELATION_3_V_subj_N)
             list.add(RELATION_2_V_prep_N)
-            list.add(RELATION_1_V_obj_N)
             list.add(RELATION_8_V_mod_A)
+            list.add(RELATION_1_V_obj_N)
             list.add(RELATION_5_N_mod_A)
             return list
         }
@@ -245,8 +245,8 @@ class PartOfSpeechFragment : Fragment() {
         fun relationListNoun(): ArrayList<String> {
             var list = arrayListOf<String>()
             list.add(RELATION_3_V_subj_N)
-            list.add(RELATION_2_V_prep_N)
             list.add(RELATION_1_V_obj_N)
+            list.add(RELATION_2_V_prep_N)
             list.add(RELATION_11_V_obj_prep_N)
             list.add(RELATION_7_N_nn_N)
             list.add(RELATION_5_N_mod_A)
@@ -268,6 +268,61 @@ class PartOfSpeechFragment : Fragment() {
             list.add(RELATION_11_V_obj_prep_N)
             return list
 
+        }
+
+        fun getDescriptionByRelation(relation: String, partOfSpeech: Int): String {
+            if (partOfSpeech == PART_OF_SPEECH_VERB) {
+
+                if (relation.equals(RELATION_3_V_subj_N)) {
+                    return "<b>rain</b> come"
+                }
+                if (relation.equals(RELATION_2_V_prep_N)) {
+                    return "to begin to <b>rain</b>"
+                }
+                if (relation.equals(RELATION_8_V_mod_A)) {
+                    return "to <b>rain</b> hard (jak?)"
+                }
+                if (relation.equals(RELATION_1_V_obj_N)) {
+                    return ""
+                }
+                if (relation.equals(RELATION_5_N_mod_A)) {
+                    return ""
+                }
+
+            }
+            if (partOfSpeech == PART_OF_SPEECH_NOUN) {
+                if (relation.equals(RELATION_3_V_subj_N)) {
+                    return "<b>dog</b> bark"
+                }
+                if (relation.equals(RELATION_2_V_prep_N)) {
+                    return "bark like <b>dog</b>"
+                }
+                if (relation.equals(RELATION_1_V_obj_N)) {
+                    return "to have a <b>dog</b>"
+                }
+                if (relation.equals(RELATION_11_V_obj_prep_N)) {
+                    return "to take <b>dog</b> for walk"
+                }
+                if (relation.equals(RELATION_7_N_nn_N)) {
+                    return "<b>dog</b> food"
+                }
+                if (relation.equals(RELATION_5_N_mod_A)) {
+                    return "black <b>dog</b>"
+                }
+            }
+            if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
+
+                if (relation.equals(RELATION_5_N_mod_A)) {
+                    return "<b>fast</b> car"
+                }
+                if (relation.equals(RELATION_9_A_mod_A)) {
+                    return "too <b>fast</b>"
+                }
+            }
+
+
+
+            return ""
         }
     }
 
