@@ -113,7 +113,10 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                     var i = showedWords?.get(position)?.id
 
                     if (i!! >= 0) {
-                        mListener?.wordSearch("" + showedWords?.get(position)?.word);
+                        mListener?.wordSearch(
+                            "" + showedWords?.get(position)?.word,
+                            showedWords?.get(position)?.id ?: 0
+                        );
                         Log.d("MARCIN", "Click $id, $position ${showedWords?.get(position)?.word}");
 
                     }
@@ -143,7 +146,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     interface OnSearchWordViewListener {
-        fun wordSearch(word: String)
+        fun wordSearch(word: String, id: Int)
     }
 
 //////////////////////////////
