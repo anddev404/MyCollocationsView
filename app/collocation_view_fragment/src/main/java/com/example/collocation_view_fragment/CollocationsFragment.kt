@@ -49,6 +49,8 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     lateinit var leftTextView: TextView
     lateinit var centerTextView: TextView
     lateinit var rightTextView: TextView
+
+    lateinit var headTextView: TextView
     //endregion
 
     //region fragment
@@ -69,6 +71,8 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideUnknownCheckBox.setOnCheckedChangeListener(this)
         hideTranslationsCheckBox.setOnCheckedChangeListener(this)
         hideSentencesCheckBox.setOnCheckedChangeListener(this)
+
+        headTextView = view.findViewById(R.id.fragment_text_view) as TextView
 
         leftTextView = view.findViewById(R.id.textViewLeft) as TextView
         leftTextView.setOnClickListener {
@@ -122,6 +126,9 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //endregion
 
     //region input >
+    fun setHeadText(text: String) {
+        headTextView.text = "" + text
+    }
 
     fun setCollocations(
         collocations: ArrayList<Collocation>,
