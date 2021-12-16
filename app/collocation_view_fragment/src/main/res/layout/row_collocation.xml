@@ -2,6 +2,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,12 +26,11 @@
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="fitXY"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="@id/head_colored_view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/head_colored_view"
-        app:srcCompat="@drawable/custom_checkbox_sentences" />
+        app:srcCompat="@drawable/icon_rozwin"
+        tools:ignore="VectorDrawableCompat" />
 
     <View
         android:id="@+id/rest_colored_view"
