@@ -33,6 +33,7 @@ dogCollocations,
 fragment1.setOnCollocationFragmentListener(this)
  */
 class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
+    AdapterCollocationsListView.OnSentenceClickListener,
     CompoundButton.OnCheckedChangeListener {
 
     //region variables
@@ -65,7 +66,6 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         Log.d("MY_DEBUG", "fragment");
         var view = inflater.inflate(R.layout.collocations_fragment, container, false)
         list = view.findViewById<View>(R.id.collocations_list_view) as ListView
-
         hideUnknownCheckBox = view.findViewById(R.id.show_only_known_check_box) as CheckBox
         hideTranslationsCheckBox = view.findViewById(R.id.hide_translations_check_box) as CheckBox
         hideSentencesCheckBox = view.findViewById(R.id.show_only_headlines_check_box) as CheckBox
@@ -103,10 +103,16 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var c = list.getItemAtPosition(position) as Collocation
         c.isChecked = !c.isChecked
-        refreshList()
 
         mListener?.clickItem(this, c)
+        refreshList()
+    }
 
+    override fun sentenceClick(collocation: Collocation, nr: Int) {
+        Log.d("MARCIN", "click sentence nr $nr id: $id");
+
+
+        mListener?.clickSentence(this, collocation, nr)
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
@@ -204,6 +210,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     interface OnCollocationFragmentListener {
         fun clickItem(fragment: CollocationsFragment, collocation: Collocation)
+        fun clickSentence(fragment: CollocationsFragment, collocation: Collocation, nr: Int)
 
         //        fun option(type: Int, fragment: CollocationsFragment)
         fun left()
@@ -225,6 +232,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             list.adapter =
                 AdapterCollocationsListView(requireContext(), getOnlyKnown(collocationsList))
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.isHideTranslation = hideTranslations
             adapter.isHideSentences = hideSentences
 
@@ -238,6 +246,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             list.adapter =
                 AdapterCollocationsListView(requireContext(), collocationsList)
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.isHideTranslation = hideTranslations
             adapter.isHideSentences = hideSentences
 
@@ -253,6 +262,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideSentencesCheckBox.setOnCheckedChangeListener(this)
 
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.hideSentences()
             refreshList()
 
@@ -264,6 +274,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideSentencesCheckBox.setOnCheckedChangeListener(this)
 
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.showSentences()
             refreshList()
         }
@@ -278,6 +289,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideTranslationsCheckBox.setOnCheckedChangeListener(this)
 
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.hideTranslations()
             refreshList()
 
@@ -289,6 +301,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideTranslationsCheckBox.setOnCheckedChangeListener(this)
 
             var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
             adapter.showTranslations()
             refreshList()
         }

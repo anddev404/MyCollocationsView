@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
         //TODO only update database ,already changed isChecked
     }
 
+    override fun clickSentence(fragment: CollocationsFragment, collocation: Collocation, nr: Int) {
+        //TODO("Not yet implemented")
+    }
+
     /**
      * @param
      * @return
@@ -117,7 +121,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     }
 
     override fun centre() {
-Toast.makeText(this, "click centre button", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "click centre button", Toast.LENGTH_LONG).show();
     }
 
 
@@ -152,24 +156,25 @@ Toast.makeText(this, "click centre button", Toast.LENGTH_LONG).show();
 
     }
 
-   /**
-        * @param
-        * @return
-    * zmiana relacji powoduje pobranie odpowiednich kolokacji z danego słowa
-        * @sample
-    *  var dogCollocations = Collocation.getListOfCollocationDog(relation)
+    /**
+     * @param
+     * @return
+     * zmiana relacji powoduje pobranie odpowiednich kolokacji z danego słowa
+     * @sample
+     *  var dogCollocations = Collocation.getListOfCollocationDog(relation)
 
-   if (fragment1 != null && fragment1.isInLayout()) {
-   fragment1.setCollocations(
-   dogCollocations,
-   "cat",
-   "2/3\ndog",
-   "dog"
-   )
-   }
-        */
+    if (fragment1 != null && fragment1.isInLayout()) {
+    fragment1.setCollocations(
+    dogCollocations,
+    "cat",
+    "2/3\ndog",
+    "dog"
+    )
+    }
+     */
     override fun relation(relation: String) {
-        var dogCollocations = Collocation.getListOfCollocationDog(relation)//pobranie z aktualnego słowa
+        var dogCollocations =
+            Collocation.getListOfCollocationDog(relation)//pobranie z aktualnego słowa
 
         if (fragment1 != null && fragment1.isInLayout()) {
             fragment1.setCollocations(

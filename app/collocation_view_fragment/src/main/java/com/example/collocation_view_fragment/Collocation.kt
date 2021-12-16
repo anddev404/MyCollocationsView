@@ -12,11 +12,17 @@ class Collocation(
     var id: Int,
     var collocation: String,
     var translatedCollocation: String,
-    var isChecked: Boolean,
+    var isChecked: Boolean = false,
     var examples: ArrayList<String>,
     var translations: ArrayList<String>,
+    var exampleChecked: ArrayList<Boolean>,
     var relation: String//TODo moze byc null po parsowaniu
 ) {
+//    init {
+//        if (exampleChecked == null) {
+//            exampleChecked = arrayListOf(false, true, false, false)
+//        }
+//    }
 
     companion object {
 
@@ -57,6 +63,10 @@ class Collocation(
 
             } catch (e: Exception) {
                 return ArrayList<Collocation>()
+            }
+
+            for (c in collocations2) {
+                c.exampleChecked = arrayListOf(false, true, false, false)
             }
             return collocations2
         }

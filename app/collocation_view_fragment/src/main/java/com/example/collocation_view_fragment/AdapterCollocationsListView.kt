@@ -1,6 +1,7 @@
 package com.example.collocation_view_fragment
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import android.text.Html
 import android.util.Log
@@ -115,6 +116,286 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         holder.numberOfCollocationTextView.text = "" + (position + 1) + "."
 
 
+        holder.example1TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        0,
+                        !list.get(position).exampleChecked.get(0)
+                    )
+                    if (list.get(position).exampleChecked.get(0)) {
+                        holder.example1TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample1TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example1TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample1TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 1);
+            }
+        })
+        holder.translatedExample1TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        0,
+                        !list.get(position).exampleChecked.get(0)
+                    )
+                    if (list.get(position).exampleChecked.get(0)) {
+                        holder.example1TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample1TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example1TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample1TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 1);
+            }
+        })
+        holder.example2TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        1,
+                        !list.get(position).exampleChecked.get(1)
+                    )
+                    if (list.get(position).exampleChecked.get(1)) {
+                        holder.example2TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample2TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example2TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample2TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 2);
+            }
+        })
+        holder.translatedExample2TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        1,
+                        !list.get(position).exampleChecked.get(1)
+                    )
+                    if (list.get(position).exampleChecked.get(1)) {
+                        holder.example2TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample2TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example2TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample2TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 2);
+            }
+        })
+        holder.example3TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        2,
+                        !list.get(position).exampleChecked.get(2)
+                    )
+                    if (list.get(position).exampleChecked.get(2)) {
+                        holder.example3TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample3TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example3TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample3TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 3);
+            }
+        })
+        holder.translatedExample3TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        2,
+                        !list.get(position).exampleChecked.get(2)
+                    )
+                    if (list.get(position).exampleChecked.get(2)) {
+                        holder.example3TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample3TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example3TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample3TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 3);
+            }
+        })
+        holder.example4TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        3,
+                        !list.get(position).exampleChecked.get(3)
+                    )
+                    if (list.get(position).exampleChecked.get(3)) {
+                        holder.example4TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample4TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example4TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample4TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 4);
+            }
+        })
+        holder.translatedExample4TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        3,
+                        !list.get(position).exampleChecked.get(3)
+                    )
+                    if (list.get(position).exampleChecked.get(3)) {
+                        holder.example4TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample4TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example4TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample4TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 4);
+            }
+        })
+        holder.example5TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        4,
+                        !list.get(position).exampleChecked.get(4)
+                    )
+                    if (list.get(position).exampleChecked.get(4)) {
+                        holder.example5TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample5TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example5TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample5TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 5);
+            }
+        })
+        holder.translatedExample5TextView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+
+                try {
+                    list.get(position).exampleChecked.set(
+                        4,
+                        !list.get(position).exampleChecked.get(4)
+                    )
+                    if (list.get(position).exampleChecked.get(4)) {
+                        holder.example5TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                        holder.translatedExample5TextView.setBackgroundColor(
+                            rootView.resources.getColor(
+                                R.color.collocations_head_chosed
+                            )
+                        )
+
+                    } else {
+                        holder.example5TextView.setBackgroundColor(Color.TRANSPARENT)
+                        holder.translatedExample5TextView.setBackgroundColor(Color.TRANSPARENT)
+
+                    }
+                } catch (e: java.lang.Exception) {
+
+                }
+                mListener?.sentenceClick(list.get(position), 5);
+            }
+        })
         holder.hide_show_sentences.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 Log.d("MARCIN", "CLICK rozwiniecie");
@@ -358,7 +639,47 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.translatedExample5TextView.visibility = View.GONE
         }
 
+        try {
+            if (list.get(position).exampleChecked.get(0)) {
+                holder.example1TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                holder.translatedExample1TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
 
+            }
+        } catch (e: java.lang.Exception) {
+
+        }
+        try {
+            if (list.get(position).exampleChecked.get(1)) {
+                holder.example2TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                holder.translatedExample2TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+            }
+        } catch (e: java.lang.Exception) {
+
+        }
+        try {
+            if (list.get(position).exampleChecked.get(2)) {
+                holder.example3TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                holder.translatedExample3TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+            }
+        } catch (e: java.lang.Exception) {
+
+        }
+        try {
+            if (list.get(position).exampleChecked.get(3)) {
+                holder.example4TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                holder.translatedExample4TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+            }
+        } catch (e: java.lang.Exception) {
+
+        }
+        try {
+            if (list.get(position).exampleChecked.get(4)) {
+                holder.example5TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+                holder.translatedExample5TextView.setBackgroundColor(rootView.resources.getColor(R.color.collocations_head_chosed))
+            }
+        } catch (e: java.lang.Exception) {
+
+        }
         return rootView
     }
 
@@ -418,8 +739,24 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         isHideTranslation = false
 
     }
+
     //endregion
 //region methods
+    //////////////////////////////
+    private var mListener: OnSentenceClickListener? = null
+
+
+    fun setOnSentenceClickListener(onSentenceClickListener: OnSentenceClickListener) {
+        mListener = onSentenceClickListener;
+
+    }
+
+    interface OnSentenceClickListener {
+        fun sentenceClick(collocation: Collocation, nr: Int)
+    }
+
+    //////////////////////////////
+    //wysyłanie
 
 
 }
