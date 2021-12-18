@@ -233,6 +233,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //region list view input >
 
     fun setHideUnknown() {
+        //TODO jesli mam pokazywanie zdan tylko zielonych i w jakiejs kolokacji zxwine ja i rozwine to wtedy pokaze wszytskie zdania nawet te nie zielone ale to w sumie dobrze
         if (hideUnknown) {
             hideUnknownCheckBox.setOnCheckedChangeListener(null)
             hideUnknownCheckBox.isChecked = true
