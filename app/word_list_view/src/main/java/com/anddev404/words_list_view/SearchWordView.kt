@@ -19,12 +19,13 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     private var originalWords: ArrayList<Word>? = null
     private var showedWords: ArrayList<Word>? = null
+
     fun goToIndex(index: Int) {
         try {
             list.setSelection(index)
 
         } catch (e: Exception) {
-            
+
         }
     }
 
