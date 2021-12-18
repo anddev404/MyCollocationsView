@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import java.lang.Exception
 
 class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
@@ -18,6 +19,14 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     private var originalWords: ArrayList<Word>? = null
     private var showedWords: ArrayList<Word>? = null
+    fun goToIndex(index: Int) {
+        try {
+            list.setSelection(index)
+
+        } catch (e: Exception) {
+            
+        }
+    }
 
     fun searchResult(searchWord: String): ArrayList<Word> {
 
