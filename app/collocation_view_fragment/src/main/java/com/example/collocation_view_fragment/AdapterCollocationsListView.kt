@@ -22,6 +22,7 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
     var inflater: LayoutInflater
     var isHideTranslation = false
     var isHideSentences = false
+    var isHideUnknownSentences = false
 
     //endregion
 
@@ -680,6 +681,126 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         } catch (e: java.lang.Exception) {
 
         }
+        Log.d("SENTENCE", "is hide sentence: $isHideUnknownSentences");
+
+        if (isHideUnknownSentences) {
+            try {
+
+                if (!list.get(position).exampleChecked.get(0)) {
+                    Log.d("SENTENCE", "is 1: ${list.get(position).exampleChecked.get(0)}");
+
+                    holder.example1TextView.visibility = View.GONE
+                    holder.translatedExample1TextView.visibility = View.GONE
+                    holder.number1TextView.visibility = View.GONE
+
+                }
+            } catch (e: java.lang.Exception) {
+            }
+            try {
+
+                if (!list.get(position).exampleChecked.get(1)) {
+                    Log.d("SENTENCE", "is 2: ${list.get(position).exampleChecked.get(1)}");
+                    holder.example2TextView.visibility = View.GONE
+                    holder.translatedExample2TextView.visibility = View.GONE
+                    holder.number2TextView.visibility = View.GONE
+
+                }
+            } catch (e: java.lang.Exception) {
+            }
+            try {
+
+                if (!list.get(position).exampleChecked.get(2)) {
+                    Log.d("SENTENCE", "is 3: ${list.get(position).exampleChecked.get(2)}");
+
+                    holder.example3TextView.visibility = View.GONE
+                    holder.translatedExample3TextView.visibility = View.GONE
+                    holder.number3TextView.visibility = View.GONE
+
+                }
+            } catch (e: java.lang.Exception) {
+            }
+            try {
+                if (!list.get(position).exampleChecked.get(3)) {
+                    holder.example4TextView.visibility = View.GONE
+                    holder.translatedExample4TextView.visibility = View.GONE
+                    holder.number4TextView.visibility = View.GONE
+
+                }
+            } catch (e: java.lang.Exception) {
+            }
+            try {
+                if (!list.get(position).exampleChecked.get(4)) {
+                    holder.example5TextView.visibility = View.GONE
+                    holder.translatedExample5TextView.visibility = View.GONE
+                    holder.number5TextView.visibility = View.GONE
+
+                }
+            } catch (e: java.lang.Exception) {
+            }
+        }
+
+        //dodatkowe ukrywanie zdan ktorych nie ma
+        try {
+            list.get(position).examples.get(0).length
+            Log.d("LENGTH", "length 1: ${list.get(position).examples.get(0).length}");
+
+        } catch (e: java.lang.Exception) {
+            Log.d("LENGTH", "length 1: error");
+
+            holder.example1TextView.visibility = View.GONE
+            holder.translatedExample1TextView.visibility = View.GONE
+            holder.number1TextView.visibility = View.GONE
+        }
+
+        try {
+            list.get(position).examples.get(1).length
+            Log.d("LENGTH", "length 2: ${list.get(position).examples.get(1).length}");
+
+        } catch (e: java.lang.Exception) {
+            Log.d("LENGTH", "length 2: error");
+
+            holder.example2TextView.visibility = View.GONE
+            holder.translatedExample2TextView.visibility = View.GONE
+            holder.number2TextView.visibility = View.GONE
+        }
+
+        try {
+            list.get(position).examples.get(2).length
+            Log.d("LENGTH", "length 3: ${list.get(position).examples.get(2).length}");
+
+        } catch (e: java.lang.Exception) {
+            Log.d("LENGTH", "length 3: error");
+
+            holder.example3TextView.visibility = View.GONE
+            holder.translatedExample3TextView.visibility = View.GONE
+            holder.number3TextView.visibility = View.GONE
+        }
+
+        try {
+            list.get(position).examples.get(3).length
+            Log.d("LENGTH", "length 4: ${list.get(position).examples.get(3).length}");
+
+
+        } catch (e: java.lang.Exception) {
+            Log.d("LENGTH", "length 4:  error");
+
+            holder.example4TextView.visibility = View.GONE
+            holder.translatedExample4TextView.visibility = View.GONE
+            holder.number4TextView.visibility = View.GONE
+        }
+
+        try {
+            list.get(position).examples.get(4).length
+            Log.d("LENGTH", "length 5: ${list.get(position).examples.get(4).length}");
+
+
+        } catch (e: java.lang.Exception) {
+            Log.d("LENGTH", "length 5 error:");
+
+            holder.example5TextView.visibility = View.GONE
+            holder.translatedExample5TextView.visibility = View.GONE
+            holder.number5TextView.visibility = View.GONE
+        }
         return rootView
     }
 
@@ -718,11 +839,19 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         }
     }
 
-    //endregion
+//endregion
 // region input >
 
     fun hideSentences() {
         isHideSentences = true
+    }
+
+    fun hideUnknownSentences() {
+        isHideUnknownSentences = true
+    }
+
+    fun showUnknownSentences() {
+        isHideUnknownSentences = false
     }
 
     fun showSentences() {
@@ -742,7 +871,7 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
     //endregion
 //region methods
-    //////////////////////////////
+//////////////////////////////
     private var mListener: OnSentenceClickListener? = null
 
 
@@ -755,8 +884,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         fun sentenceClick(collocation: Collocation, nr: Int)
     }
 
-    //////////////////////////////
-    //wysyłanie
+//////////////////////////////
+//wysyłanie
 
 
 }

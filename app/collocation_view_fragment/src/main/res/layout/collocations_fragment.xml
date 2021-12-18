@@ -47,6 +47,19 @@
         app:layout_constraintTop_toTopOf="parent"></CheckBox>
 
     <CheckBox
+        android:id="@+id/show_only_green_sentences_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:button="@android:drawable/ic_menu_sort_by_size"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
+        app:layout_constraintRight_toLeftOf="@id/show_only_known_check_box"
+        app:layout_constraintTop_toTopOf="parent"></CheckBox>
+
+    <CheckBox
         android:id="@+id/show_only_headlines_check_box"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -56,7 +69,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
-        app:layout_constraintRight_toLeftOf="@id/show_only_known_check_box"
+        app:layout_constraintRight_toLeftOf="@id/show_only_green_sentences_check_box"
         app:layout_constraintTop_toTopOf="parent"></CheckBox>
 
     <CheckBox
@@ -71,8 +84,6 @@
         app:layout_constraintBottom_toBottomOf="@id/fragment_top_background"
         app:layout_constraintRight_toLeftOf="@id/show_only_headlines_check_box"
         app:layout_constraintTop_toTopOf="parent"></CheckBox>
-
-
 
 
     <ListView

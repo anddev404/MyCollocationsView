@@ -43,11 +43,13 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     var hideUnknown = false
     var hideSentences = true
+    var hideUnknownSentences = false
     var hideTranslations = false
 
     lateinit var hideUnknownCheckBox: CheckBox
     lateinit var hideSentencesCheckBox: CheckBox
     lateinit var hideTranslationsCheckBox: CheckBox
+    lateinit var hideUnknownSentenceCheckBox: CheckBox
 
     lateinit var leftTextView: TextView
     lateinit var centerTextView: TextView
@@ -69,10 +71,13 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideUnknownCheckBox = view.findViewById(R.id.show_only_known_check_box) as CheckBox
         hideTranslationsCheckBox = view.findViewById(R.id.hide_translations_check_box) as CheckBox
         hideSentencesCheckBox = view.findViewById(R.id.show_only_headlines_check_box) as CheckBox
+        hideUnknownSentenceCheckBox =
+            view.findViewById(R.id.show_only_green_sentences_check_box) as CheckBox
 
         hideUnknownCheckBox.setOnCheckedChangeListener(this)
         hideTranslationsCheckBox.setOnCheckedChangeListener(this)
         hideSentencesCheckBox.setOnCheckedChangeListener(this)
+        hideUnknownSentenceCheckBox.setOnCheckedChangeListener(this)
 
         headTextView = view.findViewById(R.id.fragment_text_view) as TextView
 
@@ -129,7 +134,10 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             hideTranslations = isChecked
             setHideTranslations()
         }
-
+        if (buttonView == hideUnknownSentenceCheckBox) {
+            hideUnknownSentences = isChecked
+            setHideUnknownSentences()
+        }
     }
     //endregion
 
@@ -172,6 +180,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         setHideUnknown()
         setHideSentences()
         setHideTranslations()
+        setHideUnknownSentences()
 
         hideUnknownCheckBox.setOnCheckedChangeListener(this)
         hideTranslationsCheckBox.setOnCheckedChangeListener(this)
@@ -235,6 +244,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             adapter.setOnSentenceClickListener(this)
             adapter.isHideTranslation = hideTranslations
             adapter.isHideSentences = hideSentences
+            adapter.isHideUnknownSentences = hideUnknownSentences
 
             refreshList()
 
@@ -249,6 +259,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             adapter.setOnSentenceClickListener(this)
             adapter.isHideTranslation = hideTranslations
             adapter.isHideSentences = hideSentences
+            adapter.isHideUnknownSentences = hideUnknownSentences
 
             refreshList()
         }
@@ -276,6 +287,33 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
             var adapter = list.adapter as AdapterCollocationsListView
             adapter.setOnSentenceClickListener(this)
             adapter.showSentences()
+            refreshList()
+        }
+
+    }
+
+    fun setHideUnknownSentences() {
+        if (hideUnknownSentences) {
+
+            hideUnknownSentenceCheckBox.setOnCheckedChangeListener(null)
+            hideUnknownSentenceCheckBox.isChecked = true
+            hideUnknownSentenceCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
+            adapter.hideUnknownSentences()
+            refreshList()
+
+
+        } else {
+
+            hideUnknownSentenceCheckBox.setOnCheckedChangeListener(null)
+            hideUnknownSentenceCheckBox.isChecked = false
+            hideUnknownSentenceCheckBox.setOnCheckedChangeListener(this)
+
+            var adapter = list.adapter as AdapterCollocationsListView
+            adapter.setOnSentenceClickListener(this)
+            adapter.showUnknownSentences()
             refreshList()
         }
 
