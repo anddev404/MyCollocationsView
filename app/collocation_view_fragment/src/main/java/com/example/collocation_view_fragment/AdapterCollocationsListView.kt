@@ -423,6 +423,9 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
 
                     holder.blank_view.visibility = View.GONE
                 } else {
+                    //TO DO tu uwzglednic czy pokazuje tylko zielone czy wszystkie bo teraz mam -
+                        // pokazywanie wszystkich po rozwinieciu listy i to nawet fajni jest ale powinno byc tu jescze sprawdzenie czy jest pokazywanie/ukrywanie zielonych
+                   //tzn jesli wlaczone pokazywanie tylko zielonych to tylko zielone a jak wszystkich to ten kod podspodem
                     holder.example1TextView.visibility = View.VISIBLE
                     holder.example2TextView.visibility = View.VISIBLE
                     holder.example3TextView.visibility = View.VISIBLE
