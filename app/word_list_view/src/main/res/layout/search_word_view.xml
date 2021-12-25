@@ -49,6 +49,40 @@
                 app:srcCompat="@android:drawable/ic_search_category_default" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button1verb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="verb" />
+
+            <Button
+                android:id="@+id/button3noun"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NOUN" />
+
+            <Button
+                android:id="@+id/button2adjective"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="adj" />
+
+            <Button
+                android:id="@+id/button4end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="END" />
+        </LinearLayout>
+
         <ListView
             android:id="@+id/custom_view_list_view"
             android:layout_width="match_parent"

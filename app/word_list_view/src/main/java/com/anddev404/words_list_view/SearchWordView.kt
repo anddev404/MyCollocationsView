@@ -17,6 +17,12 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var resetButton: ImageButton
     private var editTextSearch: EditText
 
+    private var buttonVerb: Button
+    lateinit private var buttonAdjective: Button
+    lateinit private var buttonNoun: Button
+    lateinit private var buttonEnd: Button
+
+
     private var originalWords: ArrayList<Word>? = null
     private var showedWords: ArrayList<Word>? = null
 
@@ -67,6 +73,35 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
         list = findViewById<View>(R.id.custom_view_list_view) as ListView
 
+        buttonVerb =
+            findViewById(R.id.button1verb)
+        buttonAdjective =
+            findViewById(R.id.button2adjective)
+        buttonNoun =
+            findViewById(R.id.button3noun)
+        buttonEnd =
+            findViewById(R.id.button4end)
+
+        buttonVerb.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                goToIndex(0)
+            }
+        })
+        buttonNoun.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                goToIndex(1968)
+            }
+        })
+        buttonAdjective.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                goToIndex(6813)
+            }
+        })
+        buttonEnd.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                goToIndex(8714)
+            }
+        })
         searchButton.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 var searchWord = editTextSearch.text.toString()
