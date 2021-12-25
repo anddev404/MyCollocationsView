@@ -74,6 +74,28 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         holder.example5TextView =
             rootView.findViewById<View>(R.id.textView_example_5) as TextView
 
+        holder.line1 =
+            rootView.findViewById<View>(R.id.line1) as View
+        holder.line2 =
+            rootView.findViewById<View>(R.id.line2) as View
+        holder.line3 =
+            rootView.findViewById<View>(R.id.line3) as View
+        holder.line4 =
+            rootView.findViewById<View>(R.id.line4) as View
+        holder.line5 =
+            rootView.findViewById<View>(R.id.line5) as View
+
+        holder.line0a =
+            rootView.findViewById<View>(R.id.line0a) as View
+        holder.line1a =
+            rootView.findViewById<View>(R.id.line1a) as View
+        holder.line2a =
+            rootView.findViewById<View>(R.id.line2a) as View
+        holder.line3a =
+            rootView.findViewById<View>(R.id.line3a) as View
+        holder.line4a =
+            rootView.findViewById<View>(R.id.line4a) as View
+
         holder.number1TextView =
             rootView.findViewById<View>(R.id.number_example1) as TextView
         holder.number2TextView =
@@ -415,6 +437,19 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
                     holder.number4TextView.visibility = View.GONE
                     holder.number5TextView.visibility = View.GONE
 
+                    holder.line1.visibility = View.GONE
+                    holder.line2.visibility = View.GONE
+                    holder.line3.visibility = View.GONE
+                    holder.line4.visibility = View.GONE
+                    holder.line5.visibility = View.GONE
+
+                    holder.line0a.visibility = View.GONE
+                    holder.line1a.visibility = View.GONE
+                    holder.line2a.visibility = View.GONE
+                    holder.line3a.visibility = View.GONE
+                    holder.line4a.visibility = View.GONE
+
+
                     holder.translatedExample1TextView.visibility = View.GONE
                     holder.translatedExample2TextView.visibility = View.GONE
                     holder.translatedExample3TextView.visibility = View.GONE
@@ -424,8 +459,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
                     holder.blank_view.visibility = View.GONE
                 } else {
                     //TO DO tu uwzglednic czy pokazuje tylko zielone czy wszystkie bo teraz mam -
-                        // pokazywanie wszystkich po rozwinieciu listy i to nawet fajni jest ale powinno byc tu jescze sprawdzenie czy jest pokazywanie/ukrywanie zielonych
-                   //tzn jesli wlaczone pokazywanie tylko zielonych to tylko zielone a jak wszystkich to ten kod podspodem
+                    // pokazywanie wszystkich po rozwinieciu listy i to nawet fajni jest ale powinno byc tu jescze sprawdzenie czy jest pokazywanie/ukrywanie zielonych
+                    //tzn jesli wlaczone pokazywanie tylko zielonych to tylko zielone a jak wszystkich to ten kod podspodem
                     holder.example1TextView.visibility = View.VISIBLE
                     holder.example2TextView.visibility = View.VISIBLE
                     holder.example3TextView.visibility = View.VISIBLE
@@ -437,6 +472,18 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
                     holder.number3TextView.visibility = View.VISIBLE
                     holder.number4TextView.visibility = View.VISIBLE
                     holder.number5TextView.visibility = View.VISIBLE
+
+                    holder.line1.visibility = View.VISIBLE
+                    holder.line2.visibility = View.VISIBLE
+                    holder.line3.visibility = View.VISIBLE
+                    holder.line4.visibility = View.VISIBLE
+                    holder.line5.visibility = View.VISIBLE
+
+                    holder.line0a.visibility = View.VISIBLE
+                    holder.line1a.visibility = View.VISIBLE
+                    holder.line2a.visibility = View.VISIBLE
+                    holder.line3a.visibility = View.VISIBLE
+                    holder.line4a.visibility = View.VISIBLE
 
                     holder.translatedExample1TextView.visibility = View.VISIBLE
                     holder.translatedExample2TextView.visibility = View.VISIBLE
@@ -626,6 +673,18 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.number3TextView.visibility = View.GONE
             holder.number4TextView.visibility = View.GONE
             holder.number5TextView.visibility = View.GONE
+
+            holder.line1.visibility = View.GONE
+            holder.line2.visibility = View.GONE
+            holder.line3.visibility = View.GONE
+            holder.line4.visibility = View.GONE
+            holder.line5.visibility = View.GONE
+
+            holder.line0a.visibility = View.GONE
+            holder.line1a.visibility = View.GONE
+            holder.line2a.visibility = View.GONE
+            holder.line3a.visibility = View.GONE
+            holder.line4a.visibility = View.GONE
 
             holder.translatedExample1TextView.visibility = View.GONE
             holder.translatedExample2TextView.visibility = View.GONE
@@ -818,6 +877,18 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         lateinit var example3TextView: TextView
         lateinit var example4TextView: TextView
         lateinit var example5TextView: TextView
+
+        lateinit var line1: View
+        lateinit var line2: View
+        lateinit var line3: View
+        lateinit var line4: View
+        lateinit var line5: View
+
+        lateinit var line0a: View
+        lateinit var line1a: View
+        lateinit var line2a: View
+        lateinit var line3a: View
+        lateinit var line4a: View
 
         lateinit var number1TextView: TextView
         lateinit var number2TextView: TextView

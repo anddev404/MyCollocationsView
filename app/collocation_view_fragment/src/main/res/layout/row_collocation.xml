@@ -97,6 +97,7 @@
     </View>
 
     <View
+        android:id="@+id/line0a"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/text_color_almost_black"
@@ -110,7 +111,7 @@
         android:text="1."
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/line0a"></TextView>
 
     <TextView
         android:id="@+id/textView_example_1"
@@ -122,7 +123,16 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation" />
+        app:layout_constraintTop_toBottomOf="@id/line0a" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/text_color_weak_black"
+        app:layout_constraintLeft_toLeftOf="@id/textView_example_1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_example_1"></View>
 
     <TextView
         android:id="@+id/textView_translated_example_1"
@@ -134,9 +144,10 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_1" />
+        app:layout_constraintTop_toBottomOf="@id/line1" />
 
     <View
+        android:id="@+id/line1a"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/text_color_almost_black"
@@ -151,7 +162,7 @@
         android:text="2."
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/line1a"></TextView>
 
     <TextView
         android:id="@+id/textView_example_2"
@@ -164,7 +175,16 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example2"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1" />
+        app:layout_constraintTop_toBottomOf="@id/line1a" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/text_color_weak_black"
+        app:layout_constraintLeft_toLeftOf="@id/textView_example_2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_example_2"></View>
 
     <TextView
         android:id="@+id/textView_translated_example_2"
@@ -177,9 +197,10 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_2" />
+        app:layout_constraintTop_toBottomOf="@id/line2" />
 
     <View
+        android:id="@+id/line2a"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/text_color_almost_black"
@@ -194,7 +215,7 @@
         android:text="3."
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/line2a"></TextView>
 
     <TextView
         android:id="@+id/textView_example_3"
@@ -207,7 +228,16 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example3"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2" />
+        app:layout_constraintTop_toBottomOf="@id/line2a" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/text_color_weak_black"
+        app:layout_constraintLeft_toLeftOf="@id/textView_example_3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_example_3"></View>
 
     <TextView
         android:id="@+id/textView_translated_example_3"
@@ -220,9 +250,10 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_3" />
+        app:layout_constraintTop_toBottomOf="@id/line3" />
 
     <View
+        android:id="@+id/line3a"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/text_color_almost_black"
@@ -237,7 +268,7 @@
         android:text="4."
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_3"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/line3a"></TextView>
 
     <TextView
         android:id="@+id/textView_example_4"
@@ -250,7 +281,16 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example4"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_3" />
+        app:layout_constraintTop_toBottomOf="@id/line3a" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/text_color_weak_black"
+        app:layout_constraintLeft_toLeftOf="@id/textView_example_4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_example_4"></View>
 
     <TextView
         android:id="@+id/textView_translated_example_4"
@@ -263,9 +303,10 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_4" />
+        app:layout_constraintTop_toBottomOf="@id/line4" />
 
     <View
+        android:id="@+id/line4a"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/text_color_almost_black"
@@ -280,7 +321,7 @@
         android:text="5."
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_4"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/line4a"></TextView>
 
     <TextView
         android:id="@+id/textView_example_5"
@@ -293,7 +334,16 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/number_example5"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_4" />
+        app:layout_constraintTop_toBottomOf="@id/line4a" />
+
+    <View
+        android:id="@+id/line5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/text_color_weak_black"
+        app:layout_constraintLeft_toLeftOf="@id/textView_example_5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_example_5"></View>
 
     <TextView
         android:id="@+id/textView_translated_example_5"
@@ -305,7 +355,7 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/number_example1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_5" />
+        app:layout_constraintTop_toBottomOf="@id/line5" />
 
     <View
         android:id="@+id/blank_view"
