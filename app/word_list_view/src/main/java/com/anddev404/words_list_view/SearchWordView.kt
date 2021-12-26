@@ -99,7 +99,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         })
         buttonEnd.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
-                goToIndex(8711)
+                goToIndex(8712)
             }
         })
         searchButton.setOnClickListener(object : OnClickListener {
