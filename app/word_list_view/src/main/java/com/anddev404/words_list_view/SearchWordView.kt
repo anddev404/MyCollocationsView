@@ -1,13 +1,11 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
-import android.text.InputType
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import java.lang.Exception
 
 class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
