@@ -43,7 +43,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
         var tmpList = originalWords
 
-        result.add(Word(-2, Word.ID_MINUS_TWO, "", ""))//angielskie
+        result.add(Word(-2, Word.ID_MINUS_TWO, "=====", ""))//angielskie
         result.add(Word(-6, Word.ID_MINUS_SIX, "", ""))//czasowniki
 
         tmpList?.let {
@@ -110,7 +110,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         }
 
 
-        result.add(Word(-3, Word.ID_MINUS_THREE, "", ""))//polskie
+        result.add(Word(-3, Word.ID_MINUS_THREE, "=====", ""))//polskie
 
         tmpList?.let {
             for (w in tmpList) {
