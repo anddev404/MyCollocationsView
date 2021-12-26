@@ -42,7 +42,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_weight="5"
             android:orientation="vertical"
             android:paddingRight="5dp">
 
@@ -71,7 +71,7 @@
             android:id="@+id/translation_list_view_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6.5"
+            android:layout_weight="7.8"
             android:paddingRight="5dp"
             android:text="dom" />
 
