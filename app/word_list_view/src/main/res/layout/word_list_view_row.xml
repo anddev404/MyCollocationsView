@@ -39,13 +39,27 @@
             android:paddingRight="7dp"
             android:text=" : " />
 
-        <TextView
-            android:id="@+id/word_list_view_row"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingRight="10dp"
-            android:text="home" />
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/word_list_view_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="home" />
+
+            <TextView
+                android:id="@+id/prouncination_list_view_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hołm" />
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,23 +71,10 @@
             android:id="@+id/translation_list_view_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:paddingRight="10dp"
+            android:layout_weight="6.5"
+            android:paddingRight="5dp"
             android:text="dom" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="7dp"
-            android:text=" : " />
-
-        <TextView
-            android:id="@+id/prouncination_list_view_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingRight="10dp"
-            android:text="hołm" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
