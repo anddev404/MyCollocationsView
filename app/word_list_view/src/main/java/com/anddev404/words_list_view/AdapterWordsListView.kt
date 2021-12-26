@@ -61,8 +61,33 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
         if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
         if (list.get(position).id < 0) holder.layout.setBackgroundColor(context.resources.getColor(R.color.dark))
-        if (list.get(position).forNr != 0) holder.forNr.text =
-            "${list.get(position).forNr}" else holder.forNr.text = ""
+
+        if (list.get(position).partOfSpeech == 1) holder.layout.setBackgroundColor(
+            context.resources.getColor(
+                R.color.noun_color
+            )
+        )
+        if (list.get(position).partOfSpeech == 2) holder.layout.setBackgroundColor(
+            context.resources.getColor(
+                R.color.adj_color
+            )
+        )
+        if (list.get(position).partOfSpeech == 3) holder.layout.setBackgroundColor(
+            context.resources.getColor(
+                R.color.verb_color
+            )
+        )
+        if (list.get(position).partOfSpeech == 0 && list.get(position).id > 0) holder.layout.setBackgroundColor(
+            context.resources.getColor(R.color.unknown_color)
+        )
+
+        if (position + 1 == list.get(position).forNr) {
+            holder.forNr.text = ""
+        } else {
+            if (list.get(position).forNr != 0) holder.forNr.text =
+                "${list.get(position).forNr}" else holder.forNr.text = ""
+        }
+
 
         try {
 

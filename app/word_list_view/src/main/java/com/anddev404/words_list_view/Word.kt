@@ -20,6 +20,8 @@ class Word(
                 list.add(Word(4, "come", "przyjść", "kom", 3))
                 list.add(Word(5, "good", "dobry", "guud", 2))
                 list.add(Word(6, "bad", "zły", "bad", 2))
+                list.add(Word(5, "good", "dobry", "guud", 0))
+                list.add(Word(6, "bad", "zły", "bad", 0))
             }
 
             return list
