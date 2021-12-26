@@ -48,6 +48,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
         holder.nr =
             rootView.findViewById<View>(R.id.nr_list_view_row) as TextView
+        holder.forNr =
+            rootView.findViewById<View>(R.id.nr_word_list_view_row) as TextView
         holder.word =
             rootView.findViewById<View>(R.id.word_list_view_row) as TextView
         holder.translation =
@@ -59,6 +61,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
         if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
         if (list.get(position).id < 0) holder.layout.setBackgroundColor(context.resources.getColor(R.color.dark))
+        if (list.get(position).forNr != 0) holder.forNr.text =
+            "${list.get(position).forNr}" else holder.forNr.text = ""
 
         try {
 
@@ -85,6 +89,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
     class Holder() {
         lateinit var nr: TextView
+        lateinit var forNr: TextView
+
         lateinit var word: TextView
         lateinit var translation: TextView
         lateinit var prouncination: TextView

@@ -18,8 +18,20 @@
             android:id="@+id/nr_list_view_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
+            android:paddingLeft="3dp"
             android:text="=====" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <TextView
+            android:id="@+id/nr_word_list_view_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="22100" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -18,9 +18,9 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var editTextSearch: EditText
 
     private var buttonVerb: Button
-    lateinit private var buttonAdjective: Button
-    lateinit private var buttonNoun: Button
-    lateinit private var buttonEnd: Button
+    private var buttonAdjective: Button
+    private var buttonNoun: Button
+    private var buttonEnd: Button
 
 
     private var originalWords: ArrayList<Word>? = null
@@ -40,20 +40,136 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         var result = arrayListOf<Word>()
         result.add(Word(-1, Word.ID_MINUS_ONE, "", ""))
         result.add(Word(0, searchWord, "", ""))
-        result.add(Word(-2, Word.ID_MINUS_TWO, "", ""))
 
-        originalWords.let {
-            for (w in originalWords!!) {
-                if (w.word.contains(searchWord)) {
+        var tmpList = originalWords
+
+        result.add(Word(-2, Word.ID_MINUS_TWO, "", ""))//angielskie
+        result.add(Word(-6, Word.ID_MINUS_SIX, "", ""))//czasowniki
+
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 3 && w.word.equals(searchWord)) {
                     result.add(w)
                 }
             }
         }
-        result.add(Word(-3, Word.ID_MINUS_THREE, "", ""))
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 3 && w.word.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
 
-        originalWords.let {
-            for (w in originalWords!!) {
-                if (w.translation.contains(searchWord)) {
+        result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.word.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 2 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 2 && w.word.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.word.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+
+        result.add(Word(-3, Word.ID_MINUS_THREE, "", ""))//polskie
+
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 3 && w.translation.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 3 && w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.translation.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 2 && w.translation.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 2 && w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.translation.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.translation.contains(searchWord)) {
                     result.add(w)
                 }
             }
@@ -175,6 +291,11 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     fun setWords(words: ArrayList<Word>) {
+
+        for (w in words.indices) {
+            words[w].forNr = w + 1
+        }
+
         this.originalWords = words
         showedWords = originalWords
         list.adapter =
