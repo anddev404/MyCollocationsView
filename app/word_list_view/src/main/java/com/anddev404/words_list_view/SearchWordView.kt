@@ -290,8 +290,28 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     fun setWords(words: ArrayList<Word>) {
 
+        var nounCount = 1
+        var adjCount = 1
+        var verbCount = 1
+        var unknownCount = 1
+
         for (w in words.indices) {
-            words[w].forNr = w + 1
+            if (words[w].partOfSpeech == 3) {
+                words[w].forNr = verbCount
+                verbCount++
+            }
+            if (words[w].partOfSpeech == 2) {
+                words[w].forNr = adjCount
+                adjCount++
+            }
+            if (words[w].partOfSpeech == 1) {
+                words[w].forNr = nounCount
+                nounCount++
+            }
+            if (words[w].partOfSpeech == 0) {
+                words[w].forNr = unknownCount
+                unknownCount++
+            }
         }
 
         this.originalWords = words
