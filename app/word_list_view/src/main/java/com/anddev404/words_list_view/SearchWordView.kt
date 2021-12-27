@@ -33,6 +33,10 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         }
     }
 
+    fun quickRefreshViewList() {
+        list.invalidateViews()
+    }
+
     fun searchResult(searchWord: String): ArrayList<Word> {
 
         var result = arrayListOf<Word>()
