@@ -7,5 +7,8 @@
     <color name="adj_color">#ADDD76</color>
     <color name="unknown_color">#16000000</color>
 
+    <color name="text_color">#B9000000</color>
+    <color name="row_line_color">#9E000000</color>
+
 
 </resources>

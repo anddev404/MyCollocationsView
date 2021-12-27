@@ -14,6 +14,7 @@
         android:paddingBottom="5dp"
         android:weightSum="13">
 
+
         <TextView
             android:id="@+id/nr_list_view_row"
             android:layout_width="wrap_content"
@@ -26,12 +27,27 @@
             android:layout_height="wrap_content"
             android:text="," />
 
-        <TextView
-            android:id="@+id/nr_word_list_view_row"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="22100" />
+            android:orientation="vertical"
+
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/nr_word_list_view_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22100" />
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/0"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,13 +66,16 @@
                 android:id="@+id/word_list_view_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="home" />
+                android:text="home"
+                android:textColor="@color/text_color"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prouncination_list_view_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hołm" />
+                android:text="hołm"
+                android:textColor="@color/text_color" />
 
         </LinearLayout>
 
@@ -73,8 +92,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="7.8"
             android:paddingRight="5dp"
-            android:text="dom" />
+            android:text="dom"
+            android:textColor="@color/text_color" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/row_line_color"
+        app:layout_constraintTop_toBottomOf="@id/layout_list_view">
+
+    </View>
 </androidx.constraintlayout.widget.ConstraintLayout>

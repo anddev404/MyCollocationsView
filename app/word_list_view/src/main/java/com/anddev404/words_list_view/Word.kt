@@ -6,7 +6,9 @@ class Word(
     var translation: String,
     var prouncination: String,
     var partOfSpeech: Int = 0,
-    var forNr: Int = 0
+    var forNr: Int = 0,
+    var greenCollocationsCount: Int = 0,
+    var greenSentencesCount: Int = 0,
 ) {
 
     companion object {
@@ -14,14 +16,34 @@ class Word(
             var list = arrayListOf<Word>()
 
             for (i in 1..3000) {
-                list.add(Word(1, "home", "dom", "hołm", 1))
-                list.add(Word(2, "door", "drzwi", "doo", 1))
-                list.add(Word(3, "go", "iść", "goł", 3))
-                list.add(Word(4, "come", "przyjść", "kom", 3))
+                list.add(Word(1, "home", "dom", "hołm", 1).apply {
+                    greenCollocationsCount = 1
+                    greenSentencesCount = 2
+                })
+                list.add(Word(2, "door", "drzwi", "doo", 1).apply {
+                    greenCollocationsCount = 3
+                    greenSentencesCount = 4
+                })
+                list.add(Word(3, "go", "iść", "goł", 3).apply {
+                    greenCollocationsCount = 5
+                    greenSentencesCount = 6
+                })
+                list.add(Word(4, "come", "przyjść", "kom", 3).apply {
+                    greenCollocationsCount = 7
+                    greenSentencesCount = 8
+                })
                 list.add(Word(5, "good", "dobry", "guud", 2))
                 list.add(Word(6, "bad", "zły", "bad", 2))
                 list.add(Word(5, "good", "dobry", "guud", 0))
                 list.add(Word(6, "bad", "zły", "bad", 0))
+                list.add(Word(5, "good", "dobry", "guud", 0))
+                list.add(Word(6, "bad", "zły", "bad", 0))
+                list.add(Word(6, "bad", "zły", "bad", 0))
+                list.add(Word(5, "good", "dobry", "guud", 0))
+                list.add(Word(6, "bad", "zły", "bad", 0))
+                list.add(Word(5, "good", "dobry", "guud", 0))
+                list.add(Word(6, "bad", "zły", "bad", 0))
+
             }
 
             return list

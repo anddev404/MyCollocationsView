@@ -58,6 +58,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             rootView.findViewById<View>(R.id.prouncination_list_view_row) as TextView
         holder.layout =
             rootView.findViewById<View>(R.id.layout_list_view) as LinearLayout
+        holder.info =
+            rootView.findViewById<View>(R.id.info) as TextView
 
         if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
         if (list.get(position).id < 0) holder.layout.setBackgroundColor(context.resources.getColor(R.color.dark))
@@ -109,6 +111,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         holder.translation.text = list.get(position).translation
         holder.prouncination.text = list.get(position).prouncination
 
+        holder.info.text =
+            "${list.get(position).greenCollocationsCount}/${list.get(position).greenSentencesCount}"
         return rootView
     }
 
@@ -119,6 +123,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         lateinit var word: TextView
         lateinit var translation: TextView
         lateinit var prouncination: TextView
+        lateinit var info: TextView
         lateinit var layout: LinearLayout
 
         init {
