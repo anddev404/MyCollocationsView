@@ -112,7 +112,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         holder.prouncination.text = list.get(position).prouncination
 
         holder.info.text =
-            "${list.get(position).greenCollocationsCount}/${list.get(position).greenSentencesCount}"
+            "${list.get(position).greenCollocationsCount}c / ${list.get(position).greenSentencesCount}s"
         return rootView
     }
 
