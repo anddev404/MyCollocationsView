@@ -48,11 +48,32 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         var tmpList = originalWords
 
         result.add(Word(-2, Word.ID_MINUS_TWO, "=====", ""))//angielskie
-        result.add(Word(-6, Word.ID_MINUS_SIX, "", ""))//czasowniki
+        //  result.add(Word(-6, Word.ID_MINUS_SIX, "", ""))//czasowniki
 
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 3 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 2 && w.word.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.word.equals(searchWord)) {
                     result.add(w)
                 }
             }
@@ -65,14 +86,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             }
         }
 
-        result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
-        tmpList?.let {
-            for (w in tmpList) {
-                if (w.partOfSpeech == 1 && w.word.equals(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
+        // result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
+
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 1 && w.word.contains(searchWord)) {
@@ -81,14 +96,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             }
         }
 
-        result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
-        tmpList?.let {
-            for (w in tmpList) {
-                if (w.partOfSpeech == 2 && w.word.equals(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
+        //result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
+
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 2 && w.word.contains(searchWord)) {
@@ -97,14 +106,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             }
         }
 
-        result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
-        tmpList?.let {
-            for (w in tmpList) {
-                if (w.partOfSpeech == 0 && w.word.equals(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
+        //  result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
+
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 0 && w.word.contains(searchWord)) {
@@ -125,29 +128,11 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         }
         tmpList?.let {
             for (w in tmpList) {
-                if (w.partOfSpeech == 3 && w.translation.contains(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
-
-        result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
-        tmpList?.let {
-            for (w in tmpList) {
                 if (w.partOfSpeech == 1 && w.translation.equals(searchWord)) {
                     result.add(w)
                 }
             }
         }
-        tmpList?.let {
-            for (w in tmpList) {
-                if (w.partOfSpeech == 1 && w.translation.contains(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
-
-        result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 2 && w.translation.equals(searchWord)) {
@@ -157,20 +142,40 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         }
         tmpList?.let {
             for (w in tmpList) {
+                if (w.partOfSpeech == 0 && w.translation.equals(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 3 && w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        //  result.add(Word(-7, Word.ID_MINUS_SEVEN, "", ""))//rzeczowniki
+
+        tmpList?.let {
+            for (w in tmpList) {
+                if (w.partOfSpeech == 1 && w.translation.contains(searchWord)) {
+                    result.add(w)
+                }
+            }
+        }
+
+        // result.add(Word(-8, Word.ID_MINUS_EIGHT, "", ""))//pzzymiotniki
+
+        tmpList?.let {
+            for (w in tmpList) {
                 if (w.partOfSpeech == 2 && w.translation.contains(searchWord)) {
                     result.add(w)
                 }
             }
         }
 
-        result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
-        tmpList?.let {
-            for (w in tmpList) {
-                if (w.partOfSpeech == 0 && w.translation.equals(searchWord)) {
-                    result.add(w)
-                }
-            }
-        }
+        //  result.add(Word(-9, Word.ID_MINUS_NINE, "", ""))//nieznane
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 0 && w.translation.contains(searchWord)) {
