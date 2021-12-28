@@ -29,6 +29,7 @@
         app:layout_constraintBottom_toBottomOf="@id/head_colored_view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/head_colored_view"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/icon_rozwin"
         tools:ignore="VectorDrawableCompat" />
 
@@ -76,7 +77,9 @@
         android:text="collocation"
         android:textColor="@color/text_color_black"
         android:textSize="22sp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/number_collocation"
+        app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
         app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation" />
 
     <TextView
@@ -85,7 +88,9 @@
         android:layout_height="wrap_content"
         android:text="translated collocation"
         android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/number_collocation"
+        app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
         app:layout_constraintTop_toBottomOf="@id/textView_collocation" />
 
     <View
