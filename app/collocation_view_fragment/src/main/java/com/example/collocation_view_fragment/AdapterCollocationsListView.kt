@@ -132,7 +132,8 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         }
 
 
-        holder.collocationTextView.text = list.get(position).collocation
+        holder.collocationTextView.text =
+            list.get(position).collocation + " (${list.get(position).frequency})"
         holder.translatedCollocationTextView.text = list.get(position).translatedCollocation
 
 
