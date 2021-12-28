@@ -78,6 +78,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                 }
             }
         }
+        result.add(Word(-5, Word.ID_MINUS_FIVE, "", ""))
+
         tmpList?.let {
             for (w in tmpList) {
                 if (w.partOfSpeech == 3 && w.word.contains(searchWord)) {

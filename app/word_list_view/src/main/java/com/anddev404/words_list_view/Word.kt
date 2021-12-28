@@ -69,10 +69,10 @@ class Word(
 
         val ID_MINUS_FOUR = "<b> == :</b>"
         val ID_MINUS_FIVE = "<b> != :</b>"
-        val ID_MINUS_SIX = "<b>verbs:</b>"
-        val ID_MINUS_SEVEN = "<b>nouns:</b>"
-        val ID_MINUS_EIGHT = "<b>adj.:</b>"
-        val ID_MINUS_NINE = "<b>unkn.:</b>"
+//        val ID_MINUS_SIX = "<b>verbs:</b>"
+//        val ID_MINUS_SEVEN = "<b>nouns:</b>"
+//        val ID_MINUS_EIGHT = "<b>adj.:</b>"
+//        val ID_MINUS_NINE = "<b>unkn.:</b>"
     }
 
 }
