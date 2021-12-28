@@ -25,6 +25,14 @@ class WordListViewActivity : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, "Wybrano: $word", Toast.LENGTH_LONG).show();
             }
+
+            override fun collocationsSearch(word: String) {
+                Toast.makeText(applicationContext, "Szukasz kolokacji: $word", Toast.LENGTH_LONG).show();
+            }
+
+            override fun sentencesSearch(word: String) {
+                Toast.makeText(applicationContext, "Szukasz zdań: $word", Toast.LENGTH_LONG).show();
+            }
         })
 
     }

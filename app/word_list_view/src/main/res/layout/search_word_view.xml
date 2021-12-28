@@ -61,28 +61,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="verb" />
+                android:text="V" />
 
             <Button
                 android:id="@+id/button3noun"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="NOUN" />
+                android:text="N" />
 
             <Button
                 android:id="@+id/button2adjective"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="adj" />
+                android:text="A" />
 
             <Button
                 android:id="@+id/button4end"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="END" />
+                android:text="R" />
 
             <Button
                 android:id="@+id/searchCollocationButton"

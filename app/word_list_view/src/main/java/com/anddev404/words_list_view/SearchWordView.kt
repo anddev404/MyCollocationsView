@@ -12,6 +12,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var text: TextView
     private var list: ListView
     private var searchButton: ImageButton
+    private var searchCollocationsButton: Button
+    private var searchSentencesButton: Button
     private var resetButton: ImageButton
     private var editTextSearch: EditText
 
@@ -290,6 +292,32 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             }
 
         })
+        searchCollocationsButton =
+            findViewById(R.id.searchCollocationButton)
+        searchCollocationsButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                var searchWord = editTextSearch.text.toString()
+                Log.d("MARCIN", "search collocations: $searchWord");
+                if (searchWord.length > 1) {
+                    mListener?.collocationsSearch(searchWord)
+                } else {
+                    Toast.makeText(context, "tekst jest za krótki", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
+        searchSentencesButton =
+            findViewById(R.id.searchSentencesButton)
+        searchSentencesButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                var searchWord = editTextSearch.text.toString()
+                Log.d("MARCIN", "search sentences: $searchWord");
+                if (searchWord.length > 1) {
+                    mListener?.sentencesSearch(searchWord)
+                } else {
+                    Toast.makeText(context, "tekst jest za krótki", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
     }
 
     fun setWords(words: ArrayList<Word>) {
@@ -335,6 +363,9 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     interface OnSearchWordViewListener {
         fun wordSearch(word: String, id: Int)
+        fun collocationsSearch(word: String)
+        fun sentencesSearch(word: String)
+
     }
 
 //////////////////////////////
