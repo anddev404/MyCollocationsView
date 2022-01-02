@@ -13,6 +13,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var list: ListView
     private var searchButton: ImageButton
     private var searchCollocationsButton: Button
+    private var filterSentencesButton: ImageButton
     private var searchSentencesButton: Button
     private var resetButton: ImageButton
     private var editTextSearch: EditText
@@ -195,6 +196,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
         searchButton =
             findViewById(R.id.custom_view_button_search)
+        filterSentencesButton =
+            findViewById(R.id.custom_view_filter_search)
         resetButton =
             findViewById(R.id.custom_view_button_reset)
 
@@ -260,7 +263,32 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
             }
         })
+        filterSentencesButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                Log.d("MARCIN", "filtr button");
+                showedWords = arrayListOf()
 
+                var copy = originalWords ?: arrayListOf()
+
+                for (i in copy) {
+                    if (i.greenCollocationsCount > 0 || i.greenSentencesCount > 0) {
+                        showedWords?.add(i)
+
+                    }
+                }
+
+
+
+                showedWords.let {
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+
+                }
+
+
+            }
+        })
         text = findViewById(R.id.custom_view_text_view)
 
 
@@ -325,6 +353,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                 }
             }
         })
+
     }
 
     fun setWords(words: ArrayList<Word>) {
