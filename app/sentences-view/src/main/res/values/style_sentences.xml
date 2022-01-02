@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="style_sentences_background">
+        <item name="android:background">@color/collocations_rest_normal</item>
+    </style>
+
+    <style name="style_sentence">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="style_sentence_translation">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

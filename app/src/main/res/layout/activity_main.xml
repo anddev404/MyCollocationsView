@@ -12,11 +12,17 @@
         class="com.example.collocation_view_fragment.CollocationsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="16"></fragment>
+        android:layout_weight="6"></fragment>
 
     <fragment
         android:id="@+id/partOfSpeechFragment"
         class="com.example.collocation_view_fragment.PartOfSpeechFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></fragment>
+
+    <fragment
+        android:id="@+id/sentencesFragment"
+        class="com.anddev404.sentences_view.SentencesFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></fragment>
 

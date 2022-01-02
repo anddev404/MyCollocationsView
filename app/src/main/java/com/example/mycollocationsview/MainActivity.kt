@@ -6,16 +6,19 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.anddev404.sentences_view.SentencesFragment
 import com.example.collocation_view_fragment.Collocation
 import com.example.collocation_view_fragment.CollocationsFragment
 import com.example.collocation_view_fragment.PartOfSpeechFragment
 
 class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener,
-    View.OnClickListener, PartOfSpeechFragment.OnPartOfSpeechFragmentListener {
+    View.OnClickListener, PartOfSpeechFragment.OnPartOfSpeechFragmentListener,
+    SentencesFragment.OnSentenceClickListener {
 
 
     lateinit var fragment1: CollocationsFragment
     lateinit var fragmentPartOfSpeech: PartOfSpeechFragment
+    lateinit var fragmentSentence: SentencesFragment
 
     lateinit var button: Button
 
@@ -126,9 +129,10 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
 
     fun testFragments() {
-
-        //TODO w przyszłosci zaimplementować pobieranie z limitem i pobierac i wyswietlac limit
-
+        fragmentSentence = supportFragmentManager
+            .findFragmentById(R.id.sentencesFragment) as SentencesFragment
+        fragmentSentence.setOnSentenceClickListener(this)
+        fragmentSentence.setSentences("one", "jeden", true)
         button = findViewById(R.id.changeCollocationButton) as Button
         button.setOnClickListener(this)
 
@@ -199,5 +203,20 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 //    }
     override fun onClick(v: View?) {
 //        onClickFragment()
+    }
+
+
+    override fun sentenceClick(
+        fragment: View,
+        nr: Int,
+        sentence: String,
+        translation: String,
+        isChecked: Boolean
+    ) {
+        Toast.makeText(
+            this,
+            "click sentence: $nr, $sentence, $translation, $isChecked,",
+            Toast.LENGTH_LONG
+        ).show();
     }
 }

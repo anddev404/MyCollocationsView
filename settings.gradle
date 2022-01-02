@@ -2,3 +2,4 @@ rootProject.name = "MyCollocationsView"
 include ':app'
 include ':app:collocation_view_fragment'
 include ':app:word_list_view'
+include ':app:sentences-view'
