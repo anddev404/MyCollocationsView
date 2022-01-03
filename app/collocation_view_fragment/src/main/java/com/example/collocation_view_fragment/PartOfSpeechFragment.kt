@@ -227,10 +227,11 @@ class PartOfSpeechFragment : Fragment() {
         fun relationListVerb(): ArrayList<String> {
             var list = arrayListOf<String>()
             list.add(RELATION_3_V_subj_N)
+            list.add(RELATION_1_V_obj_N)
             list.add(RELATION_2_V_prep_N)
             list.add(RELATION_8_V_mod_A)
-            list.add(RELATION_1_V_obj_N)
             list.add(RELATION_5_N_mod_A)
+            list.add(RELATION_11_V_obj_prep_N)
             return list
         }
 
@@ -274,19 +275,22 @@ class PartOfSpeechFragment : Fragment() {
             if (partOfSpeech == PART_OF_SPEECH_VERB) {
 
                 if (relation.equals(RELATION_3_V_subj_N)) {
-                    return "<b>rain</b> come"
-                }
-                if (relation.equals(RELATION_2_V_prep_N)) {
-                    return "to begin to <b>rain</b>"
-                }
-                if (relation.equals(RELATION_8_V_mod_A)) {
-                    return "to <b>rain</b> hard (jak?)"
+                    return "kto/co <b>czasownik</b>"
                 }
                 if (relation.equals(RELATION_1_V_obj_N)) {
                     return ""
                 }
+                if (relation.equals(RELATION_2_V_prep_N)) {
+                    return "czawsownik + <b>to, in, on, for</b>"
+                }
+                if (relation.equals(RELATION_8_V_mod_A)) {
+                    return "kolokacje / przysłówki"
+                }
                 if (relation.equals(RELATION_5_N_mod_A)) {
-                    return ""
+                    return "now znaczenia/słowa"
+                }
+                if (relation.equals(RELATION_11_V_obj_prep_N)) {
+                    return "złożone zdania"
                 }
 
             }
