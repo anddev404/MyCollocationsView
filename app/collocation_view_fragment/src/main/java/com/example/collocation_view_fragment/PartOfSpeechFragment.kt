@@ -275,19 +275,19 @@ class PartOfSpeechFragment : Fragment() {
             if (partOfSpeech == PART_OF_SPEECH_VERB) {
 
                 if (relation.equals(RELATION_3_V_subj_N)) {
-                    return "kto/co <b>czasownik</b>"
+                    return "..... <b>czasownik</b>"
                 }
                 if (relation.equals(RELATION_1_V_obj_N)) {
-                    return ""
+                    return "<b>czasownik</b> ....."
                 }
                 if (relation.equals(RELATION_2_V_prep_N)) {
-                    return "czawsownik + <b>to, in, on, for</b>"
+                    return "<b>czasownik</b> + to, in, on, for"
                 }
                 if (relation.equals(RELATION_8_V_mod_A)) {
                     return "kolokacje / przysłówki"
                 }
                 if (relation.equals(RELATION_5_N_mod_A)) {
-                    return "now znaczenia/słowa"
+                    return "nowe znaczenia/słowa"
                 }
                 if (relation.equals(RELATION_11_V_obj_prep_N)) {
                     return "złożone zdania"
