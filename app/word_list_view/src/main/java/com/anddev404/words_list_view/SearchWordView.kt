@@ -46,6 +46,10 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         list.invalidateViews()
     }
 
+    fun getActualWordList(): ArrayList<Word> {
+        return (list.adapter as AdapterWordsListView).list
+    }
+
     fun searchResult(searchWord: String): ArrayList<Word> {
 
         var result = arrayListOf<Word>()
