@@ -2,6 +2,7 @@ package com.example.mycollocationsview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
@@ -35,8 +36,15 @@ class WordListViewActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Szukasz zdań: $word", Toast.LENGTH_LONG).show();
             }
 
-            override fun getGreenCollocationsFromDatabase(word: String): String {
-                return "witam"
+            override fun getGreenCollocationsFromDatabase(): List<String> {
+                var list = arrayListOf<String>()
+                list.add("jeden")
+                list.add("dwa")
+                list.add("trzy")
+                list.add("cztery")
+
+                //   Thread.sleep(3500)
+                return list
             }
         })
 

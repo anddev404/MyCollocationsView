@@ -1,11 +1,16 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
@@ -206,6 +211,21 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
         list = findViewById<View>(R.id.custom_view_list_view) as ListView
 
+//        list.setOnScrollListener(object : AbsListView.OnScrollListener {
+//            override fun onScrollStateChanged(view: AbsListView?, scrollState: Int) {
+//
+//            }
+//
+//            override fun onScroll(
+//                view: AbsListView?,
+//                firstVisibleItem: Int,
+//                visibleItemCount: Int,
+//                totalItemCount: Int
+//            ) {
+//                Log.d("SCROOOL", "$firstVisibleItem $visibleItemCount $totalItemCount");
+//            }
+//
+//        })
         buttonVerb =
             findViewById(R.id.button1verb)
         buttonAdjective =
@@ -306,12 +326,16 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                     }
                 }
 
-
-
-                showedWords.let {
+                var allGreenCollocations =
+                    mListener?.getGreenCollocationsFromDatabase() ?: arrayListOf()
+                showedWords?.let {
 //tru mam wykrzykniki moze byc bład bo kopilator nie pozwolił bez tego bo nie mozna kolcetion.arraylist na java.arraylist
-                    for (i in showedWords!!) {
-                        i.study_String = mListener?.getGreenCollocationsFromDatabase(i.word) ?: ""
+                    for (i in showedWords!!.indices) {
+                        try {
+                            showedWords!![i].study_String = allGreenCollocations[i]
+                        } catch (e: Exception) {
+
+                        }
                     }
 
                     list.adapter =
@@ -435,7 +459,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         fun wordSearch(word: String, id: Int)
         fun collocationsSearch(word: String)
         fun sentencesSearch(word: String)
-        fun getGreenCollocationsFromDatabase(word: String): String
+        fun getGreenCollocationsFromDatabase(): List<String>
 
     }
 
