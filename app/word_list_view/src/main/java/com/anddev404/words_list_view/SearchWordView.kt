@@ -330,10 +330,17 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                     }
                 }
 
-                var allGreenCollocations =
-                    mListener?.getGreenCollocationsFromDatabase() ?: arrayListOf()
+
                 showedWords?.let {
 //tru mam wykrzykniki moze byc bład bo kopilator nie pozwolił bez tego bo nie mozna kolcetion.arraylist na java.arraylist
+
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+
+                    var allGreenCollocations =
+                        mListener?.getGreenCollocationsFromDatabase() ?: arrayListOf()
+
                     for (i in showedWords!!.indices) {
                         try {
                             showedWords!![i].study_String = allGreenCollocations[i]
@@ -341,11 +348,6 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
                         }
                     }
-
-                    list.adapter =
-                        AdapterWordsListView(context, showedWords!!)
-                    Log.d("MARCIN", "refresh list");
-
                 }
 
 
