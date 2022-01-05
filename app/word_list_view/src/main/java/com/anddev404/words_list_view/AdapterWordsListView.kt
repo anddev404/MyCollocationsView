@@ -1,7 +1,6 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
-import android.opengl.Visibility
 import android.os.Build
 import android.text.Html
 import android.util.Log
@@ -43,10 +42,9 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val rootView = inflater.inflate(R.layout.word_list_view_row, null)
-        Log.d("ADAPTER", "getView");
+        Log.d("ADAPTER", "getView ${position + 1} ${list.get(position).word}");
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
-
         holder.nr =
             rootView.findViewById<View>(R.id.nr_list_view_row) as TextView
         holder.forNr =
