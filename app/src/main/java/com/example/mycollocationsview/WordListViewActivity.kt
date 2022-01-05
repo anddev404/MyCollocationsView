@@ -27,11 +27,16 @@ class WordListViewActivity : AppCompatActivity() {
             }
 
             override fun collocationsSearch(word: String) {
-                Toast.makeText(applicationContext, "Szukasz kolokacji: $word", Toast.LENGTH_LONG).show();
+                Toast.makeText(applicationContext, "Szukasz kolokacji: $word", Toast.LENGTH_LONG)
+                    .show();
             }
 
             override fun sentencesSearch(word: String) {
                 Toast.makeText(applicationContext, "Szukasz zdań: $word", Toast.LENGTH_LONG).show();
+            }
+
+            override fun getGreenCollocationsFromDatabase(word: String): String {
+                return "witam"
             }
         })
 

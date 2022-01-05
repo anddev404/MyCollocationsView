@@ -1,6 +1,7 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Build
 import android.text.Html
 import android.util.Log
@@ -56,6 +57,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             rootView.findViewById<View>(R.id.translation_list_view_row) as TextView
         holder.prouncination =
             rootView.findViewById<View>(R.id.prouncination_list_view_row) as TextView
+        holder.study_Text =
+            rootView.findViewById<View>(R.id.study_view_TextView) as TextView
         holder.layout =
             rootView.findViewById<View>(R.id.layout_list_view) as LinearLayout
         holder.info =
@@ -113,6 +116,11 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
         holder.info.text =
             "${list.get(position).greenCollocationsCount}c / ${list.get(position).greenSentencesCount}s"
+        holder.study_Text.visibility = View.GONE
+        if (list.get(position).study_String.length > 0) {
+            holder.study_Text.visibility = View.VISIBLE
+            holder.study_Text.text = list.get(position).study_String
+        }
         return rootView
     }
 
@@ -124,6 +132,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         lateinit var translation: TextView
         lateinit var prouncination: TextView
         lateinit var info: TextView
+        lateinit var study_Text: TextView
         lateinit var layout: LinearLayout
 
         init {

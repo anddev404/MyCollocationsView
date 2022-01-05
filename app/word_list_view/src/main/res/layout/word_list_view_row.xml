@@ -97,11 +97,25 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/study_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/layout_list_view">
+
+        <TextView
+            android:id="@+id/study_view_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"></TextView>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/row_line_color"
-        app:layout_constraintTop_toBottomOf="@id/layout_list_view">
+        app:layout_constraintTop_toBottomOf="@id/study_view">
 
     </View>
 </androidx.constraintlayout.widget.ConstraintLayout>

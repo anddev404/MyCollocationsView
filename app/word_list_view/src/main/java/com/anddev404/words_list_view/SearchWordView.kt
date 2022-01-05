@@ -14,6 +14,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var searchButton: ImageButton
     private var searchCollocationsButton: Button
     private var filterSentencesButton: ImageButton
+    private var studyButton: ImageButton
     private var searchSentencesButton: Button
     private var resetButton: ImageButton
     private var editTextSearch: EditText
@@ -198,6 +199,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             findViewById(R.id.custom_view_button_search)
         filterSentencesButton =
             findViewById(R.id.custom_view_filter_search)
+        studyButton =
+            findViewById(R.id.study_button)
         resetButton =
             findViewById(R.id.custom_view_button_reset)
 
@@ -280,6 +283,37 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
 
                 showedWords.let {
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+
+                }
+
+
+            }
+        })
+        studyButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                Log.d("MARCIN", "filtr button");
+                showedWords = arrayListOf()
+
+                var copy = originalWords ?: arrayListOf()
+
+                for (i in copy) {
+                    if (i.greenCollocationsCount > 0 || i.greenSentencesCount > 0) {
+                        showedWords?.add(i)
+
+                    }
+                }
+
+
+
+                showedWords.let {
+//tru mam wykrzykniki moze byc bład bo kopilator nie pozwolił bez tego bo nie mozna kolcetion.arraylist na java.arraylist
+                    for (i in showedWords!!) {
+                        i.study_String = mListener?.getGreenCollocationsFromDatabase(i.word) ?: ""
+                    }
+
                     list.adapter =
                         AdapterWordsListView(context, showedWords!!)
                     Log.d("MARCIN", "refresh list");
@@ -401,6 +435,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         fun wordSearch(word: String, id: Int)
         fun collocationsSearch(word: String)
         fun sentencesSearch(word: String)
+        fun getGreenCollocationsFromDatabase(word: String): String
 
     }
 

@@ -10,6 +10,7 @@ class Word(
     var greenCollocationsCount: Int = 0,
     var greenSentencesCount: Int = 0,
 ) {
+    var study_String = ""
 
     companion object {
         fun getList(): ArrayList<Word> {
