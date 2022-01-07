@@ -12,11 +12,13 @@
         android:id="@+id/button_collocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Collocation View" />
 
     <Button
         android:id="@+id/button2_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Word List" />
 </LinearLayout>
