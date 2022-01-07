@@ -42,10 +42,20 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
      * @sample tylko aktualizacja bazy. Model(collocation.isChecked) został już zmieniony.
      */
     override fun clickItem(fragment: CollocationsFragment, collocation: Collocation) {
-        //TODO only update database ,already changed isChecked
+        collocation?.let {
+            Log.d(
+                "MARCIN", "${
+                    collocation.id
+                } ${collocation.collocation}"
+            )
+        }
     }
 
-    override fun clickSentence(fragment: CollocationsFragment, collocation: Collocation, nr: Int) {
+    override fun clickSentence(
+        fragment: CollocationsFragment,
+        collocation: Collocation,
+        nr: Int
+    ) {
         //TODO("Not yet implemented")
     }
 
