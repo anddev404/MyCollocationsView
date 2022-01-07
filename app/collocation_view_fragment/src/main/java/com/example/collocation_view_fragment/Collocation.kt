@@ -9,14 +9,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class Collocation(
-    var id: Int,
-    var collocation: String,
-    var translatedCollocation: String,
+    var id: Int = -1,
+    var collocation: String = "Header",
+    var translatedCollocation: String = "",
     var isChecked: Boolean = false,
-    var examples: ArrayList<String>,
-    var translations: ArrayList<String>,
-    var exampleChecked: ArrayList<Boolean>,
-    var relation: String,//TODo moze byc null po parsowaniu
+    var examples: ArrayList<String> = arrayListOf(),
+    var translations: ArrayList<String> = arrayListOf(),
+    var exampleChecked: ArrayList<Boolean> = arrayListOf(),
+    var relation: String = "",//TODo moze byc null po parsowaniu
     var frequency: Int = 0
 ) {
 //    init {
