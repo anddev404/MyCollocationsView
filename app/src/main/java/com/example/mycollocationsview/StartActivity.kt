@@ -3,7 +3,9 @@ package com.example.mycollocationsview
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import com.example.collocation_view_fragment.GroupingCollocationTools
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,10 @@ class StartActivity : AppCompatActivity() {
             startActivity(intent);
         }
 
+        var c = GroupingCollocationTools()
 
+        //  c.toLogCollocations(GroupingCollocationTools.list_to_A_into_family)
+        var l = c.groupList_TO_VERB_PREP_n(GroupingCollocationTools.list_to_get_into_A)
+        c.toLogCollocations(l)
     }
 }
