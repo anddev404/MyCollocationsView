@@ -130,7 +130,10 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
             holder.rest_view.setBackgroundColor(rootView.resources.getColor(R.color.collocations_rest_chosed))
 
         }
+        if (list.get(position).id < 0) {
+            holder.head_view.setBackgroundColor(rootView.resources.getColor(R.color.collocations_header))
 
+        }
 
         holder.collocationTextView.text =
             list.get(position).collocation + " (${list.get(position).frequency})"

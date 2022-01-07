@@ -165,15 +165,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     ) {
         Log.d("MY_DEBUG", "fragment- set...");
         collocationsList = collocations
-
-        collocationsList.add(0, Collocation().apply {
-            this.isChecked = true
-        })
-        collocationsList.add(1, Collocation())
-        collocationsList.add(2, Collocation().apply {
-            this.isChecked = true
-        })
-        collocationsList.add(3, Collocation())
+        
 
         this.hideUnknown = hideUnknown
         this.hideTranslations = hideTranslations
