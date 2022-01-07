@@ -165,6 +165,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     ) {
         Log.d("MY_DEBUG", "fragment- set...");
         collocationsList = collocations
+
         collocationsList.add(0, Collocation().apply {
             this.isChecked = true
         })
@@ -205,9 +206,9 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
 
     //region < output
 
-    fun getActualCollocationsList(): ArrayList<Collocation> {
-        return collocationsList
-    }
+//    fun getActualCollocationsList(): ArrayList<Collocation> {
+//        return collocationsList
+//    }
 
     //endregion
 
