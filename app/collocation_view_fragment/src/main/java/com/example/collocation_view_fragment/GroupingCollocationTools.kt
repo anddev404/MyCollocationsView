@@ -86,7 +86,7 @@ class GroupingCollocationTools {
                         if (isTheSame_to_get_into_A(list[i].collocation, list[j].collocation)) {
 
                             counter++
-                            localFrequencyCounter = localFrequencyCounter + list[i].frequency
+                            localFrequencyCounter = localFrequencyCounter + list[j].frequency
                             indeksList.add(j)
                             newList.add(list[j].apply { hideLayout = true })
                         }
