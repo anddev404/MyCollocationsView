@@ -48,20 +48,26 @@ class GroupingCollocationTools {
 
         for (i in 0..list.size - 2) {
 
+            var counter = 0
+            var collocation = Collocation()
             var stringTable = list[i].collocation.split(" ")
 
             if (!isIndex(i, indeksList)) {
                 try {//to_get_into_A
-                    newList.add(
-                        Collocation(
-                            -1, "${stringTable[2]} ..."
-                        )
-                    )
-                } catch (e: Exception) {
-                    newList.add(Collocation(-1, list[i].collocation))
 
+                    newList.add(collocation.apply {
+                        id = -1
+                        this.collocation = "${stringTable[2]} ..."
+                    })
+
+                } catch (e: Exception) {
+                    newList.add(collocation.apply {
+                        id = -1
+                        this.collocation = list[i].collocation
+                    })
                 }
 
+                counter++
                 indeksList.add(i)
                 newList.add(list[i])
 
@@ -69,13 +75,16 @@ class GroupingCollocationTools {
                     if (!isIndex(j, indeksList)) {
                         Log.d("LIST_COLLOCATIONS", "= $i $j")
                         if (isTheSame_to_get_into_A(list[i].collocation, list[j].collocation)) {
+                            counter++
                             indeksList.add(j)
                             newList.add(list[j])
                         }
                     }
                 }
-            }
 
+            }
+            collocation.translatedCollocation =
+                "${counter}/${list.size}   ${((counter.toFloat() / list.size) * 100).toInt()}"
         }
         if (list.size > 0 && !isIndex(list.lastIndex, indeksList)) {
             var stringTable = list.last().collocation.split(" ")
@@ -126,7 +135,7 @@ class GroupingCollocationTools {
     fun toLogCollocations(list: List<Collocation>) {
         var string = "TO STRING\n"
         for (i in list) {
-            string = string + i.id + " " + i.collocation + "\n"
+            string = string + i.id + " " + i.collocation + "    " + i.translatedCollocation + "\n"
         }
         Log.d("LIST_COLLOCATIONS", "" + string);
     }
