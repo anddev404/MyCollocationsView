@@ -64,7 +64,7 @@ class GroupingCollocationTools {
 
                     newList.add(collocation.apply {
                         id = -1
-                        this.collocation = "${stringTable[2]} ..."
+                        this.collocation = "TO VERB "+"${stringTable[2]} ..."
                     })
 
                 } catch (e: Exception) {
@@ -95,7 +95,7 @@ class GroupingCollocationTools {
 
             }
             collocation.translatedCollocation =
-                "${counter}/${list.size}   ${((counter.toFloat() / list.size) * 100).toInt()}" + " fr: " + "$localFrequencyCounter/$globalFrequencyCounter   ${((localFrequencyCounter / globalFrequencyCounter) * 100).toInt()}"
+                "${counter}/${list.size},  ${((counter.toFloat() / list.size) * 100).toInt()}%" + " || " + "$localFrequencyCounter/$globalFrequencyCounter,  ${((localFrequencyCounter.toFloat() / globalFrequencyCounter) * 100).toInt()}"
         }
         if (list.size > 0 && !isIndex(list.lastIndex, indeksList)) {
             var stringTable = list.last().collocation.split(" ")
