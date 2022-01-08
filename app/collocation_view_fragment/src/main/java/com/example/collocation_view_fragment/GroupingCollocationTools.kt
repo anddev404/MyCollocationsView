@@ -64,7 +64,7 @@ class GroupingCollocationTools {
 
                     newList.add(collocation.apply {
                         id = -1
-                        this.collocation = "TO VERB "+"${stringTable[2]} ..."
+                        this.collocation = "TO VERB " + "${stringTable[2]} ..."
                     })
 
                 } catch (e: Exception) {
@@ -87,8 +87,12 @@ class GroupingCollocationTools {
 
                             counter++
                             localFrequencyCounter = localFrequencyCounter + list[j].frequency
-                            indeksList.add(j)
-                            newList.add(list[j].apply { hideLayout = true })
+                            if (localFrequencyCounter < 8) {
+                                indeksList.add(j)
+                                newList.add(list[j])
+                                //  newList.add(list[j].apply { hideLayout = true })
+                            }
+
                         }
                     }
                 }
