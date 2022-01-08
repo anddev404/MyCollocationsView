@@ -3,381 +3,384 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/whole_constraint_layout_row_collocation"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content">
 
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/head_colored_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/collocations_head_normal"
-        app:layout_constraintBottom_toTopOf="@id/textView_example_1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </View>
-
-    <ImageView
-        android:id="@+id/hide_show_choosed_sentences"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/head_colored_view"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/head_colored_view"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/icon_rozwin"
-        tools:ignore="VectorDrawableCompat" />
-
-    <View
-        android:id="@+id/rest_colored_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/collocations_rest_normal"
-        app:layout_constraintBottom_toBottomOf="@id/bottom_line"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView_example_1">
-
-    </View>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="7dp"></androidx.constraintlayout.widget.Guideline>
-
-    <View
-        android:id="@+id/blank_view_before_collocation"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/whole_constraint_layout_row_collocation"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-    </View>
+        <View
+            android:id="@+id/head_colored_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/collocations_head_normal"
+            app:layout_constraintBottom_toTopOf="@id/textView_example_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/number_collocation"
-        style="@style/style_collocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:text="25"
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation"></TextView>
+        </View>
 
-    <TextView
-        android:id="@+id/textView_collocation"
-        style="@style/style_collocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="collocation"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@id/number_collocation"
-        app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
-        app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation" />
+        <ImageView
+            android:id="@+id/hide_show_choosed_sentences"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@id/head_colored_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/head_colored_view"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icon_rozwin"
+            tools:ignore="VectorDrawableCompat" />
 
-    <TextView
-        android:id="@+id/textView_translated_collocation"
-        style="@style/style_collocation_translation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="translated collocation"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@id/number_collocation"
-        app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
-        app:layout_constraintTop_toBottomOf="@id/textView_collocation" />
+        <View
+            android:id="@+id/rest_colored_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/collocations_rest_normal"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_line"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView_example_1">
 
-    <View
-        android:id="@+id/blank_view_after_collocation"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_collocation">
+        </View>
 
-    </View>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="7dp"></androidx.constraintlayout.widget.Guideline>
 
-    <View
-        android:id="@+id/line0a"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_almost_black"
-        app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation"></View>
+        <View
+            android:id="@+id/blank_view_before_collocation"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/number_example1"
-        style="@style/style_sentence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="7dp"
-        android:text="1."
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/line0a"></TextView>
+        </View>
 
-    <TextView
-        android:id="@+id/textView_example_1"
-        style="@style/style_sentence"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:text="example 1"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line0a" />
+        <TextView
+            android:id="@+id/number_collocation"
+            style="@style/style_collocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="25"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation"></TextView>
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/text_color_weak_black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_example_1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_1"></View>
+        <TextView
+            android:id="@+id/textView_collocation"
+            style="@style/style_collocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="collocation"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/number_collocation"
+            app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
+            app:layout_constraintTop_toBottomOf="@id/blank_view_before_collocation" />
 
-    <TextView
-        android:id="@+id/textView_translated_example_1"
-        style="@style/style_sentence_translation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:text="translated example 1"
-        android:textColor="@color/text_color_almost_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line1" />
+        <TextView
+            android:id="@+id/textView_translated_collocation"
+            style="@style/style_collocation_translation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="translated collocation"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/number_collocation"
+            app:layout_constraintRight_toLeftOf="@id/hide_show_choosed_sentences"
+            app:layout_constraintTop_toBottomOf="@id/textView_collocation" />
 
-    <View
-        android:id="@+id/line1a"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_almost_black"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1"></View>
+        <View
+            android:id="@+id/blank_view_after_collocation"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_collocation">
 
-    <TextView
-        android:id="@+id/number_example2"
-        style="@style/style_sentence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="7dp"
-        android:text="2."
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/line1a"></TextView>
+        </View>
 
-    <TextView
-        android:id="@+id/textView_example_2"
-        style="@style/style_sentence"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="10dp"
-        android:text="example 2"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line1a" />
+        <View
+            android:id="@+id/line0a"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_color_almost_black"
+            app:layout_constraintTop_toBottomOf="@id/blank_view_after_collocation"></View>
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/text_color_weak_black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_example_2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_2"></View>
+        <TextView
+            android:id="@+id/number_example1"
+            style="@style/style_sentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="7dp"
+            android:text="1."
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/line0a"></TextView>
 
-    <TextView
-        android:id="@+id/textView_translated_example_2"
-        style="@style/style_sentence_translation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:paddingBottom="2dp"
-        android:text="translated example 2"
-        android:textColor="@color/text_color_almost_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line2" />
+        <TextView
+            android:id="@+id/textView_example_1"
+            style="@style/style_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="example 1"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line0a" />
 
-    <View
-        android:id="@+id/line2a"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_almost_black"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2"></View>
+        <View
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/text_color_weak_black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_example_1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_example_1"></View>
 
-    <TextView
-        android:id="@+id/number_example3"
-        style="@style/style_sentence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="7dp"
-        android:text="3."
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/line2a"></TextView>
+        <TextView
+            android:id="@+id/textView_translated_example_1"
+            style="@style/style_sentence_translation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="translated example 1"
+            android:textColor="@color/text_color_almost_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
 
-    <TextView
-        android:id="@+id/textView_example_3"
-        style="@style/style_sentence"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="10dp"
-        android:text="example 3"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line2a" />
+        <View
+            android:id="@+id/line1a"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_color_almost_black"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_example_1"></View>
 
-    <View
-        android:id="@+id/line3"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/text_color_weak_black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_example_3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_3"></View>
+        <TextView
+            android:id="@+id/number_example2"
+            style="@style/style_sentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="7dp"
+            android:text="2."
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/line1a"></TextView>
 
-    <TextView
-        android:id="@+id/textView_translated_example_3"
-        style="@style/style_sentence_translation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:paddingBottom="2dp"
-        android:text="translated example 3"
-        android:textColor="@color/text_color_almost_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line3" />
+        <TextView
+            android:id="@+id/textView_example_2"
+            style="@style/style_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:text="example 2"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line1a" />
 
-    <View
-        android:id="@+id/line3a"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_almost_black"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_3"></View>
+        <View
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/text_color_weak_black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_example_2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_example_2"></View>
 
-    <TextView
-        android:id="@+id/number_example4"
-        style="@style/style_sentence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="7dp"
-        android:text="4."
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/line3a"></TextView>
+        <TextView
+            android:id="@+id/textView_translated_example_2"
+            style="@style/style_sentence_translation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            android:text="translated example 2"
+            android:textColor="@color/text_color_almost_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line2" />
 
-    <TextView
-        android:id="@+id/textView_example_4"
-        style="@style/style_sentence"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="10dp"
-        android:text="example 4"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line3a" />
+        <View
+            android:id="@+id/line2a"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_color_almost_black"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_example_2"></View>
 
-    <View
-        android:id="@+id/line4"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/text_color_weak_black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_example_4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_4"></View>
+        <TextView
+            android:id="@+id/number_example3"
+            style="@style/style_sentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="7dp"
+            android:text="3."
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/line2a"></TextView>
 
-    <TextView
-        android:id="@+id/textView_translated_example_4"
-        style="@style/style_sentence_translation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:paddingBottom="2dp"
-        android:text="translated example 4"
-        android:textColor="@color/text_color_almost_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line4" />
+        <TextView
+            android:id="@+id/textView_example_3"
+            style="@style/style_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:text="example 3"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line2a" />
 
-    <View
-        android:id="@+id/line4a"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_almost_black"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_4"></View>
+        <View
+            android:id="@+id/line3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/text_color_weak_black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_example_3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_example_3"></View>
 
-    <TextView
-        android:id="@+id/number_example5"
-        style="@style/style_sentence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="7dp"
-        android:text="5."
-        app:layout_constraintLeft_toLeftOf="@id/guideline_1"
-        app:layout_constraintTop_toBottomOf="@id/line4a"></TextView>
+        <TextView
+            android:id="@+id/textView_translated_example_3"
+            style="@style/style_sentence_translation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            android:text="translated example 3"
+            android:textColor="@color/text_color_almost_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line3" />
 
-    <TextView
-        android:id="@+id/textView_example_5"
-        style="@style/style_sentence"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingRight="10dp"
-        android:text="example 5"
-        android:textColor="@color/text_color_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example5"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line4a" />
+        <View
+            android:id="@+id/line3a"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_color_almost_black"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_example_3"></View>
 
-    <View
-        android:id="@+id/line5"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/text_color_weak_black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_example_5"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_example_5"></View>
+        <TextView
+            android:id="@+id/number_example4"
+            style="@style/style_sentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="7dp"
+            android:text="4."
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/line3a"></TextView>
 
-    <TextView
-        android:id="@+id/textView_translated_example_5"
-        style="@style/style_sentence_translation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:text="translated example 5"
-        android:textColor="@color/text_color_almost_black"
-        app:layout_constraintLeft_toRightOf="@id/number_example1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line5" />
+        <TextView
+            android:id="@+id/textView_example_4"
+            style="@style/style_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:text="example 4"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line3a" />
 
-    <View
-        android:id="@+id/blank_view"
-        android:layout_width="match_parent"
-        android:layout_height="7dp"
-        app:layout_constraintTop_toBottomOf="@id/textView_translated_example_5">
+        <View
+            android:id="@+id/line4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/text_color_weak_black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_example_4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_example_4"></View>
 
-    </View>
+        <TextView
+            android:id="@+id/textView_translated_example_4"
+            style="@style/style_sentence_translation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            android:text="translated example 4"
+            android:textColor="@color/text_color_almost_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line4" />
 
-    <View
-        android:id="@+id/bottom_line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#FF000000"
-        app:layout_constraintTop_toBottomOf="@id/blank_view">
+        <View
+            android:id="@+id/line4a"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_color_almost_black"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_example_4"></View>
 
-    </View>
+        <TextView
+            android:id="@+id/number_example5"
+            style="@style/style_sentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="7dp"
+            android:text="5."
+            app:layout_constraintLeft_toLeftOf="@id/guideline_1"
+            app:layout_constraintTop_toBottomOf="@id/line4a"></TextView>
+
+        <TextView
+            android:id="@+id/textView_example_5"
+            style="@style/style_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:text="example 5"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line4a" />
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/text_color_weak_black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_example_5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_example_5"></View>
+
+        <TextView
+            android:id="@+id/textView_translated_example_5"
+            style="@style/style_sentence_translation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="translated example 5"
+            android:textColor="@color/text_color_almost_black"
+            app:layout_constraintLeft_toRightOf="@id/number_example1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line5" />
+
+        <View
+            android:id="@+id/blank_view"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_translated_example_5">
+
+        </View>
+
+        <View
+            android:id="@+id/bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#FF000000"
+            app:layout_constraintTop_toBottomOf="@id/blank_view">
+
+        </View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
