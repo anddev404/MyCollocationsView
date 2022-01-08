@@ -45,10 +45,17 @@ class GroupingCollocationTools {
 //czasownik V:prep:N
         var newList = arrayListOf<Collocation>()
         var indeksList = arrayListOf<Int>()
+        var globalFrequencyCounter = 1
+        for (i in list) {
+            globalFrequencyCounter = globalFrequencyCounter + i.frequency
+
+        }
 
         for (i in 0..list.size - 2) {
 
             var counter = 0
+            var localFrequencyCounter = 0
+
             var collocation = Collocation()
             var stringTable = list[i].collocation.split(" ")
 
@@ -68,6 +75,8 @@ class GroupingCollocationTools {
                 }
 
                 counter++
+                localFrequencyCounter = localFrequencyCounter + list[i].frequency
+
                 indeksList.add(i)
                 newList.add(list[i])
 
@@ -75,7 +84,9 @@ class GroupingCollocationTools {
                     if (!isIndex(j, indeksList)) {
                         Log.d("LIST_COLLOCATIONS", "= $i $j")
                         if (isTheSame_to_get_into_A(list[i].collocation, list[j].collocation)) {
+
                             counter++
+                            localFrequencyCounter = localFrequencyCounter + list[i].frequency
                             indeksList.add(j)
                             newList.add(list[j].apply { hideLayout = true })
                         }
@@ -84,7 +95,7 @@ class GroupingCollocationTools {
 
             }
             collocation.translatedCollocation =
-                "${counter}/${list.size}   ${((counter.toFloat() / list.size) * 100).toInt()}"
+                "${counter}/${list.size}   ${((counter.toFloat() / list.size) * 100).toInt()}" + " fr: " + "$localFrequencyCounter/$globalFrequencyCounter   ${((localFrequencyCounter / globalFrequencyCounter) * 100).toInt()}"
         }
         if (list.size > 0 && !isIndex(list.lastIndex, indeksList)) {
             var stringTable = list.last().collocation.split(" ")
