@@ -77,7 +77,7 @@ class GroupingCollocationTools {
                         if (isTheSame_to_get_into_A(list[i].collocation, list[j].collocation)) {
                             counter++
                             indeksList.add(j)
-                            newList.add(list[j])
+                            newList.add(list[j].apply { hideLayout = true })
                         }
                     }
                 }
