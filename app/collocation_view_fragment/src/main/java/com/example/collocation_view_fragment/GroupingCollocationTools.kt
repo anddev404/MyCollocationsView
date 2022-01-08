@@ -88,7 +88,7 @@ class GroupingCollocationTools {
                             counter++
                             localFrequencyCounter = localFrequencyCounter + list[j].frequency
                             indeksList.add(j)
-                            if (localFrequencyCounter < 8) {
+                            if (counter < 8) {
                                 newList.add(list[j])
                                 //  newList.add(list[j].apply { hideLayout = true })
                             }
