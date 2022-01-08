@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -52,6 +53,12 @@ class AdapterCollocationsListView(var context: Context, var list: ArrayList<Coll
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
         var hide = isHideSentences
+
+        if (list.get(position).hideLayout) {
+            var constraint =
+                rootView.findViewById<View>(R.id.whole_constraint_layout_row_collocation) as ConstraintLayout
+            constraint.visibility = View.GONE
+        }
 
         holder.hide_show_sentences =
             rootView.findViewById<View>(R.id.hide_show_choosed_sentences) as ImageView

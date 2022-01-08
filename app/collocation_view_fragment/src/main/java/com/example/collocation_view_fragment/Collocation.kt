@@ -17,7 +17,8 @@ class Collocation(
     var translations: ArrayList<String> = arrayListOf(),
     var exampleChecked: ArrayList<Boolean> = arrayListOf(),
     var relation: String = "",//TODo moze byc null po parsowaniu
-    var frequency: Int = 0
+    var frequency: Int = 0,
+    var hideLayout: Boolean = false,
 ) {
 //    init {
 //        if (exampleChecked == null) {
