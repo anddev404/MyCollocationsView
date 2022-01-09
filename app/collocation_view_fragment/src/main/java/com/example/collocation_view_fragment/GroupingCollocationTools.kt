@@ -41,65 +41,137 @@ class GroupingCollocationTools {
         )
     }
 
-    fun groupList_TO_VERB_PREP_n(list: List<Collocation>): ArrayList<Collocation> {
-//czasownik V:prep:N
-        var newList = arrayListOf<Collocation>()
-        var indeksList = arrayListOf<Int>()
-        var globalFrequencyCounter = 1
+    fun calculateAllFrequency(list: List<Collocation>): Int {
+        var sum = 1
         for (i in list) {
-            globalFrequencyCounter = globalFrequencyCounter + i.frequency
+            sum = sum + i.frequency
+        }
+
+        return sum
+    }
+
+    fun getCollocationHeader_Verb_ToVerbIntoA(
+        collocationString: String,
+        partOfSpeech: Int,
+        relation: String
+    ): Collocation {
+
+        var stringTable = collocationString.split(" ")
+
+        var s1 = stringTable.getOrNull(0) ?: ""
+        var s2 = stringTable.getOrNull(1) ?: ""
+        var s3 = stringTable.getOrNull(2) ?: ""
+        var s4 = stringTable.getOrNull(3) ?: ""
+
+        if (relation.equals("V:prep:N", true) && partOfSpeech == 3) {
+            return Collocation().apply {
+                id = -1
+                collocation = "$s1 $s2 $s3 ..."
+            }
+        }
+        if (relation.equals("V:obj+prep:N", true) && partOfSpeech == 3) {
+            return Collocation().apply {
+                id = -1
+                collocation = "$s1 $s2 ... $s4 ..."
+            }
+        }
+        if (relation.equals("V:prep:N", true) && partOfSpeech == 1) {
+            return Collocation().apply {
+                id = -1
+                collocation = "$s1 ... $s3 $s4"
+            }
+        }
+        if (relation.equals("V:obj+prep:N", true) && partOfSpeech == 1) {
+            return Collocation().apply {
+                id = -1
+                collocation = "$s1 ... $s3 $s4 ..."
+            }
+        }
+
+        return Collocation().apply {
+            id = -1
+            collocation = "........"
+        }
+    }
+
+    fun getStatsCollocation(
+        counterTheSameCollocation: Int,
+        listSize: Int,
+        localFrequencyCounter: Int,
+        globalFrequencyCounter: Int
+    ): String {
+        try {
+            return "${counterTheSameCollocation}/${listSize},  ${((counterTheSameCollocation.toFloat() / listSize) * 100).toInt()}%" + " || " + "$localFrequencyCounter/$globalFrequencyCounter,  ${((localFrequencyCounter.toFloat() / globalFrequencyCounter) * 100).toInt()}%"
+
+        } catch (e: Exception) {
+            return "${counterTheSameCollocation}/${listSize}" + " || " + "$localFrequencyCounter/$globalFrequencyCounter"
 
         }
+    }
+
+    fun groupListAndAddHeaders(
+        list: List<Collocation>,
+        partOfSpeech: Int,
+        relation: String
+    ): ArrayList<Collocation> {
+
+//        val PART_OF_SPEECH_NOUN = 1
+//        val PART_OF_SPEECH_VERB = 3
+
+//        "V:prep:N"
+//        "V:obj+prep:N"
+
+
+        var newList = arrayListOf<Collocation>()
+        var indeksList = arrayListOf<Int>()
+        var globalFrequencyCounter = calculateAllFrequency(list)
+
 
         for (i in 0..list.size - 2) {
 
-            var counter = 0
+            var counterTheSameCollocation = 1//1 poniewaz juz od razu ta kolokacja bedzie dodana
             var localFrequencyCounter = 0
-
             var collocation = Collocation()
-            var stringTable = list[i].collocation.split(" ")
 
             if (!isIndex(i, indeksList)) {
-                try {//to_get_into_A
 
-                    newList.add(collocation.apply {
-                        id = -1
-                        this.collocation = "TO VERB " + "${stringTable[2]} ..."
-                    })
-
-                } catch (e: Exception) {
-                    newList.add(collocation.apply {
-                        id = -1
-                        this.collocation = list[i].collocation
-                    })
-                }
-
-                counter++
                 localFrequencyCounter = localFrequencyCounter + list[i].frequency
-
                 indeksList.add(i)
+
+                newList.add(
+                    getCollocationHeader_Verb_ToVerbIntoA(
+                        list[i].collocation,
+                        partOfSpeech,
+                        relation
+                    )
+                )
+                ///////
+
                 newList.add(list[i])
 
                 for (j in i + 1..list.size - 1) {
                     if (!isIndex(j, indeksList)) {
                         Log.d("LIST_COLLOCATIONS", "= $i $j")
-                        if (isTheSame_to_get_into_A(list[i].collocation, list[j].collocation)) {
+                        if (isTheSame(
+                                list[i].collocation,
+                                list[j].collocation, partOfSpeech, relation
+                            )
+                        ) {
 
-                            counter++
+                            counterTheSameCollocation++
                             localFrequencyCounter = localFrequencyCounter + list[j].frequency
                             indeksList.add(j)
-                            if (counter < 8) {
+                            if (counterTheSameCollocation < 8) {
                                 newList.add(list[j])
-                                //  newList.add(list[j].apply { hideLayout = true })
                             }
-
                         }
                     }
                 }
-
             }
-            collocation.translatedCollocation =
-                "${counter}/${list.size},  ${((counter.toFloat() / list.size) * 100).toInt()}%" + " || " + "$localFrequencyCounter/$globalFrequencyCounter,  ${((localFrequencyCounter.toFloat() / globalFrequencyCounter) * 100).toInt()}%"
+            collocation.translatedCollocation = getStatsCollocation(
+                counterTheSameCollocation, list.size, localFrequencyCounter, globalFrequencyCounter
+            )
+
         }
         if (list.size > 0 && !isIndex(list.lastIndex, indeksList)) {
             var stringTable = list.last().collocation.split(" ")
@@ -113,26 +185,69 @@ class GroupingCollocationTools {
                 newList.add(Collocation(-1, list.last().collocation))
 
             }
-
             newList.add(list.last())
         }
 
         return newList
     }
 
-    fun isTheSame_to_get_into_A(string1: String, string2: String): Boolean {
+    fun isTheSame(
+        string1: String,
+        string2: String,
+        partOfSpeech: Int,
+        relation: String
+    ): Boolean {
+        //to get into ...               verb 3 "V:prep:N"
+        // to get ... into ...          verb 3 "V:obj+prep:N"
+
+        // to ... into home             noun 1 "V:prep:N"
+        // to ... home into ...         venoun 1 "V:obj+prep:N"
+
         var stringTable1 = string1.split(" ")
         var stringTable2 = string2.split(" ")
 
-        try {
+        var string1w1 = stringTable1.getOrNull(0) ?: ""
+        var string1w2 = stringTable1.getOrNull(1) ?: ""
+        var string1w3 = stringTable1.getOrNull(2) ?: ""
+        var string1w4 = stringTable1.getOrNull(3) ?: ""
 
-            if (stringTable1[0].equals(stringTable2[0], true)
-                && stringTable1[1].equals(stringTable2[1], true)
-                && stringTable1[2].equals(stringTable2[2], true)
+        var string2w1 = stringTable2.getOrNull(0) ?: ""
+        var string2w2 = stringTable2.getOrNull(1) ?: ""
+        var string2w3 = stringTable2.getOrNull(2) ?: ""
+        var string2w4 = stringTable2.getOrNull(3) ?: ""
+
+        if (partOfSpeech == 3 && relation.equals("V:prep:N", true)) {
+            if (string1w1.equals(string2w1, true)
+                && string1w2.equals(string2w2, true)
+                && string1w3.equals(string2w3, true)
             ) {
                 return true
             }
-        } catch (e: Exception) {
+        }
+        if (partOfSpeech == 3 && relation.equals("V:obj+prep:N", true)) {
+            if (string1w1.equals(string2w1, true)
+                && string1w2.equals(string2w2, true)
+                && string1w4.equals(string2w4, true)
+            ) {
+                return true
+            }
+        }
+
+        if (partOfSpeech == 1 && relation.equals("V:prep:N", true)) {
+            if (string1w1.equals(string2w1, true)
+                && string1w3.equals(string2w3, true)
+                && string1w4.equals(string2w4, true)
+            ) {
+                return true
+            }
+        }
+        if (partOfSpeech == 1 && relation.equals("V:obj+prep:N", true)) {
+            if (string1w1.equals(string2w1, true)
+                && string1w3.equals(string2w3, true)
+                && string1w4.equals(string2w4, true)
+            ) {
+                return true
+            }
         }
 
 
