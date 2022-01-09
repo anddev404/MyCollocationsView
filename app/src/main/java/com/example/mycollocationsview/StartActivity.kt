@@ -26,7 +26,7 @@ class StartActivity : AppCompatActivity() {
         var c = GroupingCollocationTools()
 
         //  c.toLogCollocations(GroupingCollocationTools.list_to_A_into_family)
-        var l = c.groupList_TO_VERB_PREP_n(GroupingCollocationTools.list_to_get_into_A)
+        var l = c.groupListAndAddHeaders(GroupingCollocationTools.list_to_get_into_A)
         c.toLogCollocations(l)
     }
 }
