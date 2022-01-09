@@ -50,7 +50,7 @@ class GroupingCollocationTools {
         return sum
     }
 
-    fun getCollocationHeader_Verb_ToVerbIntoA(
+    fun getCollocationHeader(
         collocationString: String,
         partOfSpeech: Int,
         relation: String
@@ -138,12 +138,13 @@ class GroupingCollocationTools {
                 localFrequencyCounter = localFrequencyCounter + list[i].frequency
                 indeksList.add(i)
 
+                collocation = getCollocationHeader(
+                    list[i].collocation,
+                    partOfSpeech,
+                    relation
+                )
                 newList.add(
-                    getCollocationHeader_Verb_ToVerbIntoA(
-                        list[i].collocation,
-                        partOfSpeech,
-                        relation
-                    )
+                    collocation
                 )
                 ///////
 
