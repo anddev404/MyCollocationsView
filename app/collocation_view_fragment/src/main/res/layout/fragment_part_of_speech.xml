@@ -64,7 +64,7 @@
             android:text="Left" />
 
         <TextView
-            android:id="@+id/textViewRelation"
+            android:id="@+id/textViewRelationCentre"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

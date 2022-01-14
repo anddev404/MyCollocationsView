@@ -9,6 +9,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.collocation_view_fragment.R
+import kotlinx.android.synthetic.main.fragment_part_of_speech.*
 
 
 /**
@@ -27,15 +28,6 @@ class PartOfSpeechFragment : Fragment() {
     var partOfSpeech =
         PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
 
-    private lateinit var leftTextView: TextView
-    private lateinit var centreTextView: TextView
-    private lateinit var rightTextView: TextView
-
-    private lateinit var verbTextView: TextView
-    private lateinit var adjectiveTextView: TextView
-    private lateinit var nounTextView: TextView
-    private lateinit var allTextView: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -46,19 +38,18 @@ class PartOfSpeechFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_part_of_speech, container, false)
-        leftTextView = view.findViewById(R.id.textViewRelationLeft) as TextView
-        centreTextView = view.findViewById(R.id.textViewRelation) as TextView
-        rightTextView = view.findViewById(R.id.textViewRelationRight) as TextView
 
-        verbTextView = view.findViewById(R.id.textViewCzasownik) as TextView
-        adjectiveTextView = view.findViewById(R.id.textViewPrzymiotnik) as TextView
-        nounTextView = view.findViewById(R.id.textViewRzeczownik) as TextView
-        allTextView = view.findViewById(R.id.textViewAll) as TextView
+        return view
+    }
 
-        verbTextView.setOnClickListener(object : OnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        textViewCzasownik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 deleteColorForAll()
-                changeColor(verbTextView)
+                changeColor(textViewCzasownik)
                 partOfSpeech = PART_OF_SPEECH_VERB
                 relation = 0//TODO tu zmienaic dla czesci mowy
                 relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
@@ -68,10 +59,10 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        nounTextView.setOnClickListener(object : OnClickListener {
+        textViewRzeczownik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 deleteColorForAll()
-                changeColor(nounTextView)
+                changeColor(textViewRzeczownik)
                 partOfSpeech = PART_OF_SPEECH_NOUN
                 relation = 0//TODO tu zmienaic dla czesci mowy
                 relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
@@ -80,10 +71,10 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        adjectiveTextView.setOnClickListener(object : OnClickListener {
+        textViewPrzymiotnik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 deleteColorForAll()
-                changeColor(adjectiveTextView)
+                changeColor(textViewPrzymiotnik)
                 partOfSpeech = PART_OF_SPEECH_ADJECTIVE
                 relation = 0//TODO tu zmienaic dla czesci mowy
                 relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
@@ -92,10 +83,10 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        allTextView.setOnClickListener(object : OnClickListener {
+        textViewAll.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 deleteColorForAll()
-                changeColor(allTextView)
+                changeColor(textViewAll)
                 partOfSpeech = PART_OF_SPEECH_UNKNOWN
                 relation = 0//TODO tu zmienaic dla czesci mowy
                 relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
@@ -104,7 +95,7 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        leftTextView.setOnClickListener(object : OnClickListener {
+        textViewRelationLeft.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
 
                 relation = relation - 1
@@ -147,7 +138,7 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        rightTextView.setOnClickListener(object : OnClickListener {
+        textViewRelationRight.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
 
                 relation = relation + 1
@@ -190,7 +181,7 @@ class PartOfSpeechFragment : Fragment() {
             }
 
         })
-        return view
+
     }
 
     companion object {
@@ -373,22 +364,22 @@ class PartOfSpeechFragment : Fragment() {
         relation = 0
         if (partOfSpeech == PART_OF_SPEECH_UNKNOWN) {
             relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
-            changeColor(allTextView)
+            changeColor(textViewAll)
             this.partOfSpeech = PART_OF_SPEECH_UNKNOWN
         }
         if (partOfSpeech == PART_OF_SPEECH_NOUN) {
             relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
-            changeColor(nounTextView)
+            changeColor(textViewRzeczownik)
             this.partOfSpeech = PART_OF_SPEECH_NOUN
         }
         if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
             relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
-            changeColor(adjectiveTextView)
+            changeColor(textViewPrzymiotnik)
             this.partOfSpeech = PART_OF_SPEECH_ADJECTIVE
         }
         if (partOfSpeech == PART_OF_SPEECH_VERB) {
             relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
-            changeColor(verbTextView)
+            changeColor(textViewPrzymiotnik)
             this.partOfSpeech = PART_OF_SPEECH_VERB
         }
         showRelationOnTextView()
@@ -396,10 +387,10 @@ class PartOfSpeechFragment : Fragment() {
     }
 
     private fun deleteColorForAll() {
-        verbTextView.setBackgroundColor(Color.TRANSPARENT)
-        adjectiveTextView.setBackgroundColor(Color.TRANSPARENT)
-        nounTextView.setBackgroundColor(Color.TRANSPARENT)
-        allTextView.setBackgroundColor(Color.TRANSPARENT)
+        textViewCzasownik.setBackgroundColor(Color.TRANSPARENT)
+        textViewPrzymiotnik.setBackgroundColor(Color.TRANSPARENT)
+        textViewRzeczownik.setBackgroundColor(Color.TRANSPARENT)
+        textViewAll.setBackgroundColor(Color.TRANSPARENT)
 
     }
 
@@ -410,7 +401,7 @@ class PartOfSpeechFragment : Fragment() {
     }
 
     fun showRelationOnTextView() {
-        centreTextView.setText(relationInfo + getActualRelation())
+        textViewRelationCentre.setText(relationInfo + getActualRelation())
     }
 
 //endregion
