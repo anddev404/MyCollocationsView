@@ -226,10 +226,10 @@ class PartOfSpeechFragment : Fragment() {
 
         fun relationListVerb(): ArrayList<String> {
             var list = arrayListOf<String>()
+            list.add(RELATION_8_V_mod_A)
             list.add(RELATION_3_V_subj_N)
             list.add(RELATION_1_V_obj_N)
             list.add(RELATION_2_V_prep_N)
-            list.add(RELATION_8_V_mod_A)
             list.add(RELATION_5_N_mod_A)
             list.add(RELATION_11_V_obj_prep_N)
             return list
