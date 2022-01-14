@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/partOfSpeechFragment"
-        class="com.example.collocation_view_fragment.PartOfSpeechFragment"
+        class="com.example.collocation_view_fragment.part_of_speech.PartOfSpeechFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></fragment>
 

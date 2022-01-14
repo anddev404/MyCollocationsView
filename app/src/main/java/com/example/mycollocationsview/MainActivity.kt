@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.anddev404.sentences_view.SentencesFragment
 import com.example.collocation_view_fragment.Collocation
 import com.example.collocation_view_fragment.CollocationsFragment
-import com.example.collocation_view_fragment.PartOfSpeechFragment
+import com.example.collocation_view_fragment.part_of_speech.PartOfSpeechFragment
 
 class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFragmentListener,
     View.OnClickListener, PartOfSpeechFragment.OnPartOfSpeechFragmentListener,

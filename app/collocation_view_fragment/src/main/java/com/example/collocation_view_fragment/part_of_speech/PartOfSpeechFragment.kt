@@ -1,4 +1,4 @@
-package com.example.collocation_view_fragment
+package com.example.collocation_view_fragment.part_of_speech
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
+import com.example.collocation_view_fragment.R
 
 
 /**
