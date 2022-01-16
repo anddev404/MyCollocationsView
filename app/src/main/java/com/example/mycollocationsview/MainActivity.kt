@@ -187,6 +187,9 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     }
      */
     override fun relation(relation: String) {
+        Log.d("RELATION", "relation $relation");
+
+
         var dogCollocations =
             Collocation.getListOfCollocationDog(relation)//pobranie z aktualnego słowa
 

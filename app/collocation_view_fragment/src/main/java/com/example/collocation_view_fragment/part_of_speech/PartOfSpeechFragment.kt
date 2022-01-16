@@ -2,12 +2,14 @@ package com.example.collocation_view_fragment.part_of_speech
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import com.example.collocation_view_fragment.R
 import kotlinx.android.synthetic.main.fragment_part_of_speech.*
 
@@ -23,10 +25,9 @@ fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
  */
 class PartOfSpeechFragment : Fragment() {
 
-    var relation = 0
-    var relationInfo = ""
-    var partOfSpeech =
-        PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
+    var partOfSpeechViewModel = PartOfSpeechViewModel()
+//    var partOfSpeech =
+//        PART_OF_SPEECH_UNKNOWN//TODO co jesli zadna lista nie berdzie miała elemntów i bedzie prowbował wziac ten z indeksem 0 a tam nic nie bedzie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,88 +43,145 @@ class PartOfSpeechFragment : Fragment() {
         return view
     }
 
+    fun getRelationListSize(): Int {
+        if (partOfSpeechViewModel.isCheckedVerbNotNullOrDefault()) {
+            return relationListVerb().size
+        }
+        if (partOfSpeechViewModel.isCheckedNounNotNullOrDefault()) {
+            return relationListNoun().size
+        }
+        if (partOfSpeechViewModel.isCheckedAdjNotNullOrDefault()) {
+            return relationListAdjective().size
+        }
+        return relationListAll().size
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        partOfSpeechViewModel.getRelation().observe(viewLifecycleOwner, Observer {
 
+            showRelationOnTextView("${(it + 1)} / ${getRelationListSize()}  ")
+            Log.d("RELATION", "observe - Relation change");
+            mListener?.relation(getActualRelationString())
+        })
+
+        partOfSpeechViewModel.isCheckedVerb().observe(viewLifecycleOwner, Observer {
+            if (it) {
+
+                changeColor(textViewCzasownik)
+
+                partOfSpeechViewModel.setRelation(0)
+
+
+            } else {
+                textViewCzasownik.setBackgroundColor(Color.TRANSPARENT)
+
+            }
+        })
         textViewCzasownik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
-                deleteColorForAll()
-                changeColor(textViewCzasownik)
-                partOfSpeech = PART_OF_SPEECH_VERB
-                relation = 0//TODO tu zmienaic dla czesci mowy
-                relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+
+                partOfSpeechViewModel.clickVerb()
 
             }
 
+        })
+        partOfSpeechViewModel.isCheckedNoun().observe(viewLifecycleOwner, Observer {
+            if (it) {
+
+                changeColor(textViewRzeczownik)
+
+                partOfSpeechViewModel.setRelation(0)
+
+
+            } else {
+                textViewRzeczownik.setBackgroundColor(Color.TRANSPARENT)
+
+            }
         })
         textViewRzeczownik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
-                deleteColorForAll()
-                changeColor(textViewRzeczownik)
-                partOfSpeech = PART_OF_SPEECH_NOUN
-                relation = 0//TODO tu zmienaic dla czesci mowy
-                relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+
+                partOfSpeechViewModel.clickNoun()
+
             }
 
+        })
+        partOfSpeechViewModel.isCheckedAdj().observe(viewLifecycleOwner, Observer {
+            if (it) {
+
+                changeColor(textViewPrzymiotnik)
+
+                partOfSpeechViewModel.setRelation(0)
+
+
+            } else {
+                textViewPrzymiotnik.setBackgroundColor(Color.TRANSPARENT)
+
+            }
         })
         textViewPrzymiotnik.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
-                deleteColorForAll()
-                changeColor(textViewPrzymiotnik)
-                partOfSpeech = PART_OF_SPEECH_ADJECTIVE
-                relation = 0//TODO tu zmienaic dla czesci mowy
-                relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+
+                partOfSpeechViewModel.clickAdj()
+
             }
 
         })
+        partOfSpeechViewModel.isCheckedAll().observe(viewLifecycleOwner, Observer {
+            if (it) {
+
+                changeColor(textViewAll)
+
+                partOfSpeechViewModel.setRelation(0)
+
+
+            } else {
+                textViewAll.setBackgroundColor(Color.TRANSPARENT)
+
+            }
+        })
         textViewAll.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
-                deleteColorForAll()
-                changeColor(textViewAll)
-                partOfSpeech = PART_OF_SPEECH_UNKNOWN
-                relation = 0//TODO tu zmienaic dla czesci mowy
-                relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+
+                partOfSpeechViewModel.clickAll()
+
             }
 
         })
         textViewRelationLeft.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
 
-                relation = relation - 1
+                var relation = partOfSpeechViewModel.getRelationNotNullOrDefault() - 1
 
-                if (partOfSpeech == PART_OF_SPEECH_VERB) {
+                if (partOfSpeechViewModel.isCheckedVerbNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListVerb().size - 1
                     }
                     if (relation >= relationListVerb().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
-                } else if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
+                    // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListVerb().size}  ")
+
+                } else if (partOfSpeechViewModel.isCheckedAdjNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListAdjective().size - 1
                     }
                     if (relation >= relationListAdjective().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
-                } else if (partOfSpeech == PART_OF_SPEECH_NOUN) {
+                    //showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAdjective().size}  ")
+
+                } else if (partOfSpeechViewModel.isCheckedNounNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListNoun().size - 1
                     }
                     if (relation >= relationListNoun().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
+                    //showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListNoun().size}  ")
+
                 } else {
                     if (relation < 0) {
                         relation = relationListAll().size - 1
@@ -131,42 +189,47 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAll().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
+                    // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAll().size}  ")
                 }
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+                partOfSpeechViewModel.setRelation(relation)
+                //mListener?.relation(getActualRelationString())
+                Log.d("RELATION", "LEFT");
+
             }
 
         })
         textViewRelationRight.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
 
-                relation = relation + 1
+                var relation = partOfSpeechViewModel.getRelationNotNullOrDefault() + 1
 
-                if (partOfSpeech == PART_OF_SPEECH_VERB) {
+                if (partOfSpeechViewModel.isCheckedVerbNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListVerb().size - 1
                     }
                     if (relation >= relationListVerb().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
-                } else if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
+                    // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListVerb().size}  ")
+
+                } else if (partOfSpeechViewModel.isCheckedAdjNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListAdjective().size - 1
                     }
                     if (relation >= relationListAdjective().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
-                } else if (partOfSpeech == PART_OF_SPEECH_NOUN) {
+                    // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAdjective().size}  ")
+
+                } else if (partOfSpeechViewModel.isCheckedNounNotNullOrDefault()) {
                     if (relation < 0) {
                         relation = relationListNoun().size - 1
                     }
                     if (relation >= relationListNoun().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
+                    // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListNoun().size}  ")
+
                 } else {
                     if (relation < 0) {
                         relation = relationListAll().size - 1
@@ -174,10 +237,11 @@ class PartOfSpeechFragment : Fragment() {
                     if (relation >= relationListAll().size) {
                         relation = 0
                     }
-                    relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
+                    //  showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAll().size}  ")
                 }
-                showRelationOnTextView()
-                mListener?.relation(getActualRelation())
+                partOfSpeechViewModel.setRelation(relation)
+                //mListener?.relation(getActualRelationString())
+                Log.d("RELATION", "RIGHT");
             }
 
         })
@@ -217,12 +281,14 @@ class PartOfSpeechFragment : Fragment() {
 
         fun relationListVerb(): ArrayList<String> {
             var list = arrayListOf<String>()
-            list.add(RELATION_8_V_mod_A)
+
             list.add(RELATION_3_V_subj_N)
             list.add(RELATION_1_V_obj_N)
             list.add(RELATION_2_V_prep_N)
-            list.add(RELATION_5_N_mod_A)
             list.add(RELATION_11_V_obj_prep_N)
+            list.add(RELATION_8_V_mod_A)
+            list.add(RELATION_5_N_mod_A)
+
             return list
         }
 
@@ -321,27 +387,23 @@ class PartOfSpeechFragment : Fragment() {
         }
     }
 
-    fun getActualRelation(): String {
-        if (partOfSpeech == PART_OF_SPEECH_VERB) {
-            relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
+    fun getActualRelationString(): String {
+        if (partOfSpeechViewModel.isCheckedVerbNotNullOrDefault()) {
             return relationListVerb().get(
-                relation
+                partOfSpeechViewModel.getRelationNotNullOrDefault()
             )
         }
-        if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
-            relationInfo = "${(relation + 1)}/${relationListAdjective().size}  "
-            return relationListAdjective().get(
-                relation
-            )
-        }
-        if (partOfSpeech == PART_OF_SPEECH_NOUN) {
-            relationInfo = "${(relation + 1)}/${relationListNoun().size}  "
+        if (partOfSpeechViewModel.isCheckedNounNotNullOrDefault()) {
             return relationListNoun().get(
-                relation
+                partOfSpeechViewModel.getRelationNotNullOrDefault()
             )
         }
-        relationInfo = "${(relation + 1)}/${relationListAll().size}  "
-        return relationListAll().get(relation)//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
+        if (partOfSpeechViewModel.isCheckedAdjNotNullOrDefault()) {
+            return relationListAdjective().get(
+                partOfSpeechViewModel.getRelationNotNullOrDefault()
+            )
+        }
+        return relationListAll().get(partOfSpeechViewModel.getRelationNotNullOrDefault())//TODO takie cos moze nie zwrocic stringa jak lista bedzie pusta
     }
 
     //region < listener
@@ -360,38 +422,23 @@ class PartOfSpeechFragment : Fragment() {
     //endregion
     //region input
     fun resetViews(partOfSpeech: Int) {//to na poczatku dac zeby listener wywopłac zeby zwrocil jak mam filtrowac
-        deleteColorForAll()
-        relation = 0
+//        deleteColorForAll()
+//        relation = 0
         if (partOfSpeech == PART_OF_SPEECH_UNKNOWN) {
-            relationInfo = "${(relation + 1)} / ${relationListAll().size}  "
-            changeColor(textViewAll)
-            this.partOfSpeech = PART_OF_SPEECH_UNKNOWN
+            partOfSpeechViewModel.clickAll()
         }
         if (partOfSpeech == PART_OF_SPEECH_NOUN) {
-            relationInfo = "${(relation + 1)} / ${relationListNoun().size}  "
-            changeColor(textViewRzeczownik)
-            this.partOfSpeech = PART_OF_SPEECH_NOUN
+            partOfSpeechViewModel.clickNoun()
         }
         if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
-            relationInfo = "${(relation + 1)} / ${relationListAdjective().size}  "
-            changeColor(textViewPrzymiotnik)
-            this.partOfSpeech = PART_OF_SPEECH_ADJECTIVE
+            partOfSpeechViewModel.clickAdj()
         }
         if (partOfSpeech == PART_OF_SPEECH_VERB) {
-            relationInfo = "${(relation + 1)} / ${relationListVerb().size}  "
-            changeColor(textViewPrzymiotnik)
-            this.partOfSpeech = PART_OF_SPEECH_VERB
+            partOfSpeechViewModel.clickVerb()
         }
-        showRelationOnTextView()
-//        mListener?.relation(getActualRelation())
-    }
-
-    private fun deleteColorForAll() {
-        textViewCzasownik.setBackgroundColor(Color.TRANSPARENT)
-        textViewPrzymiotnik.setBackgroundColor(Color.TRANSPARENT)
-        textViewRzeczownik.setBackgroundColor(Color.TRANSPARENT)
-        textViewAll.setBackgroundColor(Color.TRANSPARENT)
-
+//        showRelationOnTextView()
+//        mListener?.relation(getActualRelationString())//
+        //TODO tutaj przy kazdej zmianie słowa równiez wywoła zmiane relacji i listener chociaż wczesniej nie wywoływało tego
     }
 
     private fun changeColor(textView: TextView) {
@@ -400,9 +447,8 @@ class PartOfSpeechFragment : Fragment() {
 
     }
 
-    fun showRelationOnTextView() {
-        textViewRelationCentre.setText(relationInfo + getActualRelation())
+    fun showRelationOnTextView(string: String) {
+        textViewRelationCentre.setText(string + getActualRelationString())
     }
-
 //endregion
 }
