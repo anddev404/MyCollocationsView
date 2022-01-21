@@ -24,6 +24,18 @@ import kotlinx.android.synthetic.main.fragment_part_of_speech.*
 fragmentPartOfSpeech.setOnPartOfSpeechFragmentListener(this)
  */
 class PartOfSpeechFragment : Fragment() {
+    fun getPartOfSpeech(): Int {
+        if (partOfSpeechViewModel.isCheckedVerbNotNullOrDefault()) {
+            return 3
+        }
+        if (partOfSpeechViewModel.isCheckedNounNotNullOrDefault()) {
+            return 1
+        }
+        if (partOfSpeechViewModel.isCheckedAdjNotNullOrDefault()) {
+            return 2
+        }
+        return 0
+    }
 
     var partOfSpeechViewModel = PartOfSpeechViewModel()
 //    var partOfSpeech =
@@ -63,7 +75,7 @@ class PartOfSpeechFragment : Fragment() {
 
             showRelationOnTextView("${(it + 1)} / ${getRelationListSize()}  ")
             Log.d("RELATION", "observe - Relation change");
-            mListener?.relation(getActualRelationString())
+
         })
 
         partOfSpeechViewModel.isCheckedVerb().observe(viewLifecycleOwner, Observer {
@@ -83,7 +95,7 @@ class PartOfSpeechFragment : Fragment() {
             override fun onClick(v: View?) {
 
                 partOfSpeechViewModel.clickVerb()
-
+                mListener?.relation(getActualRelationString())
             }
 
         })
@@ -104,7 +116,7 @@ class PartOfSpeechFragment : Fragment() {
             override fun onClick(v: View?) {
 
                 partOfSpeechViewModel.clickNoun()
-
+                mListener?.relation(getActualRelationString())
             }
 
         })
@@ -125,7 +137,7 @@ class PartOfSpeechFragment : Fragment() {
             override fun onClick(v: View?) {
 
                 partOfSpeechViewModel.clickAdj()
-
+                mListener?.relation(getActualRelationString())
             }
 
         })
@@ -146,7 +158,7 @@ class PartOfSpeechFragment : Fragment() {
             override fun onClick(v: View?) {
 
                 partOfSpeechViewModel.clickAll()
-
+                mListener?.relation(getActualRelationString())
             }
 
         })
@@ -192,7 +204,7 @@ class PartOfSpeechFragment : Fragment() {
                     // showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAll().size}  ")
                 }
                 partOfSpeechViewModel.setRelation(relation)
-                //mListener?.relation(getActualRelationString())
+                mListener?.relation(getActualRelationString())
                 Log.d("RELATION", "LEFT");
 
             }
@@ -240,7 +252,7 @@ class PartOfSpeechFragment : Fragment() {
                     //  showRelationOnTextView("${(partOfSpeechViewModel.getRelationNotNullOrDefault() + 1)} / ${relationListAll().size}  ")
                 }
                 partOfSpeechViewModel.setRelation(relation)
-                //mListener?.relation(getActualRelationString())
+                mListener?.relation(getActualRelationString())
                 Log.d("RELATION", "RIGHT");
             }
 
@@ -302,8 +314,8 @@ class PartOfSpeechFragment : Fragment() {
 
         fun relationListNoun(): ArrayList<String> {
             var list = arrayListOf<String>()
-            list.add(RELATION_3_V_subj_N)
             list.add(RELATION_1_V_obj_N)
+            list.add(RELATION_3_V_subj_N)
             list.add(RELATION_2_V_prep_N)
             list.add(RELATION_11_V_obj_prep_N)
             list.add(RELATION_7_N_nn_N)
