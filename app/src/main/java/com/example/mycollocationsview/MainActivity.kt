@@ -187,7 +187,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
     }
      */
     override fun relation(relation: String) {
-        Log.d("RELATION", "relation $relation");
+        Log.d("RELATION", "relationnnn $relation");
 
 
         var dogCollocations =
