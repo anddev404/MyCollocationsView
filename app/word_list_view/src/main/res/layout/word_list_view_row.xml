@@ -28,8 +28,9 @@
             android:text="," />
 
         <LinearLayout
+            android:id="@+id/daily_colored_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
 
             android:paddingLeft="10dp">

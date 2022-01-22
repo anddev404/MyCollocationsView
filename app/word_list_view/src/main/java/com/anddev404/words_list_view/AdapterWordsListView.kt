@@ -59,9 +59,16 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             rootView.findViewById<View>(R.id.study_view_TextView) as TextView
         holder.layout =
             rootView.findViewById<View>(R.id.layout_list_view) as LinearLayout
+        holder.dailyColoredLayout =
+            rootView.findViewById<View>(R.id.daily_colored_layout) as LinearLayout
         holder.info =
             rootView.findViewById<View>(R.id.info) as TextView
 
+        if (position % 30 == 0) holder.dailyColoredLayout.setBackgroundColor(
+            context.resources.getColor(
+                R.color.daily_color
+            )
+        )
         if (list.get(position).id > 0) holder.nr.text = "" + (position + 1)
         if (list.get(position).id < 0) holder.layout.setBackgroundColor(context.resources.getColor(R.color.dark))
 
@@ -132,6 +139,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         lateinit var info: TextView
         lateinit var study_Text: TextView
         lateinit var layout: LinearLayout
+        lateinit var dailyColoredLayout: LinearLayout
 
         init {
             Log.d("MY_DEBUG", "holder");
