@@ -142,16 +142,19 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //endregion
 
     //region input >
-    fun setHeadText(text: String) {
+    fun setHeadText(text: String, text2: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             headTextView.setText(
                 Html.fromHtml(
                     text,
                     Html.FROM_HTML_MODE_COMPACT
                 )
+
             );
+            headTextView.text = "" + headTextView.text + "\n$text2"
         } else {
             headTextView.setText(Html.fromHtml(text));
+            headTextView.text = "" + headTextView.text + "\n$text2"
         }
 
     }

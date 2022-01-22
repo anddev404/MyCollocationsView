@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), CollocationsFragment.OnCollocationFrag
 
         testFragments()
 
-
+        fragment1.setHeadText("jeden", "dwa\ntrzy")
     }
 
 
