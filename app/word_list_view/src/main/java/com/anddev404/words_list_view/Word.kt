@@ -10,7 +10,8 @@ class Word(
     var greenCollocationsCount: Int = 0,
     var greenSentencesCount: Int = 0,
     var favourite: Boolean = false,
-    var time: Int? = null
+    var time: Int? = null,
+    var group: Int? = 0
 ) {
     var study_String = ""
 
@@ -18,21 +19,21 @@ class Word(
         fun getList(): ArrayList<Word> {
             var list = arrayListOf<Word>()
 
-            for (i in 1..3000) {
+            for (i in 1..10) {
                 list.add(Word(1, "home", "dom", "hołm", 1).apply {
                     greenCollocationsCount = 1
                     greenSentencesCount = 2
-                    time = 124
+                    time = 5000
                 })
                 list.add(Word(2, "door", "drzwi", "doo", 1).apply {
                     greenCollocationsCount = 3
                     greenSentencesCount = 4
-                    time = 234
+                    time = 2000
                 })
                 list.add(Word(3, "go", "iść", "goł", 3).apply {
                     greenCollocationsCount = 5
                     greenSentencesCount = 6
-                    time = 345
+                    time = 200
                 })
                 list.add(Word(4, "come", "przyjść", "kom", 3).apply {
                     greenCollocationsCount = 7

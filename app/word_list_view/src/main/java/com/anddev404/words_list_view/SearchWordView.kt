@@ -379,7 +379,129 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
                         }
                     }
                 }
-                showedWords = tmppp
+                //sortowanie
+                var zakres1 = 500
+                var zakres2 = 1000
+                var zakres3 = 2000
+                var zakres4 = 3000
+                var zakres5 = 4000
+                var zakres6 = 5000
+                var zakres7 = 7000
+                var zakres8 = 10000
+                var zakres9 = 13000
+                var zakres10 = 16000
+                var zakres11 = 20000
+                var zakres12 = 40000
+
+
+                var newList = arrayListOf<Word>()
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres12) {
+                            newList.add(w)
+                        }
+                    }
+
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres11 && it <= zakres12) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres10 && it <= zakres11) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres9 && it <= zakres10) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres8 && it <= zakres9) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres7 && it <= zakres8) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres6 && it <= zakres7) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres5 && it <= zakres6) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres4 && it <= zakres5) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres3 && it <= zakres4) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it > zakres2 && it <= zakres3) {
+                            newList.add(w)
+                        }
+                    }
+                }
+                for (w in tmppp) {
+                    w.time?.let {
+                        if (it <= zakres1) {
+                            newList.add(w)
+                        }
+                    }
+                }
+
+                ///////////
+                var newestList = arrayListOf<Word>()//porzadkowanie wg nieznane,kojarze,znane
+                for (w in newList) {
+                    if (w.group == 0) {
+                        newestList.add(w)
+                    }
+                }
+                for (w in newList) {
+                    if (w.group == 1) {
+                        newestList.add(w)
+                    }
+                }
+                for (w in newList) {
+                    if (w.group == 2) {
+                        newestList.add(w)
+                    }
+                }
+                showedWords = newestList
+
+
+
                 showedWords.let {
                     list.adapter =
                         AdapterWordsListView(context, showedWords!!)
