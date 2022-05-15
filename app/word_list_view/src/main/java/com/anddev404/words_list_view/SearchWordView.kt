@@ -698,10 +698,29 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
         fun sentencesSearch(word: String)
         fun getGreenCollocationsFromDatabase(): List<String>
         fun favouriteClick(id: Int, isFavourite: Boolean)
+        fun openTimeActivityClick(list: List<Word>)
     }
 
     override fun favouriteClick(id: Int, isFavourite: Boolean) {
         mListener?.favouriteClick(id, isFavourite)
+    }
+
+    override fun openTimeActivityClick(id: Int, list: List<Word>) {
+        Log.d("MARCIN_LIST", "jest w liscie: ${list.size}");
+
+        var listReturn = arrayListOf<Word>()
+        var boolean = false
+        for (w in list) {
+            if (w.id == id) {
+                boolean = true
+            }
+            if (boolean) {
+                listReturn.add(w)
+            }
+        }
+        Log.d("MARCIN_LIST", "pobrano z listy: ${listReturn.size}");
+
+        mListener?.openTimeActivityClick(listReturn)
     }
 
 //////////////////////////////

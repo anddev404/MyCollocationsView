@@ -52,6 +52,10 @@ class WordListViewActivity : AppCompatActivity() {
                 Log.d("MARCIN", "CLICCCCCCCCCK $id $isFavourite");
 
             }
+
+            override fun openTimeActivityClick(list: List<Word>) {
+                var lista = 0
+            }
         })
 
     }

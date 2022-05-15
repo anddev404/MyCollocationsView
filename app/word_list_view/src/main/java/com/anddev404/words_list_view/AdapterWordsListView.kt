@@ -71,10 +71,13 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             }
         })
 
+
+
         holder.nr =
             rootView.findViewById<View>(R.id.nr_list_view_row) as TextView
         holder.forNr =
             rootView.findViewById<View>(R.id.nr_word_list_view_row) as TextView
+
         holder.word =
             rootView.findViewById<View>(R.id.word_list_view_row) as TextView
         holder.translation =
@@ -153,6 +156,11 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
             holder.study_Text.visibility = View.VISIBLE
             holder.study_Text.text = list.get(position).study_String
         }
+
+        holder.translation.setOnClickListener() {
+            mListener?.openTimeActivityClick(list[position].id, list)
+        }
+
         return rootView
     }
 
@@ -186,6 +194,8 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
 
     interface OnFavouriteListener {
         fun favouriteClick(id: Int, isFavourite: Boolean)
+        fun openTimeActivityClick(id: Int, list: List<Word>)
+
     }
 
     //////////////////////////////

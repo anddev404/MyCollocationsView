@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fastScrollEnabled="true"
-            android:verticalScrollbarPosition="left"
+            android:verticalScrollbarPosition="right"
             tools:listitem="@layout/word_list_view_row" />
     </LinearLayout>
 
