@@ -43,6 +43,12 @@
                 app:srcCompat="@android:drawable/ic_menu_rotate" />
 
             <ImageButton
+                android:id="@+id/custom_view_button_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/time_icon"></ImageButton>
+
+            <ImageButton
                 android:id="@+id/custom_view_button_favourite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

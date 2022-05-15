@@ -17,6 +17,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
     private var list: ListView
     private var searchButton: ImageButton
     private var favouriteButton: ImageButton
+    private var timeButton: ImageButton
 
     private var searchCollocationsButton: Button
     private var filterSentencesButton: ImageButton
@@ -213,6 +214,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
             findViewById(R.id.custom_view_button_search)
         favouriteButton =
             findViewById(R.id.custom_view_button_favourite)
+        timeButton =
+            findViewById(R.id.custom_view_button_time)
         filterSentencesButton =
             findViewById(R.id.custom_view_filter_search)
         studyButton =
@@ -326,6 +329,44 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
                 var licznikAdjective = 0
                 for (w in originalWords ?: arrayListOf()) {
                     if (w.favourite) {
+                        tmppp.add(w)
+                        if (w.partOfSpeech == 3) {
+                            licznikVerb++
+                        }
+                        if (w.partOfSpeech == 2) {
+                            licznikAdjective++
+                        }
+                        if (w.partOfSpeech == 1) {
+                            licznikNoun++
+                        }
+                    }
+                }
+                showedWords = tmppp
+                showedWords.let {
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+                    Toast.makeText(
+                        context,
+                        "VERB = ${licznikVerb}, \n ADJ = $licznikAdjective, \n NOUN =$licznikNoun",
+                        Toast.LENGTH_LONG
+                    ).show();
+                }
+
+
+            }
+        })
+        timeButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                editTextSearch.text.clear()
+                Log.d("MARCIN", "reset button");
+                showedWords = arrayListOf()
+                var tmppp = arrayListOf<Word>()
+                var licznikVerb = 0
+                var licznikNoun = 0
+                var licznikAdjective = 0
+                for (w in originalWords ?: arrayListOf()) {
+                    if (w.time != null) {
                         tmppp.add(w)
                         if (w.partOfSpeech == 3) {
                             licznikVerb++
