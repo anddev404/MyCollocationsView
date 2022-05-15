@@ -9,6 +9,7 @@ class Word(
     var forNr: Int = 0,
     var greenCollocationsCount: Int = 0,
     var greenSentencesCount: Int = 0,
+    var favourite: Boolean = false,
 ) {
     var study_String = ""
 

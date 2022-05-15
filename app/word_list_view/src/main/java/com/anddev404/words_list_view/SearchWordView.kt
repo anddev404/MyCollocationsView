@@ -1,34 +1,39 @@
 package com.anddev404.words_list_view
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
+import android.text.InputType
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.anddev404.words_list_view.AdapterWordsListView.OnFavouriteListener
 
-class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
+
+class SearchWordView(context: Context, attrs: AttributeSet) :
+    OnFavouriteListener, ConstraintLayout(context, attrs) {
 
     private var text: TextView
     private var list: ListView
     private var searchButton: ImageButton
+    private var favouriteButton: ImageButton
+
     private var searchCollocationsButton: Button
     private var filterSentencesButton: ImageButton
     private var studyButton: ImageButton
     private var searchSentencesButton: Button
     private var resetButton: ImageButton
-    private var editTextSearch: EditText
+    var editTextSearch: EditText
 
     private var buttonVerb: Button
     private var buttonAdjective: Button
     private var buttonNoun: Button
     private var buttonEnd: Button
+    private var buttonhideLeft: Button
+    private var buttonhideRight: Button
 
+    private var viewHideLeft: View
+    private var viewGideRight: View
 
     private var originalWords: ArrayList<Word>? = null
     private var showedWords: ArrayList<Word>? = null
@@ -61,8 +66,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         result.add(Word(-2, Word.ID_MINUS_TWO, "=====", ""))//angielskie
         //  result.add(Word(-6, Word.ID_MINUS_SIX, "", ""))//czasowniki
 
-        tmpList?.let {
-            for (w in tmpList) {
+        originalWords?.let {
+            for (w in originalWords as ArrayList<Word>) {
                 if (w.partOfSpeech == 3 && w.word.equals(searchWord)) {
                     result.add(w)
                 }
@@ -206,6 +211,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
         searchButton =
             findViewById(R.id.custom_view_button_search)
+        favouriteButton =
+            findViewById(R.id.custom_view_button_favourite)
         filterSentencesButton =
             findViewById(R.id.custom_view_filter_search)
         studyButton =
@@ -238,7 +245,23 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             findViewById(R.id.button3noun)
         buttonEnd =
             findViewById(R.id.button4end)
+        buttonhideLeft =
+            findViewById(R.id.button1hideleft)
+        buttonhideRight =
+            findViewById(R.id.button3hideright)
 
+        viewGideRight =
+            findViewById(R.id.righthider)
+        viewHideLeft =
+            findViewById(R.id.lefthider)
+        buttonhideLeft.setOnClickListener({
+            if (viewHideLeft.visibility == View.INVISIBLE) viewHideLeft.visibility =
+                View.VISIBLE else viewHideLeft.visibility = View.INVISIBLE
+        })
+        buttonhideRight.setOnClickListener({
+            if (viewGideRight.visibility == View.INVISIBLE) viewGideRight.visibility =
+                View.VISIBLE else viewGideRight.visibility = View.INVISIBLE
+        })
         buttonVerb.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
                 goToIndex(0)
@@ -261,6 +284,8 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         })
         searchButton.setOnClickListener(object : OnClickListener {
             override fun onClick(v: View?) {
+                //  editTextSearch.setInputType(InputType.TYPE_NULL);
+
                 var searchWord = editTextSearch.text.toString()
                 Log.d("MARCIN", "search: $searchWord");
                 if (searchWord.length > 1) {
@@ -285,6 +310,44 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                         AdapterWordsListView(context, showedWords!!)
                     Log.d("MARCIN", "refresh list");
 
+                }
+
+
+            }
+        })
+        favouriteButton.setOnClickListener(object : OnClickListener {
+            override fun onClick(v: View?) {
+                editTextSearch.text.clear()
+                Log.d("MARCIN", "reset button");
+                showedWords = arrayListOf()
+                var tmppp = arrayListOf<Word>()
+                var licznikVerb = 0
+                var licznikNoun = 0
+                var licznikAdjective = 0
+                for (w in originalWords ?: arrayListOf()) {
+                    if (w.favourite) {
+                        tmppp.add(w)
+                        if (w.partOfSpeech == 3) {
+                            licznikVerb++
+                        }
+                        if (w.partOfSpeech == 2) {
+                            licznikAdjective++
+                        }
+                        if (w.partOfSpeech == 1) {
+                            licznikNoun++
+                        }
+                    }
+                }
+                showedWords = tmppp
+                showedWords.let {
+                    list.adapter =
+                        AdapterWordsListView(context, showedWords!!)
+                    Log.d("MARCIN", "refresh list");
+                    Toast.makeText(
+                        context,
+                        "VERB = ${licznikVerb}, \n ADJ = $licznikAdjective, \n NOUN =$licznikNoun",
+                        Toast.LENGTH_LONG
+                    ).show();
                 }
 
 
@@ -450,6 +513,11 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         showedWords = originalWords
         list.adapter =
             AdapterWordsListView(context, words)
+        try {
+            (list.adapter as AdapterWordsListView).setOnFavouriteListener(this)
+
+        } catch (t: Throwable) {
+        }
     }
 
     //////////////////////////////
@@ -466,7 +534,11 @@ class SearchWordView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         fun collocationsSearch(word: String)
         fun sentencesSearch(word: String)
         fun getGreenCollocationsFromDatabase(): List<String>
+        fun favouriteClick(id: Int, isFavourite: Boolean)
+    }
 
+    override fun favouriteClick(id: Int, isFavourite: Boolean) {
+        mListener?.favouriteClick(id, isFavourite)
     }
 
 //////////////////////////////

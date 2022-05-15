@@ -45,6 +45,32 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         Log.d("ADAPTER", "getView ${position + 1} ${list.get(position).word}");
         Log.d("MY_DEBUG", "list - view");
         var holder = Holder()
+        holder.favourite =
+            rootView.findViewById<View>(R.id.favourite_linear_layout) as LinearLayout
+
+        if (list[position].favourite) {
+            holder.favourite.setBackgroundColor(context.resources.getColor(R.color.favourite_color))
+
+        } else {
+            //   holder.favourite.setBackgroundColor(context.resources.getColor(R.color.favourite_color))
+
+        }
+
+        holder.favourite.setOnClickListener({
+            Log.d("MARCIN", "CLICKKKK");
+            list[position].favourite = !list[position].favourite
+
+            mListener?.favouriteClick(list[position].id, list[position].favourite);
+
+            if (list[position].favourite) {
+                holder.favourite.setBackgroundColor(context.resources.getColor(R.color.favourite_color))
+
+            } else {
+                holder.favourite.setBackgroundColor(context.resources.getColor(R.color.unknown_color))
+
+            }
+        })
+
         holder.nr =
             rootView.findViewById<View>(R.id.nr_list_view_row) as TextView
         holder.forNr =
@@ -133,6 +159,7 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
         lateinit var nr: TextView
         lateinit var forNr: TextView
 
+        lateinit var favourite: LinearLayout
         lateinit var word: TextView
         lateinit var translation: TextView
         lateinit var prouncination: TextView
@@ -147,6 +174,20 @@ class AdapterWordsListView(var context: Context, var list: ArrayList<Word>) :
     }
 
     //endregion
+    //////////////////////////////
+    private var mListener: OnFavouriteListener? = null
 
+
+    fun setOnFavouriteListener(onFavouriteListener: OnFavouriteListener) {
+        mListener = onFavouriteListener;
+
+    }
+
+    interface OnFavouriteListener {
+        fun favouriteClick(id: Int, isFavourite: Boolean)
+    }
+
+    //////////////////////////////
+    //wysyłanie
 
 }

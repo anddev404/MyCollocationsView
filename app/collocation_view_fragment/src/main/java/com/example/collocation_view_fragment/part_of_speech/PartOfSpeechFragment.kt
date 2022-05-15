@@ -81,7 +81,7 @@ class PartOfSpeechFragment : Fragment() {
         partOfSpeechViewModel.isCheckedVerb().observe(viewLifecycleOwner, Observer {
             if (it) {
 
-                changeColor(textViewCzasownik)
+                changeColor(textViewCzasownik, requireView().resources.getColor(R.color.verb_color))
 
                 partOfSpeechViewModel.setRelation(0)
 
@@ -102,7 +102,10 @@ class PartOfSpeechFragment : Fragment() {
         partOfSpeechViewModel.isCheckedNoun().observe(viewLifecycleOwner, Observer {
             if (it) {
 
-                changeColor(textViewRzeczownik)
+                changeColor(
+                    textViewRzeczownik,
+                    requireView().resources.getColor(R.color.noun_color)
+                )
 
                 partOfSpeechViewModel.setRelation(0)
 
@@ -123,7 +126,10 @@ class PartOfSpeechFragment : Fragment() {
         partOfSpeechViewModel.isCheckedAdj().observe(viewLifecycleOwner, Observer {
             if (it) {
 
-                changeColor(textViewPrzymiotnik)
+                changeColor(
+                    textViewPrzymiotnik,
+                    requireView().resources.getColor(R.color.adj_color)
+                )
 
                 partOfSpeechViewModel.setRelation(0)
 
@@ -365,31 +371,31 @@ class PartOfSpeechFragment : Fragment() {
             }
             if (partOfSpeech == PART_OF_SPEECH_NOUN) {
                 if (relation.equals(RELATION_3_V_subj_N)) {
-                    return "<b>dog</b> bark"
+                    return "<b>noun</b> ....."
                 }
                 if (relation.equals(RELATION_2_V_prep_N)) {
-                    return "bark like <b>dog</b>"
+                    return "to ..... in/on <b>noun</b>"
                 }
                 if (relation.equals(RELATION_1_V_obj_N)) {
-                    return "to have a <b>dog</b>"
+                    return "to ..... <b>noun</b>"
                 }
                 if (relation.equals(RELATION_11_V_obj_prep_N)) {
-                    return "to take <b>dog</b> for walk"
+                    return "to ..... noun in/on <b>noun</b>"
                 }
                 if (relation.equals(RELATION_7_N_nn_N)) {
-                    return "<b>dog</b> food"
+                    return "<b>noun</b> noun"
                 }
                 if (relation.equals(RELATION_5_N_mod_A)) {
-                    return "black <b>dog</b>"
+                    return "adj <b>noun</b>"
                 }
             }
             if (partOfSpeech == PART_OF_SPEECH_ADJECTIVE) {
 
                 if (relation.equals(RELATION_5_N_mod_A)) {
-                    return "<b>fast</b> car"
+                    return "<b>adj</b> noun"
                 }
                 if (relation.equals(RELATION_9_A_mod_A)) {
-                    return "too <b>fast</b>"
+                    return "too,so, very <b>adj</b>"
                 }
             }
 
@@ -453,9 +459,14 @@ class PartOfSpeechFragment : Fragment() {
         //TODO tutaj przy kazdej zmianie słowa równiez wywoła zmiane relacji i listener chociaż wczesniej nie wywoływało tego
     }
 
-    private fun changeColor(textView: TextView) {
+    private fun changeColor(textView: TextView, color: Int = 0) {
+        if (color == 0) {
+            textView.setBackgroundColor(requireView().resources.getColor(R.color.unknown_color))
 
-        textView.setBackgroundColor(requireView().resources.getColor(R.color.collocations_head_chosed))
+        } else {
+            textView.setBackgroundColor(color)
+        }
+
 
     }
 

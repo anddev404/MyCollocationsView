@@ -1,16 +1,13 @@
 package com.example.mycollocationsview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ListView
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.anddev404.words_list_view.AdapterWordsListView
+import androidx.appcompat.app.AppCompatActivity
 import com.anddev404.words_list_view.SearchWordView
 import com.anddev404.words_list_view.Word
-import com.example.collocation_view_fragment.AdapterCollocationsListView
 
 class WordListViewActivity : AppCompatActivity() {
     lateinit var list: SearchWordView
@@ -25,6 +22,10 @@ class WordListViewActivity : AppCompatActivity() {
             override fun wordSearch(word: String, id: Int) {
 
                 Toast.makeText(applicationContext, "Wybrano: $word", Toast.LENGTH_LONG).show();
+//                val inputManager: InputMethodManager =
+//                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//                inputManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+
             }
 
             override fun collocationsSearch(word: String) {
@@ -45,6 +46,11 @@ class WordListViewActivity : AppCompatActivity() {
 
                 //   Thread.sleep(3500)
                 return list
+            }
+
+            override fun favouriteClick(id: Int, isFavourite: Boolean) {
+                Log.d("MARCIN", "CLICCCCCCCCCK $id $isFavourite");
+
             }
         })
 

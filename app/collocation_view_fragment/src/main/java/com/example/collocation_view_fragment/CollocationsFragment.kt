@@ -56,6 +56,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     lateinit var rightTextView: TextView
 
     lateinit var headTextView: TextView
+    lateinit var headTextView2: TextView
     //endregion
 
     //region fragment
@@ -80,6 +81,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
         hideUnknownSentenceCheckBox.setOnCheckedChangeListener(this)
 
         headTextView = view.findViewById(R.id.fragment_text_view) as TextView
+        headTextView2 = view.findViewById(R.id.fragment_text_view2) as TextView
 
         leftTextView = view.findViewById(R.id.textViewLeft) as TextView
         leftTextView.setOnClickListener {
@@ -142,7 +144,7 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
     //endregion
 
     //region input >
-    fun setHeadText(text: String, text2: String) {
+    fun setHeadText(text: String, text2: String, color: Int = 0) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             headTextView.setText(
                 Html.fromHtml(
@@ -151,10 +153,24 @@ class CollocationsFragment : Fragment(), AdapterView.OnItemClickListener,
                 )
 
             );
-            headTextView.text = "" + headTextView.text + "\n$text2"
+            headTextView2.text = text2
+            if (color != 0) {
+                headTextView2.setBackgroundColor(color)
+
+            } else {
+                headTextView2.setBackgroundColor(requireView().resources.getColor(R.color.unknown_color))
+
+            }
         } else {
             headTextView.setText(Html.fromHtml(text));
-            headTextView.text = "" + headTextView.text + "\n$text2"
+            headTextView2.text = text2
+            if (color != 0) {
+                headTextView2.setBackgroundColor(color)
+
+            } else {
+                headTextView2.setBackgroundColor(requireView().resources.getColor(R.color.unknown_color))
+
+            }
         }
 
     }
