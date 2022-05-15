@@ -10,6 +10,7 @@ class Word(
     var greenCollocationsCount: Int = 0,
     var greenSentencesCount: Int = 0,
     var favourite: Boolean = false,
+    var time: Int? = null
 ) {
     var study_String = ""
 
@@ -21,14 +22,17 @@ class Word(
                 list.add(Word(1, "home", "dom", "hołm", 1).apply {
                     greenCollocationsCount = 1
                     greenSentencesCount = 2
+                    time = 100
                 })
                 list.add(Word(2, "door", "drzwi", "doo", 1).apply {
                     greenCollocationsCount = 3
                     greenSentencesCount = 4
+                    time = 200
                 })
                 list.add(Word(3, "go", "iść", "goł", 3).apply {
                     greenCollocationsCount = 5
                     greenSentencesCount = 6
+                    time = 300
                 })
                 list.add(Word(4, "come", "przyjść", "kom", 3).apply {
                     greenCollocationsCount = 7
