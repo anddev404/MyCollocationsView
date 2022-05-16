@@ -18,7 +18,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
     private var searchButton: ImageButton
     private var favouriteButton: ImageButton
     private var timeButton: ImageButton
-
+    lateinit var claaas: SearchWordView
     private var searchCollocationsButton: Button
     private var filterSentencesButton: ImageButton
     private var studyButton: ImageButton
@@ -207,7 +207,7 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
 
     init {
         inflate(context, R.layout.search_word_view, this)
-
+        claaas = this
         editTextSearch = findViewById(R.id.custom_view_editText)
 
         searchButton =
@@ -505,6 +505,13 @@ class SearchWordView(context: Context, attrs: AttributeSet) :
                 showedWords.let {
                     list.adapter =
                         AdapterWordsListView(context, showedWords!!)
+
+                    try {
+                        (list.adapter as AdapterWordsListView).setOnFavouriteListener(claaas)
+
+                    } catch (t: Throwable) {
+                    }
+
                     Log.d("MARCIN", "refresh list");
                     Toast.makeText(
                         context,
